@@ -1,0 +1,29 @@
+        <?php
+            require("connDB.php");
+            $id_profesional = $_GET['p'];
+            $sql = "select id,start,end,title,description from eventos where profesional = '$id_profesional' order by start";
+            $conexion = regresarConexion();
+            $respuesta = mysqli_query($conexion,$sql);
+            $i = 0;
+            while($fila = mysqli_fetch_array($respuesta)) {
+                $id = $fila['id'];
+                $start = $fila['start'];
+                $end = $fila['end'];
+                $title = $fila['title'];
+                $description = $fila['description'];
+                $i++; ?>
+            <tr>
+                <td><?php echo $id ?></td>
+                <td><?php echo $start ?></td>
+                <td><?php echo $end ?></td>
+                <td><?php echo $title ?></td>
+                <td><?php echo $description ?></td>
+                <td><a href="pacientes.php?borrar=<?php echo $id ?>">borrar</a></td>
+            </tr>
+            <?php } ?>
+
+
+
+
+
+            https://www.youtube.com/watch?v=44w-jw9Y_PY&ab_channel=Inform%C3%A1ticaDP
