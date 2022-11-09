@@ -30,14 +30,14 @@
                 <div id="MenuNavegacion" class="collapse navbar-collapse">
                     <ul class="navbar-nav ms-3">
                         <!-- menu pacientes -->
-                        <li class="nav-item"><a class="nav-link" href="./modules/pacientes/pacientes.php">pacientes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/genesys-abocad/modules/pacientes/pacientes.php">pacientes</a></li>
                         <!-- menu profesionales -->
                         <li class="nav-item"><a class="nav-link" href="#">profesionales</a></li>
                         <!-- menu desplegable turnos -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">turnos</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">ver calendario</a></li>
+                                <li><a class="dropdown-item" href="/genesys-abocad/modules/profesionales/profesionalesSeleccionar.php">ver calendario</a></li>
                                 <li><a class="dropdown-item" href="#">ver turnos</a></li>
                             </ul>
                         </li>

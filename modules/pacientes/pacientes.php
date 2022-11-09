@@ -8,16 +8,21 @@
 
 
     <!-- bootstrap css -->
-    <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 
     <!-- css personalizado -->
     <link rel="stylesheet" href="./pacientes.css">
 
     <!-- datatables css basico -->
-    <link rel="stylesheet" type="text/css" href="../../assets/datatables/datatables.min.css">
+    <link rel="stylesheet" type="text/css" href="datatables/datatables.min.css">
     
     <!-- datatables estilo bootstrap -->
-    <link rel="stylesheet" type="text/css" href="../../assets/datatables/DataTables-1.12.1/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" type="text/css" href="datatables/DataTables-1.12.1/css/dataTables.bootstrap5.min.css">
+
+
+
+
+
 
     <!-- version original -->
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css"> -->
@@ -51,7 +56,7 @@
         <div class="row">
             <div class="col-lg-12">
             <div class="table-responsive">        
-                <table id="tablaUsuarios" class="table table-striped table-bordered table-condensed" style="width:100%" >
+                <table id="example" class="table table-striped table-bordered table-condensed" style="width:100%" >
                     <thead class="text-center">
                         <tr>
                             <th>id</th>
@@ -93,10 +98,8 @@
                             <td><?php echo $row['socio']; ?></td>
                             <td><?php echo $row['reint']; ?></td>
                             <!-- botones -->
-                            <td><a href="modulos/turnoCerrar.php?id=<?php echo $row['id'] ?>"><img src="../../assets/icons/cerrar.png" alt="cerrar"></a></td>
-                            <td><a href="modulos/turnoModificar.php?id=<?php echo $row['id'] ?>"><img src="../../assets/icons/modificar.png" alt="modificar"></a></td>
-                            <td><a href="modulos/turnoReplicar.php?replicar=<?php echo $row['id'] ?>"><img src="../../assets/icons/replicar.png" alt="replicar"></a></td>
-                            <td><a href="modulos/turnoBorrar.php?id=<?php echo $row['id'] ?>"><img src="../../assets/icons/borrar.png" alt="borrar"></a></td>
+                            <td><a href="./pacientesEdit.php?id=<?php echo $row['id'] ?>"><img src="../../assets/icons/modificar.png" alt="modificar"></a></td>
+                            <td><a href="./pacientesDelete.php?id=<?php echo $row['id'] ?>"><img src="../../assets/icons/borrar.png" alt="borrar"></a></td>
                         </tr>
                         <?php } ?>
 
@@ -109,14 +112,14 @@
 
 
     <!-- jquery, popper.js, bootstrap.js -->
-    <script src="../../assets/jquery/jquery-3.6.1.min.js"></script>
-    <script src="../../assets/popper/popper.min.js"></script>
-    <script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="jquery/jquery-3.6.1.min.js"></script>
+    <script src="popper/popper.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
 
     <!-- datatables.js -->
-    <script type="text/javascript" src="../../assets/datatables/datatables.min.css"></script>
-    <script type="text/javascript" src="../../assets/datatables/DataTables-1.12.1/js/jquery.dataTables.min.js"></script>
-    <script src="../../assets/datatables/DataTables-1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" src="datatables/datatables.min.css"></script>
+    <script type="text/javascript" src="datatables/DataTables-1.12.1/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="datatables/DataTables-1.12.1/js/dataTables.bootstrap5.min.js"></script>
     
 
     <!-- <script src="//code.jquery.com/jquery-3.5.1.js"></script> -->
@@ -130,7 +133,7 @@
 
     <script>
         $(document).ready(function() {
-            $('#tablaUsuarios').DataTable( {
+            $('#example').DataTable( {
                 language: {
                     url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-AR.json'
                 }
@@ -138,87 +141,6 @@
         } );
     </script>
 
-    <!-- <script>
-        $(document).ready(function() {
-        var user_id, opcion;
-        opcion = 4;
-
-        tablaUsuarios = $('#tablaUsuarios').DataTable({  
-            "ajax":{            
-                "url": "pacientesCrudDT.php", 
-                "method": 'POST', //usamos el metodo POST
-                "data":{opcion:opcion}, //enviamos opcion 4 para que haga un SELECT
-                "dataSrc":""
-            },
-            "columns":[
-                {"data": "id"},
-                {"data": "apellido"},
-                {"data": "nombre"},
-                {"data": "dni"},
-                {"data": "direccion"},
-                {"data": "cobertura"},
-                {"data": "socio"},
-                {"data": "reint"},
-                {"defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btn-sm btnEditar'><i class='material-icons'>edit</i></button><button class='btn btn-danger btn-sm btnBorrar'><i class='material-icons'>delete</i></button></div></div>"}
-                
-            ]
-        });  
-
-        // captura el boton EDITAR del datatable
-        $(document).on("click", ".btnEditar", function(){		        
-            opcion = 2;//editar
-            fila = $(this).closest("tr");
-            id = parseInt(fila.find('td:eq(0)').text()); //capturo el ID
-            const url = "pacientesEdit.php?id=" + encodeURIComponent(id);
-            window.location.href = url;
-        });
-
-        // captura el boton BORRAR del datatable
-        $(document).on("click", ".btnBorrar", function(){		        
-            opcion = 3;//editar
-            fila = $(this).closest("tr");
-            id = parseInt(fila.find('td:eq(0)').text()); //capturo el ID
-            var respuesta = confirm("¿Está seguro de borrar el paciente seleccionado ?");                
-                if (respuesta) { 
-                    const url = "pacientesDelete.php?id=" + encodeURIComponent(id);
-                    window.location.href = url;
-                }
-        });
-
-        // formato modal (evualuar para el futuro)
-        var fila; //captura la fila, para editar o eliminar
-        //submit para el Alta y Actualización
-        $('#formPersona').submit(function(e){                         
-            e.preventDefault(); //evita el comportambiento normal del submit, es decir, recarga total de la página
-            apellido = $.trim($('#apellido').val());    
-            nombre = $.trim($('#nombre').val());
-            dni = $.trim($('#dni').val());
-            direccion = $.trim($('#direccion').val());
-                $.ajax({
-                url: "crud.php",
-                type: "POST",
-                datatype:"json",    
-                data:  {apellido:apellido, nombre:nombre, dni:dni, direccion:direccion, opcion:opcion},    
-                success: function(data) {
-                    // tablaPersonas.ajax.reload(null, false);
-                }
-                });			        
-            $('#modalCRUD').modal('hide');											     			
-        });
-
-        //para limpiar los campos antes de dar de Alta una Persona
-        $("#btnNuevo").click(function(){
-            opcion = 1; //alta           
-            user_id=null;
-            $("#formUsuarios").trigger("reset");
-            $(".modal-header").css( "background-color", "#17a2b8");
-            $(".modal-header").css( "color", "white" );
-            $(".modal-title").text("alta de paciente");
-            $('#modalCRUD').modal('show');	    
-        });
-
-    });
-    </script> -->
     
 </body>
 </html>
