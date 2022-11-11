@@ -17,11 +17,13 @@
                     $numero = $_POST['c1numero'];
                     $contacto = $_POST['contacto'];
                     $estado = $_POST['estado'];
+                    // estado activo o inactivo
                     if($estado=="activo"){
                         $valorEstado = 1;
                     } else {
                         $valorEstado = 0;
                     }
+                    // pago por reintegro
                     $reintegro = $_POST['reintegro'];
                     if($reintegro=="si"){
                         $valorReintegro = 1;
@@ -59,8 +61,15 @@
                     } else {
                         $valorEstado = 0;
                     }
+                    $reintegro = $_POST['reintegro'];
+                    if($reintegro=="si"){
+                        $valorReintegro = 1;
+                    } else {
+                        $valorReintegro = 0;
+                    }
                     $sql = "UPDATE pacientes SET apellido='$apellido' ,nombre='$nombre', dni=$dni, direccion='$direccion',
-                    cobertura1=$cobertura, c1numero=$numero, contacto='$contacto', estado=$valorEstado WHERE id=$id";
+                            cobertura1=$cobertura, c1numero=$numero, contacto='$contacto', estado=$valorEstado, reintegro=$valorReintegro 
+                            WHERE id=$id";
                     $p = db::conectar()->prepare($sql);
                     $p->execute();
                     header ("Location: ./pacientes.php");

@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- bootstrap -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css"> -->
 
     <!-- font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -15,7 +16,7 @@
 </head>
 <body>
     <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #00FF5573";>
-        editar paciente
+        borrar paciente
     </nav>
 
     <!-- obtenemos los datos del paciente a editar en base al id recibido por parametro -->
@@ -37,7 +38,7 @@
                 <!-- id -->
                 <div class="col">
                     <label class="form-label">id</label>
-                    <input type="numeric" class="form-control" name="id" value="<?php echo $id ?>">
+                    <input type="numeric" class="form-control" name="id" value="<?php echo $id ?>" disabled>
                 </div>
                 <!-- estado -->
                 <div class="row">
@@ -45,11 +46,11 @@
                         <div class="form-group mb-3">
                             <label>estado</label> &nbsp;
                             <input type="radio" class="form-check-input" name="estado" 
-                             id="activo" value="activo" <?php echo($row['estado'] == '1') ? "checked" : "";?> >
+                             id="activo" value="activo" <?php echo($row['estado'] == '1') ? "checked" : "";?> disabled>
                             <label for="male" class="form-input-label">activo</label>
                             &nbsp;
                             <input type="radio" class="form-check-input" name="estado" 
-                             id="inactivo" value="inactivo" <?php echo($row['estado'] == '0') ? "checked" : "";?> >
+                             id="inactivo" value="inactivo" <?php echo($row['estado'] == '0') ? "checked" : "";?> disabled>
                             <label for="male" class="form-input-label">inactivo</label>
                         </div>
                     </div>
@@ -57,26 +58,26 @@
                 <!-- apellido -->
                 <div class="col">
                     <label class="form-label">apellido</label>
-                    <input type="text" class="form-control" name="apellido" value="<?php echo $row['apellido']?>">
+                    <input type="text" class="form-control" name="apellido" value="<?php echo $row['apellido']?>" disabled>
                 </div>
                 <!-- nombre -->
                 <div class="col">
                     <label class="form-label">nombre</label>
-                    <input type="text" class="form-control" name="nombre" value="<?php echo $row['nombre']?>">
+                    <input type="text" class="form-control" name="nombre" value="<?php echo $row['nombre']?>" disabled>
                 </div>
             </div>
             <div class="row">
                 <!-- dni -->
                 <div class="col">
                     <label class="form-label">dni</label>
-                    <input type="number" class="form-control" name="dni" value="<?php echo $row['dni']?>">
+                    <input type="number" class="form-control" name="dni" value="<?php echo $row['dni']?>" disabled>
                 </div>                
             </div>
             <div class="row">
                 <!-- direccion -->
                 <div class="col">
                     <label class="form-label">direccion</label>
-                    <input type="text" class="form-control" name="direccion" value="<?php echo $row['direccion']?>">
+                    <input type="text" class="form-control" name="direccion" value="<?php echo $row['direccion']?>" disabled>
                 </div>
             </div>
             <div class="row">
@@ -84,7 +85,7 @@
                 <div class="col">
                     <!-- cargamos el combo con las coberturas -->
                     <label class="form label">cobertura</label>
-                    <select name = "cobertura" id="cobertura" class="form-control">
+                    <select name = "cobertura" id="cobertura" class="form-control" disabled>
                         <!-- <option value="0">seleccione una cobertura</option> -->
                         <?php
                             $sql = "select id,nombre from coberturas order by nombre";
@@ -100,14 +101,14 @@
                 <!-- cobertura numero -->
                 <div class="col">
                     <label class="form-label">numero</label>
-                    <input type="text" class="form-control" name="c1numero" value="<?php echo $row['c1numero']?>">
+                    <input type="text" class="form-control" name="c1numero" value="<?php echo $row['c1numero']?>" disabled>
                 </div>
             </div>
             <div class="row">
                 <!-- contacto -->
                 <div class="col">
                     <label class="form-label">contacto</label>
-                    <textarea name="contacto" class="form-control" id="contacto"><?php echo $row['contacto']?></textarea>
+                    <textarea name="contacto" class="form-control" id="contacto" disabled><?php echo $row['contacto']?></textarea>
                 </div>
             </div>
             <!-- boton submit -->
@@ -134,6 +135,7 @@
     </div>
 
     <!-- bootstrap -->
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
+    <!-- <script src="assets/bootstrap/js/bootstrap.min.js"></script> -->
 </body>
 </html>

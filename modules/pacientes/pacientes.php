@@ -8,16 +8,16 @@
 
 
     <!-- bootstrap css -->
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css"> -->
 
     <!-- css personalizado -->
-    <link rel="stylesheet" href="./pacientes.css">
+    <!-- <link rel="stylesheet" href="./pacientes.css"> -->
 
     <!-- datatables css basico -->
-    <link rel="stylesheet" type="text/css" href="datatables/datatables.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../../assets/datatables/datatables.min.css"> -->
     
     <!-- datatables estilo bootstrap -->
-    <link rel="stylesheet" type="text/css" href="datatables/DataTables-1.12.1/css/dataTables.bootstrap5.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../../assets/datatables/DataTables-1.12.1/css/dataTables.bootstrap5.min.css"> -->
 
 
 
@@ -41,6 +41,22 @@
     <!-- CSS personalizado --> 
     <link rel="stylesheet" href="./pacientes.css">  
 
+
+
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
+
+    <!-- css personalizado -->
+    <link rel="stylesheet" href="pacientes.css">
+
+    <!-- datatables css basico -->
+    <link rel="stylesheet" type="text/css" href="../../assets/datatables/datatables.min.css">
+    
+    <!-- datatables estilo bootstrap -->
+    <link rel="stylesheet" type="text/css" href="../../assets/datatables/DataTables-1.12.1/css/dataTables.bootstrap5.min.css">
+
+
+
 </head>
 <body>
 
@@ -49,6 +65,7 @@
     <div class="form-group">
         <br/>
             <a href="./pacientesAdd.php" class="btn btn-warning" disabled>agregar paciente</a>
+            <input type="checkbox" name="verActivos" value="si">
         <br/><br/>
     </div>
 
@@ -67,7 +84,8 @@
                             <th>cobertura</th>
                             <th>socio</th>
                             <th>reint</th>
-                            <th>acciones</th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>       
@@ -112,14 +130,18 @@
 
 
     <!-- jquery, popper.js, bootstrap.js -->
-    <script src="jquery/jquery-3.6.1.min.js"></script>
-    <script src="popper/popper.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../assets/jquery/jquery-3.6.1.min.js"></script>
+    <script src="../../assets/popper/popper.min.js"></script>
+    <script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- datatables.js -->
-    <script type="text/javascript" src="datatables/datatables.min.css"></script>
-    <script type="text/javascript" src="datatables/DataTables-1.12.1/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="datatables/DataTables-1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" src="../../assets/datatables/datatables.min.css"></script>
+    <script type="text/javascript" src="../../assets/datatables/DataTables-1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="../../assets/datatables/DataTables-1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    
+    <!-- js personalizado -->
+    <script type="text/javascript" src="pacientes.js"></script>
+
     
 
     <!-- <script src="//code.jquery.com/jquery-3.5.1.js"></script> -->
@@ -131,7 +153,7 @@
     <!-- <script src="assets/bootstrap/js/bootstrap.min.js"></script> -->
     <!-- <script src="../../assets/bootstrap/js/bootstrap.min.js"></script> -->
 
-    <script>
+    <!-- <script>
         $(document).ready(function() {
             $('#example').DataTable( {
                 language: {
@@ -139,7 +161,7 @@
                 }
             } );
         } );
-    </script>
+    </script> -->
 
     
 </body>

@@ -11,7 +11,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- bootstrap -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css"> -->
 
     <!-- font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -105,10 +106,10 @@
                     <div class="col">
                         <div class="form-group mb-3">
                             <label>prestacion por reintegro?</label> &nbsp;
-                            <input type="radio" class="form-check-input" name="reintegro" id="activo" value="si" checked>
+                            <input type="radio" class="form-check-input" name="reintegro" id="activo" value="si">
                             <label for="si" class="form-input-label">si</label>
                             &nbsp;
-                            <input type="radio" class="form-check-input" name="reintegro" id="inactivo" value="no">
+                            <input type="radio" class="form-check-input" name="reintegro" id="inactivo" value="no" checked>
                             <label for="no" class="form-input-label">no</label>
                         </div>
                     </div>
@@ -127,7 +128,7 @@
             <div>
                 <br>
                 <button type="submit" class="btn btn-success" name="submit">guardar</button>
-                <a href="personas.php" class="btn btn-danger">cancelar</a>
+                <a href="./pacientes.php" class="btn btn-danger">cancelar</a>
             </div>
             
 
@@ -135,6 +136,7 @@
     </div>
 
     <!-- bootstrap -->
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
+    <!-- <script src="assets/bootstrap/js/bootstrap.min.js"></script> -->
 </body>
 </html>

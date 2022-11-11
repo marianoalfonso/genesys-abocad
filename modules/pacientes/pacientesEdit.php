@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- bootstrap -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css"> -->
 
     <!-- font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -37,7 +38,7 @@
                 <!-- id -->
                 <div class="col">
                     <label class="form-label">id</label>
-                    <input type="numeric" class="form-control" name="id" value="<?php echo $id ?>">
+                    <input type="numeric" class="form-control" name="id" value="<?php echo $id ?>" readonly>
                 </div>
                 <!-- estado -->
                 <div class="row">
@@ -103,6 +104,23 @@
                     <input type="text" class="form-control" name="c1numero" value="<?php echo $row['c1numero']?>">
                 </div>
             </div>
+
+            <!-- reintegro -->
+            <div class="row">
+                <div class="col">
+                    <div class="form-group mb-3">
+                        <label>prestacion por reintegro?</label> &nbsp;
+                        <input type="radio" class="form-check-input" name="reintegro" 
+                            id="activo" value="si" <?php echo($row['reintegro'] == '1') ? "checked" : "";?> >
+                        <label for="si" class="form-input-label">si</label>
+                        &nbsp;
+                        <input type="radio" class="form-check-input" name="reintegro" 
+                            id="inactivo" value="no" <?php echo($row['reintegro'] == '0') ? "checked" : "";?> >
+                        <label for="no" class="form-input-label">no</label>
+                    </div>
+                </div>
+            </div>
+
             <div class="row">
                 <!-- contacto -->
                 <div class="col">
@@ -122,6 +140,7 @@
     </div>
 
     <!-- bootstrap -->
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
+    <!-- <script src="assets/bootstrap/js/bootstrap.min.js"></script> -->
 </body>
 </html>

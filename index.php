@@ -41,7 +41,7 @@
                                 <li><a class="dropdown-item" href="#">ver turnos</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="#">salir</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/genesys-abocad/modules/login/login.php">salir</a></li>
                     </ul>
                 </div>
             </div>
