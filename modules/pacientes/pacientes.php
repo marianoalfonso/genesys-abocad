@@ -55,12 +55,12 @@
     <!-- datatables estilo bootstrap -->
     <link rel="stylesheet" type="text/css" href="../../assets/datatables/DataTables-1.12.1/css/dataTables.bootstrap5.min.css">
 
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
 
 </head>
 <body>
 
-    <?php require_once('../../index.php'); ?>
+    <?php require_once('../navBar.php'); ?>
 
     <div class="form-group">
         <br/>
@@ -90,7 +90,6 @@
                     </thead>
                     <tbody>       
                         
-
                     <?php
                         require_once("../db/dbConnection.php");
                         $sql = "select pacientes.id as id,apellido,pacientes.nombre,dni,direccion,
@@ -98,7 +97,8 @@
                             case reintegro
                                 when 0 then 'no'
                                 when 1 then 'si'
-                            end as reint
+                            end as reint,
+                            estado
                             from pacientes inner join coberturas ON
                             pacientes.cobertura1 = coberturas.id
                             order by apellido,pacientes.nombre";
@@ -106,17 +106,30 @@
                         $resultado->execute();        
                         $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         foreach($data as $row) {
+                            $estado = $row['estado'];
                     ?>
-                            <td><font color="red"><?php echo $row['id']; ?></td>
-                            <td><?php echo $row['apellido']; ?></td>
-                            <td><?php echo $row['nombre']; ?></td>
-                            <td><?php echo $row['dni']; ?></td>
-                            <td><?php echo $row['direccion']; ?></td>
-                            <td><?php echo $row['cobertura']; ?></td>
-                            <td><?php echo $row['socio']; ?></td>
-                            <td><?php echo $row['reint']; ?></td>
+                            <!-- id -->
+                            <?php if($estado==1) { ?>
+                                <td><?php echo $row['id']; ?></td>
+                                <td><?php echo $row['apellido']; ?></td>
+                                <td><?php echo $row['nombre']; ?></td>
+                                <td><?php echo $row['dni']; ?></td>
+                                <td><?php echo $row['direccion']; ?></td>
+                                <td><?php echo $row['cobertura']; ?></td>
+                                <td><?php echo $row['socio']; ?></td>
+                                <td><?php echo $row['reint']; ?></td>
+                            <?php } else { ?>
+                                <td><font color="red"><?php echo $row['id']; ?></td>
+                                <td><font color="red"><?php echo $row['apellido']; ?></td>
+                                <td><font color="red"><?php echo $row['nombre']; ?></td>
+                                <td><font color="red"><?php echo $row['dni']; ?></td>
+                                <td><font color="red"><?php echo $row['direccion']; ?></td>
+                                <td><font color="red"><?php echo $row['cobertura']; ?></td>
+                                <td><font color="red"><?php echo $row['socio']; ?></td>
+                                <td><font color="red"><?php echo $row['reint']; ?></td>
+                            <?php }?>
                             <!-- botones -->
-                            <td><a href="./pacientesEdit.php?id=<?php echo $row['id'] ?>"><img src="../../assets/icons/modificar.png" alt="modificar"></a></td>
+                            <td><a href="./pacientesEdit.php?id=<?php echo $row['id'] ?>"><img src="../../assets/icons/editar.png" alt="modificar"></a></td>
                             <td><a href="./pacientesDelete.php?id=<?php echo $row['id'] ?>"><img src="../../assets/icons/borrar.png" alt="borrar"></a></td>
                         </tr>
                         <?php } ?>
@@ -126,7 +139,7 @@
             </div>
             </div>
         </div>  
-    </div>   
+    </div> 
 
 
     <!-- jquery, popper.js, bootstrap.js -->

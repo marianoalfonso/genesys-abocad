@@ -1,4 +1,0 @@
-https://www.youtube.com/watch?v=yYFmr94GU64&list=PLAzlSdU-KYwXII59J4jtwr6tVPZMzVH_y&index=6&ab_channel=Danisable
-
-clockpicker no funciona (video 19)
-es un problema que no funciona en el formulario modal

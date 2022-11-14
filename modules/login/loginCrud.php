@@ -25,10 +25,10 @@
                             $_SESSION['usuario_tipo'] = $result['tipo_descripcion'];
                             // $_SESSION['profesional'] = $profesional;
                             $_SESSION['validate'] = true;
-                            header('location: ../../index.php');
+                            header('location: ../navBar.php');
                         }
                     } else {
-                        header('location: ../login/login.php');
+                        header('location: ./login.php');
                     }
                 }
                 break;

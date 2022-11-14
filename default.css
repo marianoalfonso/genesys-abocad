@@ -1,0 +1,15 @@
+html {
+    height: 100%;
+}
+
+body {
+    background-image: url("./assets/images/abocad-logo.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: 80%;
+}
+
+#boton-ingreso {
+    margin-top: 200px;
+}
