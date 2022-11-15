@@ -83,7 +83,6 @@
 
         // borrado de paciente
         case 'delete':
-            
             if(isset($_POST['submit'])){
                 $id = $_POST['id'];
                 try {

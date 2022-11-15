@@ -35,6 +35,7 @@
     <div class="container d-flex justify-content-center">
         <form action="pacientesCrud.php" method="post" style="width: 50vw; min-width: 300px;">
             <div class="row">
+
                 <!-- id -->
                 <div class="col">
                     <label class="form-label">id</label>
@@ -86,14 +87,21 @@
                     <!-- cargamos el combo con las coberturas -->
                     <label class="form label">cobertura</label>
                     <select name = "cobertura" id="cobertura" class="form-control">
-                        <!-- <option value="0">seleccione una cobertura</option> -->
                         <?php
                             $sql = "select id,nombre from coberturas order by nombre";
                             echo $sql;
                             $datos = mysqli_query($conexion, $sql);
                             $ep = mysqli_fetch_all($datos, MYSQLI_ASSOC);
                             foreach($ep as $fila){
-                                echo '<option value="'.$fila["id"].'">'.$fila["nombre"].'</option>';
+                                // verificamos cual es la opcion que traemos desde la base de datos
+                                // para setearla como SELECTED
+                                if($fila['id'] == $row['cobertura1']){
+                                    $selected = 'selected';
+                                } else {
+                                    $selected = '';
+                                }
+                                echo '<option value="'.$fila["id"].'" '.$selected.'>'.$fila["nombre"].'</option>';
+                                // echo '<option value="'.$fila["id"].'">'.$fila["nombre"].'</option>';
                             }
                         ?>
                     </select>

@@ -63,9 +63,9 @@
                         <tr>
                             <td><?php echo $row['id']; ?></td>
                             <td><?php echo $row['nombre']; ?></td>
-                                <!-- botones -->
-                            <td><a href="./profesionalesEdit.php?id=<?php echo $row['id'] ?>"><img src="../../assets/icons/editar.png" alt="modificar"></a> editar</td>
-                            <td><a href="./profesionalesDelete.php?id=<?php echo $row['id'] ?>"><img src="../../assets/icons/borrar.png" alt="borrar"></a> borrar</td>
+                            <!-- botones -->
+                            <td><a href="#"><img src="../../assets/icons/editar.png" alt="modificar"></a> editar</td>
+                            <td><a href="#"><img src="../../assets/icons/borrar.png" alt="borrar"></a> borrar</td>
                             <td><a href="../turnos/turnosProfesional.php?id=<?php echo $row['id'] ?>&nombre=<?php echo $row['nombre'] ?>"><img src="../../assets/icons/lista.png" alt="turnos"></a> turnos</td>
                             <td><a href="../calendarios/calendario.php?p=<?php echo $row['id'] ?>&nombre=<?php echo $row['nombre'] ?>"><img src="../../assets/icons/calendario.png" alt="calendario"></a> calendario</td>
                         </tr>

@@ -122,7 +122,7 @@
                     <td><?php echo $estado ?></td>                      
                     <?php }?>    
                     <td><a href="./turnosClose.php?id=<?php echo $id ?>"><img src="../../assets/icons/cerrar.png" alt="cerrar"></a></td>
-                    <td><a href="./turnosEdit.php?id=<?php echo $id ?>"><img src="../../assets/icons/modificar.png" alt="modificar"></a></td>
+                    <td><a href="./turnosEdit.php?id=<?php echo $id ?>"><img src="../../assets/icons/editar.png" alt="modificar"></a></td>
                     <td><a href="./turnosMultiply.php?id=<?php echo $id ?>"><img src="../../assets/icons/replicar.png" alt="replicar"></a></td>
                     <td><a href="./turnosDelete.php?id=<?php echo $id ?>"><img src="../../assets/icons/borrar.png" alt="borrar"></a></td>
                 </tr>
