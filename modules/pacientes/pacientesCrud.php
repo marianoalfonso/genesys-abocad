@@ -12,10 +12,9 @@
                     $apellido = $_POST['apellido'];
                     $nombre = $_POST['nombre'];
                     $dni = $_POST['dni'];
-                    $direccion = $_POST['direccion'];
-                    $cobertura = $_POST['cobertura'];
-                    $numero = $_POST['c1numero'];
-                    $contacto = $_POST['contacto'];
+                    $fechaNacimiento = $_POST['fecNac'];
+                    $contactoFamilia = $_POST['contacto'];
+                    $contactoColegio = $_POST['contactoColegio'];
                     $estado = $_POST['estado'];
                     // estado activo o inactivo
                     if($estado=="activo"){
@@ -30,8 +29,17 @@
                     } else {
                         $valorReintegro = 0;
                     }
-                    $sql = "INSERT INTO `pacientes`(`apellido`, `nombre`, `dni`, `direccion`, `cobertura1`, `c1numero`, `contacto`, `estado`, `reintegro`) VALUES 
-                    ('$apellido','$nombre','$dni','$direccion','$cobertura','$numero','$contacto','$valorEstado','$valorReintegro')";
+                    // tipo de cobertura
+                    $tipoPrestacion = $_POST['tipoPrestacion'];
+                    if($tipoPrestacion=="si"){
+                        $valorTipoPrestacion = 1;
+                    } else {
+                        $valorTipoPrestacion = 2;
+                    }
+
+                    $sql = "INSERT INTO `pacientes`(`apellido`, `nombre`, `dni`, `fechaNacimiento`, `contacto`, `contactoColegio`, `estado`, `reintegro`, `tipoCobertura`) VALUES 
+                    ('$apellido','$nombre','$dni','$fechaNacimiento','$contactoFamilia','$contactoColegio','$valorEstado','$valorReintegro','$valorTipoPrestacion')";
+
                     $p = db::conectar()->prepare($sql);
                     $p->execute();
                     header ("Location: ./pacientes.php");
@@ -51,25 +59,36 @@
                     $apellido = $_POST['apellido'];
                     $nombre = $_POST['nombre'];
                     $dni = $_POST['dni'];
-                    $direccion = $_POST['direccion'];
-                    $cobertura = $_POST['cobertura'];
-                    $numero = $_POST['c1numero'];
-                    $contacto = $_POST['contacto'];
+                    $fechaNacimiento = $_POST['fecNac'];
+                    $contactoFamilia = $_POST['contacto'];
+                    $contactoColegio = $_POST['contactoColegio'];
                     $estado = $_POST['estado'];
+                    // estado activo o inactivo
                     if($estado=="activo"){
                         $valorEstado = 1;
                     } else {
                         $valorEstado = 0;
                     }
+                    // pago por reintegro
                     $reintegro = $_POST['reintegro'];
                     if($reintegro=="si"){
                         $valorReintegro = 1;
                     } else {
                         $valorReintegro = 0;
                     }
-                    $sql = "UPDATE pacientes SET apellido='$apellido' ,nombre='$nombre', dni=$dni, direccion='$direccion',
-                            cobertura1=$cobertura, c1numero=$numero, contacto='$contacto', estado=$valorEstado, reintegro=$valorReintegro 
+                    // tipo de cobertura
+                    $tipoPrestacion = $_POST['discapacidad'];
+                    if($tipoPrestacion=="si"){
+                        $valorTipoPrestacion = 1;
+                    } else {
+                        $valorTipoPrestacion = 2;
+                    }
+
+
+                    $sql = "UPDATE pacientes SET apellido='$apellido' ,nombre='$nombre', dni=$dni, fechaNacimiento='$fechaNacimiento',
+                            contacto='$contactoFamilia', contactoColegio='$contactoColegio', estado=$valorEstado, reintegro=$valorReintegro, tipoCobertura=$valorTipoPrestacion
                             WHERE id=$id";
+
                     $p = db::conectar()->prepare($sql);
                     $p->execute();
                     header ("Location: ./pacientes.php");

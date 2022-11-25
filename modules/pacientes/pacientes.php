@@ -65,7 +65,6 @@
     <div class="form-group">
         <br/>
             <a href="./pacientesAdd.php" class="btn btn-warning" disabled>agregar paciente</a>
-            <input type="checkbox" name="verActivos" value="si">
         <br/><br/>
     </div>
 
@@ -77,13 +76,12 @@
                     <thead class="text-center">
                         <tr>
                             <th>id</th>
-                            <th>apellido</th>
-                            <th>nombre</th>                                
-                            <th>dni</th>  
-                            <th>direccion</th>
-                            <th>cobertura</th>
-                            <th>socio</th>
+                            <th>apellido y nombre</th>
+                            <th>dni</th>
+                            <th>edad</th>
                             <th>reint</th>
+                            <th>cobertura</th>
+                            <th></th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -92,16 +90,21 @@
                         
                     <?php
                         require_once("../db/dbConnection.php");
-                        $sql = "select pacientes.id as id,apellido,pacientes.nombre,dni,direccion,
-                            coberturas.nombre as cobertura,c1numero as socio,
-                            case reintegro
-                                when 0 then 'no'
-                                when 1 then 'si'
-                            end as reint,
-                            estado
-                            from pacientes inner join coberturas ON
-                            pacientes.cobertura1 = coberturas.id
-                            order by apellido,pacientes.nombre";
+                        $sql = "select 
+                                    id,
+                                    concat(apellido, ', ',nombre) as nombre,
+                                    dni,
+                                    timestampdiff(year,fechaNacimiento,curdate()) AS edad,
+                                    case reintegro
+                                        when 0 then 'no'
+                                        when 1 then 'si'
+                                    end as reint,
+                                    tipoCobertura.descTipoCobertura as cobertura,
+                                    estado
+                                    from pacientes
+                                        inner join tipoCobertura ON
+                                        pacientes.tipoCobertura = tipoCobertura.idTipoCobertura
+                                    order by apellido,nombre";
                         $resultado = db::conectar()->prepare($sql);
                         $resultado->execute();        
                         $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
@@ -111,25 +114,23 @@
                             <!-- id -->
                             <?php if($estado==1) { ?>
                                 <td><?php echo $row['id']; ?></td>
-                                <td><?php echo $row['apellido']; ?></td>
                                 <td><?php echo $row['nombre']; ?></td>
                                 <td><?php echo $row['dni']; ?></td>
-                                <td><?php echo $row['direccion']; ?></td>
-                                <td><?php echo $row['cobertura']; ?></td>
-                                <td><?php echo $row['socio']; ?></td>
+                                <td><?php echo $row['edad']; ?></td>
                                 <td><?php echo $row['reint']; ?></td>
+                                <td><?php echo $row['cobertura']; ?></td>
+
                             <?php } else { ?>
                                 <td><font color="red"><?php echo $row['id']; ?></td>
-                                <td><font color="red"><?php echo $row['apellido']; ?></td>
                                 <td><font color="red"><?php echo $row['nombre']; ?></td>
                                 <td><font color="red"><?php echo $row['dni']; ?></td>
-                                <td><font color="red"><?php echo $row['direccion']; ?></td>
-                                <td><font color="red"><?php echo $row['cobertura']; ?></td>
-                                <td><font color="red"><?php echo $row['socio']; ?></td>
+                                <td><font color="red"><?php echo $row['edad']; ?></td>
                                 <td><font color="red"><?php echo $row['reint']; ?></td>
+                                <td><font color="red"><?php echo $row['cobertura']; ?></td>
                             <?php }?>
                             <!-- botones -->
-                            <td><a href="./pacientesEdit.php?id=<?php echo $row['id'] ?>"><img src="../../assets/icons/editar.png" alt="modificar"></a></td>
+                            <td><a href="./pacientesHistory.php?id=<?php echo $row['id'] ?>"><img src="../../assets/icons/history.png" alt="historial"></a></td>
+                            <td><a href="./pacientesEdit.php?id=<?php echo $row['id'] ?>"><img src="../../assets/icons/editar.png" alt="editar"></a></td>
                             <td><a href="./pacientesDelete.php?id=<?php echo $row['id'] ?>"><img src="../../assets/icons/borrar.png" alt="borrar"></a></td>
                         </tr>
                         <?php } ?>
