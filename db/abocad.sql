@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 15-11-2022 a las 02:28:02
+-- Tiempo de generación: 25-11-2022 a las 19:49:55
 -- Versión del servidor: 8.0.21
 -- Versión de PHP: 7.4.9
 
@@ -107,7 +107,7 @@ CREATE TABLE IF NOT EXISTS `eventos` (
   `backgroundColor` varchar(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `estado` char(3) DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `eventos`
@@ -126,7 +126,24 @@ INSERT INTO `eventos` (`id`, `profesional`, `dni`, `title`, `description`, `star
 (52, 3, 3323425, 'simpson homero', '', '2022-12-02 17:00:00', '2022-12-02 17:50:00', '#ffffff', '#3788d8', NULL),
 (53, 3, 3323425, 'simpson homero', '', '2022-12-09 17:00:00', '2022-12-09 17:50:00', '#ffffff', '#3788d8', NULL),
 (54, 3, 3323425, 'simpson homero', '', '2022-12-16 17:00:00', '2022-12-16 17:50:00', '#ffffff', '#3788d8', NULL),
-(55, 3, 3323425, 'simpson homero', '', '2022-12-23 17:00:00', '2022-12-23 17:50:00', '#ffffff', '#3788d8', NULL);
+(55, 3, 3323425, 'simpson homero', '', '2022-12-23 17:00:00', '2022-12-23 17:50:00', '#ffffff', '#3788d8', NULL),
+(56, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2022-11-23 11:00:00', '2022-11-23 12:00:00', '#ffffff', '#d73737', 'aCa'),
+(57, 1, 22342352, 'Romero Matias', '', '2022-11-23 12:00:00', '2022-11-23 13:00:00', '#ffffff', '#3788d8', 'aCa'),
+(58, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2022-11-30 11:00:00', '2022-11-30 12:00:00', '#ffffff', '#d73737', 'pre'),
+(59, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2022-12-07 11:00:00', '2022-12-07 12:00:00', '#ffffff', '#d73737', NULL),
+(60, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2022-12-14 11:00:00', '2022-12-14 12:00:00', '#ffffff', '#d73737', NULL),
+(61, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2022-12-21 11:00:00', '2022-12-21 12:00:00', '#ffffff', '#d73737', NULL),
+(62, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2022-12-28 11:00:00', '2022-12-28 12:00:00', '#ffffff', '#d73737', NULL),
+(63, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2023-01-04 11:00:00', '2023-01-04 12:00:00', '#ffffff', '#d73737', NULL),
+(64, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2023-01-11 11:00:00', '2023-01-11 12:00:00', '#ffffff', '#d73737', NULL),
+(65, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2023-01-18 11:00:00', '2023-01-18 12:00:00', '#ffffff', '#d73737', NULL),
+(66, 2, 3323425, 'simpson homero', '', '2022-11-17 10:00:00', '2022-11-17 11:00:00', '#ffffff', '#3788d8', NULL),
+(67, 2, 3323425, 'simpson homero', '', '2022-11-24 10:00:00', '2022-11-24 11:00:00', '#ffffff', '#3788d8', NULL),
+(68, 2, 3323425, 'simpson homero', '', '2022-12-01 10:00:00', '2022-12-01 11:00:00', '#ffffff', '#3788d8', NULL),
+(69, 2, 3323425, 'simpson homero', '', '2022-12-08 10:00:00', '2022-12-08 11:00:00', '#ffffff', '#3788d8', NULL),
+(70, 2, 3323425, 'simpson homero', '', '2022-12-15 10:00:00', '2022-12-15 11:00:00', '#ffffff', '#3788d8', NULL),
+(71, 2, 3323425, 'simpson homero', '', '2022-12-22 10:00:00', '2022-12-22 11:00:00', '#ffffff', '#3788d8', NULL),
+(72, 2, 3323425, 'simpson homero', '', '2022-12-29 10:00:00', '2022-12-29 11:00:00', '#ffffff', '#3788d8', NULL);
 
 -- --------------------------------------------------------
 
@@ -193,7 +210,7 @@ CREATE TABLE IF NOT EXISTS `pacientes` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `dni` (`dni`),
   KEY `FK_cobertura_persona` (`cobertura1`)
-) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `pacientes`
@@ -202,7 +219,8 @@ CREATE TABLE IF NOT EXISTS `pacientes` (
 INSERT INTO `pacientes` (`id`, `apellido`, `nombre`, `dni`, `direccion`, `cobertura1`, `c1numero`, `contacto`, `estado`, `reintegro`) VALUES
 (20, 'Romero', 'Matias', '22342352', 'tomaria 332', 7, 333455534, 'madre: 011-33345433\r\npadre: 011: 77643999', 1, 0),
 (17, 'simpson', 'homero', '3323425', 'avenida siempre viva 342', 1, 3332342342, 'marge', 1, 0),
-(13, 'Picapiedras', 'Wilma', '234234', 'piedradura 3211', 9, 23423422, 'edad de piedra', 1, 1);
+(13, 'Picapiedras', 'Wilma', '234234', 'piedradura 3211', 9, 23423422, 'edad de piedra', 1, 1),
+(21, 'Timoteo', 'Miguel', '78687687', 'san martin 887', 10, 342352, 'perrro\r\ngato', 1, 0);
 
 -- --------------------------------------------------------
 
