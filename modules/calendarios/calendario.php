@@ -39,7 +39,7 @@
 
 </head>
 <body>
-    <?php require_once('../navBar.php'); ?>
+    <?php //require_once('../navBar.php'); ?>
 
     <?php include "evento.php"; ?>
     <?php include "eventoInfo.php"; ?>
@@ -114,6 +114,10 @@
                     $("#infoDescripcion").val(info.event.extendedProps.description);  
                     $("#infoColorFondo").val(info.event.backgroundColor);
                     $("#infoColorTexto").val(info.event.textColor);
+
+                    // cobertura
+                    $("#infoCobertura").val(info.event.cobertura);
+
                     //mostramos el formulario
                     // $('#formularioEventos').modal('show');
                     $('#informacionEvento').modal('show');
@@ -197,20 +201,10 @@
                     inicio: $('#fechaInicio').val() + ' ' + $('#horaInicio').val(),
                     fin: $('#fechaFin').val() + ' ' + $('#horaFin').val(),
                     colorFondo: $('#colorFondo').val(),
-                    colorTexto: $('#colorTexto').val()
+                    colorTexto: $('#colorTexto').val(),
+                    // cobertura: $('#cobertura option:selected').text()        //devuelve el texto del objeto select
+                    cobertura: $('#cobertura option:selected').val()            //devuelve el valor del objeto select
                 }
-
-                // alert('id: ' + registro.id);
-                // alert('id profesional: ' + registro.profesional);
-                // alert('dni: ' + registro.dni);
-                // alert('titulo ' + registro.titulo);
-                // alert('descripcion ' + registro.descripcion);
-                // alert('inicio ' + registro.inicio);
-                // alert('fin ' + registro.fin);
-                // alert('color fondo ' + registro.colorFondo);
-                // alert('color texto ' + registro.colorTexto);
-
-
                 return registro;
                 }
 

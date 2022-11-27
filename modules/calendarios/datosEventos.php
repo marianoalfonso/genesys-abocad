@@ -30,7 +30,8 @@ switch ($_GET['accion']) {
                             start,
                             end,
                             textColor,
-                            backgroundColor
+                            backgroundColor,
+                            cobertura
                             )
                         values (
                             '$_POST[profesional]',
@@ -40,12 +41,11 @@ switch ($_GET['accion']) {
                             '$_POST[inicio]',
                             '$_POST[fin]',
                             '$_POST[colorTexto]',
-                            '$_POST[colorFondo]'
+                            '$_POST[colorFondo]',
+                            '$_POST[cobertura]'
                             )";
         $p = db::conectar()->prepare($sql);
         $p->execute();
-
-        // $respuesta = mysqli_query($conexion, $consulta);
         echo json_encode($p);
         break;
 
@@ -57,7 +57,8 @@ switch ($_GET['accion']) {
                             start = '$_POST[inicio]',
                             end = '$_POST[fin]',
                             textColor = '$_POST[colorFondo]',
-                            backgroundColor = '$_POST[colorTexto]'
+                            backgroundColor = '$_POST[colorTexto]',
+                            cobertura = '$_POST[cobertura]'
                         where
                             id = $_POST[id]";
         $p = db::conectar()->prepare($sql);

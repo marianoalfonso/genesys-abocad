@@ -26,8 +26,6 @@
                 <div class="form-row">
                   <div class="form-group col-md-12">
                     <label for="">seleccione paciente</label>
-                    <!-- <input type="text" id="titulo" class="form-control" placeholder=""> -->
-
                     <!-- cargamos el combo con las personas -->
                     <select id="titulo" class="form-control">
                         <?php
@@ -41,7 +39,6 @@
                           }
                         ?>
                     </select>
-
                   </div>
                 </div>
                 <div class="form-row">
@@ -92,6 +89,30 @@
                   <label for="">color texto</label>
                   <input type="color" value="#FFFFFF" id="colorTexto" class="form-control" style="height:36px;">
                 </div>
+
+                <!-- agrego cobertura -->
+                <div class="form-row">
+                  <div class="form-group col-md-12">
+                    <label for="">seleccione cobertura</label>
+                    <!-- cargamos el combo con las coberturas -->
+                    <select id="cobertura" class="form-control">
+                        <option value="0">seleccione una cobertura</option>
+                        <?php
+                            require_once('../db/dbConnection.php');
+                            $sql = "select id,nombre from coberturas order by nombre";
+                            $p = db::conectar()->prepare($sql);
+                            $p->execute();
+                            $datos = $p->fetchAll(PDO::FETCH_ASSOC);
+                            foreach($datos as $row){
+                                echo '<option value="'.$row["id"].'">'.$row["nombre"].'</option>';
+                            }
+                        ?>
+                    </select>
+                  </div>
+                </div>
+
+
+
 
               </div>
 

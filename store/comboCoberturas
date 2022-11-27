@@ -1,17 +1,19 @@
-                <div class="col">
-                    <!-- cargamos el combo con las coberturas -->
-                    <label class="form label">cobertura</label>
-                    <select name = "cobertura" id="cobertura" class="form-control">
-                        <option value="0">seleccione una cobertura</option>
-                        <?php
-                            require_once('../db/connDB.php');
-                            $conexion = regresarConexion();
-                            $consulta = "select id,nombre from coberturas order by nombre";
-                            $datos = mysqli_query($conexion, $consulta);
-                            $ep = mysqli_fetch_all($datos, MYSQLI_ASSOC);
-                            foreach($ep as $fila){
-                                echo '<option value="'.$fila["id"].'">'.$fila["nombre"].'</option>';
-                            }
-                        ?>
-                    </select>
-                </div>
+<!-- carga de combo con valores obtenidos de la dB -->
+<div class="col">
+    <!-- cargamos el combo con las coberturas -->
+    <label class="form label">cobertura</label>
+    <select name = "cobertura" id="cobertura" class="form-control">
+        <option value="0">seleccione una cobertura</option>
+        <?php
+            require_once('../db/connDB.php');
+            $conexion = regresarConexion();
+            $consulta = "select id,nombre from coberturas order by nombre";
+            $datos = mysqli_query($conexion, $consulta);
+            $ep = mysqli_fetch_all($datos, MYSQLI_ASSOC);
+            foreach($ep as $fila){
+                echo '<option value="'.$fila["id"].'">'.$fila["nombre"].'</option>';
+            }
+        ?>
+    </select>
+</div>
+

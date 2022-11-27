@@ -74,6 +74,14 @@
                   <input type="color" value="#FFFFFF" id="infoColorTexto" class="form-control" style="height:36px;">
                 </div>
 
+                <div class="form-row">
+                  <div class="form-group col-md-12">
+                    <label for="">seleccione cobertura</label>
+                    <input type="text" id="infoCobertura" class="form-control" placeholder="cobertura">
+                  </div>
+                </div>
+
+
               </div>
 
               <div class="modal-footer">
