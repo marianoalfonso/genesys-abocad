@@ -42,7 +42,7 @@
                     <!-- id -->
                     <div class="col">
                         <label class="form-label">id</label>
-                        <input type="numeric" class="form-control" name="id" value="<?php echo $id ?>" readonly>
+                        <input type="numeric" class="form-control" name="id" value="<?php echo $id ?>" hidden>
                     </div>
                     <!-- estado -->
                     <div class="row">
