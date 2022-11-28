@@ -1,0 +1,47 @@
+//eventos de botones de la aplicacion
+// control del evento click sobre el boton AGREGAR
+$('#botonAgregar').click(function(){    // esto captura el click del boton AGREGAR en el formulario EVENTO.PHP
+    let registro = recuperarDatosFormulario();  //recupera los datos del formulario EVENTO.PHP para
+    agregarRegistro(registro);  //le pasa el arreglo recuperado a la funcion AGREGARREGISTRO
+    $('#formularioEventos').modal('hide');  //esconde el formulario
+});
+
+
+// esta funcion recupera los datos del formulario hidden EVENTO.php
+// y los asigna al arreglo REGISTRO que es devuelto
+
+//funcion para recuperar los datos del formulario EVENTO.PHP
+//y pasarlo como parametro POST datosEventos.php para el alta
+function recuperarDatosFormulario(){
+    let registro = {
+        id: $('#id').val(),
+        profesional: value,
+        dni: $('#titulo').val(), //devuelve el value del campo de seleccion, no el texto
+        titulo: $('#titulo option:selected').text(), //devuelve el texto del campo de seleccion
+        descripcion: $('#descripcion').val(),
+        inicio: $('#fechaInicio').val() + ' ' + $('#horaInicio').val(),
+        fin: $('#fechaFin').val() + ' ' + $('#horaFin').val(),
+        colorFondo: $('#colorFondo').val(),
+        colorTexto: $('#colorTexto').val(),
+        // cobertura: $('#cobertura option:selected').text()        //devuelve el texto del objeto select
+        cobertura: $('#cobertura option:selected').val(),           //devuelve el valor del objeto select
+        tratamiento: $('#tratamiento option:selected').val()        //devuelve el valor del objeto select
+    }
+    return registro;
+    }
+
+
+//funcion ajax para dar de alta el registro
+function agregarRegistro(registro) {
+    $.ajax({
+    type: 'POST',   //especifica de que forma pasamos los datos
+    url: 'datosEventos.php?accion=agregar', //especifica el target que va a procesar el evento
+    data: registro,         //pasa el array de valores
+    success: function(msg){
+        calendar.refetchEvents(); //si se ejecuto el alta, recarga el calendario
+    },
+    error: function(error){
+        alert('se produjo un error al agregar el evento :' + error);
+    }
+    })
+}

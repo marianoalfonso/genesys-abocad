@@ -37,13 +37,23 @@
         case "edit":
             if(isset($_POST['submit'])){
                 $id = $_POST['id'];
+                $profesional = $_POST['profesional'];
+                $dni = $_POST['dni'];
                 $title = $_POST['title'];
                 $description = $_POST['description'];
                 $start = $_POST['turnoDesde'];
                 $end = $_POST['turnoHasta'];
-                $sql = "UPDATE `eventos` SET
-                `title` = '$title', `description` = '$description', `start` = '$start', `end` = '$end'
-                WHERE `id` = $id";
+                $cobertura = $_POST['cobertura'];
+
+                $sql = "UPDATE eventos SET
+                    description = '$description', 
+                    start = '$start', 
+                    end = '$end',
+                    cobertura = $cobertura
+                WHERE dni = $dni
+                    and id >= $id
+                    and profesional = $profesional";
+
                 $p = db::conectar()->prepare($sql);
                 $p->execute();
                 if($p){

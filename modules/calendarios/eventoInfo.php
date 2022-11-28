@@ -21,8 +21,8 @@
                 <input type="hidden" id="id">
                 <div class="form-row">
                   <div class="form-group col-md-12">
-                    <label for="">seleccione paciente</label>
-                    <input type="text" id="infoTitulo" class="form-control" placeholder="paciente">
+                    <label for="">paciente</label>
+                    <input type="text" id="infoTitulo" class="form-control" value="">
                   </div>
                 </div>
                 <div class="form-row">
@@ -73,14 +73,6 @@
                   <label for="">color texto</label>
                   <input type="color" value="#FFFFFF" id="infoColorTexto" class="form-control" style="height:36px;">
                 </div>
-
-                <div class="form-row">
-                  <div class="form-group col-md-12">
-                    <label for="">seleccione cobertura</label>
-                    <input type="text" id="infoCobertura" class="form-control" placeholder="cobertura">
-                  </div>
-                </div>
-
 
               </div>
 
