@@ -2,10 +2,10 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Nov 27, 2022 at 01:10 PM
--- Server version: 8.0.21
--- PHP Version: 7.3.21
+-- Servidor: 127.0.0.1:3306
+-- Tiempo de generación: 09-12-2022 a las 23:24:09
+-- Versión del servidor: 8.0.21
+-- Versión de PHP: 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,12 +18,12 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `abocad`
+-- Base de datos: `abocad`
 --
 
 DELIMITER $$
 --
--- Procedures
+-- Procedimientos
 --
 DROP PROCEDURE IF EXISTS `mpa_ReplicarFecha`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `mpa_ReplicarFecha` (IN `idEvento` INT, IN `fechaReplicacion` DATE)  BEGIN
@@ -50,7 +50,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `coberturas`
+-- Estructura de tabla para la tabla `coberturas`
 --
 
 DROP TABLE IF EXISTS `coberturas`;
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `coberturas` (
 ) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `coberturas`
+-- Volcado de datos para la tabla `coberturas`
 --
 
 INSERT INTO `coberturas` (`id`, `nombre`) VALUES
@@ -91,7 +91,7 @@ INSERT INTO `coberturas` (`id`, `nombre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `eventos`
+-- Estructura de tabla para la tabla `eventos`
 --
 
 DROP TABLE IF EXISTS `eventos`;
@@ -107,71 +107,83 @@ CREATE TABLE IF NOT EXISTS `eventos` (
   `backgroundColor` varchar(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `estado` char(3) DEFAULT '',
   `cobertura` tinyint DEFAULT NULL,
+  `coberturaNombre` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `eventos`
+-- Volcado de datos para la tabla `eventos`
 --
 
-INSERT INTO `eventos` (`id`, `profesional`, `dni`, `title`, `description`, `start`, `end`, `textColor`, `backgroundColor`, `estado`, `cobertura`) VALUES
-(1, 1, 234234, 'Picapiedras Wilma', 'test', '2022-11-13 10:00:00', '2022-11-13 11:00:00', '#FFFFFF', '#FFFFFF', 'pre', NULL),
-(43, 1, 234234, 'Picapiedras Wilma', 'test modificacion', '2022-11-13 14:00:00', '2022-11-13 15:00:00', '#FFFFFF', '#FFFFFF', 'aCa', NULL),
-(44, 1, 234234, 'Picapiedras Wilma', 'test', '2022-11-14 10:00:00', '1900-01-14 12:53:36', '#FFFFFF', '#FFFFFF', 'aSa', NULL),
-(46, 2, 3323425, 'simpson homero', '', '2022-11-10 10:00:00', '2022-11-10 11:00:00', '#ffffff', '#3788d8', '', NULL),
-(47, 2, 234234, 'Picapiedras Wilma', '', '2022-11-10 11:00:00', '2022-11-10 12:30:00', '#ffffff', '#d73747', '', NULL),
-(48, 1, 3323425, 'simpson homero', '', '2022-11-11 18:00:00', '2022-11-11 19:00:00', '#ffffff', '#3788d8', 'aCa', NULL),
-(49, 3, 3323425, 'simpson homero', '', '2022-11-11 17:00:00', '2022-11-11 17:50:00', '#ffffff', '#3788d8', '', NULL),
-(50, 3, 3323425, 'simpson homero', '', '2022-11-18 17:00:00', '2022-11-18 17:50:00', '#ffffff', '#3788d8', NULL, NULL),
-(51, 3, 3323425, 'simpson homero', '', '2022-11-25 17:00:00', '2022-11-25 17:50:00', '#ffffff', '#3788d8', NULL, NULL),
-(52, 3, 3323425, 'simpson homero', '', '2022-12-02 17:00:00', '2022-12-02 17:50:00', '#ffffff', '#3788d8', NULL, NULL),
-(53, 3, 3323425, 'simpson homero', '', '2022-12-09 17:00:00', '2022-12-09 17:50:00', '#ffffff', '#3788d8', NULL, NULL),
-(54, 3, 3323425, 'simpson homero', '', '2022-12-16 17:00:00', '2022-12-16 17:50:00', '#ffffff', '#3788d8', NULL, NULL),
-(55, 3, 3323425, 'simpson homero', '', '2022-12-23 17:00:00', '2022-12-23 17:50:00', '#ffffff', '#3788d8', NULL, NULL),
-(56, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2022-11-23 11:00:00', '2022-11-23 12:00:00', '#ffffff', '#d73737', 'aCa', NULL),
-(57, 1, 22342352, 'Romero Matias', '', '2022-11-23 12:00:00', '2022-11-23 13:00:00', '#ffffff', '#3788d8', 'aCa', NULL),
-(58, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2022-11-30 11:00:00', '2022-11-30 12:00:00', '#ffffff', '#d73737', 'pre', NULL),
-(59, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2022-12-07 11:00:00', '2022-12-07 12:00:00', '#ffffff', '#d73737', NULL, NULL),
-(60, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2022-12-14 11:00:00', '2022-12-14 12:00:00', '#ffffff', '#d73737', NULL, NULL),
-(61, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2022-12-21 11:00:00', '2022-12-21 12:00:00', '#ffffff', '#d73737', NULL, NULL),
-(62, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2022-12-28 11:00:00', '2022-12-28 12:00:00', '#ffffff', '#d73737', NULL, NULL),
-(63, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2023-01-04 11:00:00', '2023-01-04 12:00:00', '#ffffff', '#d73737', NULL, NULL),
-(64, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2023-01-11 11:00:00', '2023-01-11 12:00:00', '#ffffff', '#d73737', NULL, NULL),
-(65, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2023-01-18 11:00:00', '2023-01-18 12:00:00', '#ffffff', '#d73737', NULL, NULL),
-(66, 2, 3323425, 'simpson homero', '', '2022-11-17 10:00:00', '2022-11-17 11:00:00', '#ffffff', '#3788d8', NULL, NULL),
-(67, 2, 3323425, 'simpson homero', '', '2022-11-24 10:00:00', '2022-11-24 11:00:00', '#ffffff', '#3788d8', NULL, NULL),
-(68, 2, 3323425, 'simpson homero', '', '2022-12-01 10:00:00', '2022-12-01 11:00:00', '#ffffff', '#3788d8', NULL, NULL),
-(69, 2, 3323425, 'simpson homero', '', '2022-12-08 10:00:00', '2022-12-08 11:00:00', '#ffffff', '#3788d8', NULL, NULL),
-(70, 2, 3323425, 'simpson homero', '', '2022-12-15 10:00:00', '2022-12-15 11:00:00', '#ffffff', '#3788d8', NULL, NULL),
-(71, 2, 3323425, 'simpson homero', '', '2022-12-22 10:00:00', '2022-12-22 11:00:00', '#ffffff', '#3788d8', NULL, NULL),
-(72, 2, 3323425, 'simpson homero', '', '2022-12-29 10:00:00', '2022-12-29 11:00:00', '#ffffff', '#3788d8', NULL, NULL),
-(73, 1, 25444333, 'Neymar Jr', '', '2022-11-24 11:00:00', '2022-11-24 12:00:00', '#ffffff', '#3788d8', '', 0),
-(74, 1, 25444333, 'Neymar Jr', '', '2022-11-25 10:00:00', '2022-11-25 11:00:00', '#ffffff', '#3788d8', '', 0),
-(75, 1, 25444333, 'Neymar Jr', '', '2022-11-25 11:00:00', '2022-11-25 11:00:00', '#ffffff', '#3788d8', '', 0),
-(76, 1, 23334443, 'Messi Lionel', '', '2022-11-26 00:00:00', '2022-11-26 00:00:00', '#ffffff', '#3788d8', '', 0),
-(77, 2, 23334443, 'Messi Lionel', '', '2022-11-24 11:00:00', '2022-11-24 12:00:00', '#ffffff', '#3788d8', '', 0),
-(78, 2, 23334443, 'Messi Lionel', 'test', '2022-11-26 10:00:00', '2022-11-26 11:00:00', '#ffffff', '#3788d8', '', 0),
-(79, 2, 22342352, 'Romero Matias', '', '2022-11-25 10:00:00', '2022-11-25 11:00:00', '#ffffff', '#3788d8', '', 0),
-(80, 2, 25444333, 'Neymar Jr', '', '2022-11-24 07:00:00', '2022-11-24 07:00:00', '#ffffff', '#3788d8', '', 1),
-(81, 2, 78687687, 'Timoteo Miguel', '', '2022-11-25 12:00:00', '2022-11-25 13:00:00', '#ffffff', '#3788d8', '', 1),
-(82, 2, 234234, 'Picapiedras Wilma', '', '2022-11-25 08:00:00', '2022-11-25 08:00:00', '#d85555', '#3788d8', '', 0),
-(83, 2, 25444333, 'Neymar Jr', '', '2022-11-26 13:00:00', '2022-11-26 13:00:00', '#ffffff', '#3788d8', '', 0),
-(84, 2, 25444333, 'Neymar Jr', '', '2022-11-25 07:00:00', '2022-11-25 07:00:00', '#ffffff', '#3788d8', '', 0),
-(85, 2, 0, '', '', '2022-11-26 09:00:00', '2022-11-26 10:00:00', '#ffffff', '#3788d8', '', 0),
-(86, 2, 234234, 'Picapiedras Wilma', '', '2022-11-27 07:30:00', '2022-11-27 07:30:00', '#ffffff', '#3788d8', '', 0),
-(87, 2, 25444333, 'Neymar Jr', '', '2022-11-27 12:00:00', '2022-11-27 12:00:00', '#ffffff', '#3788d8', '', 0),
-(88, 2, 25444333, 'Neymar Jr', '', '2022-11-26 07:30:00', '2022-11-26 07:30:00', '#ffffff', '#3788d8', '', 0),
-(89, 2, 234234, 'Picapiedras Wilma', '', '2022-11-25 14:00:00', '2022-11-25 14:00:00', '#ffffff', '#3788d8', '', 0),
-(90, 2, 23334443, 'Messi Lionel', '', '2022-11-25 16:00:00', '2022-11-25 17:00:00', '#ffffff', '#3788d8', '', 1),
-(91, 2, 234234, 'Picapiedras Wilma', '', '2022-11-24 13:00:00', '2022-11-24 13:00:00', '#ffffff', '#3788d8', '', 0),
-(92, 2, 23334443, 'Messi Lionel', '', '2022-11-28 09:00:00', '2022-11-28 10:00:00', '#ffffff', '#3788d8', '', 0),
-(93, 2, 25444333, 'Neymar Jr', '', '2022-11-28 10:00:00', '2022-11-28 11:00:00', '#ffffff', '#3788d8', '', 0),
-(94, 2, 22342352, 'Romero Matias', '', '2022-11-28 11:00:00', '2022-11-28 11:00:00', '#ffffff', '#3788d8', '', 11);
+INSERT INTO `eventos` (`id`, `profesional`, `dni`, `title`, `description`, `start`, `end`, `textColor`, `backgroundColor`, `estado`, `cobertura`, `coberturaNombre`) VALUES
+(1, 1, 234234, 'Picapiedras Wilma', 'test', '2022-11-13 10:00:00', '2022-11-13 11:00:00', '#FFFFFF', '#FFFFFF', 'pre', NULL, NULL),
+(43, 1, 234234, 'Picapiedras Wilma', 'test modificacion', '2022-11-13 14:00:00', '2022-11-13 15:00:00', '#FFFFFF', '#FFFFFF', 'aCa', NULL, NULL),
+(44, 1, 234234, 'Picapiedras Wilma', 'test', '2022-11-14 10:00:00', '1900-01-14 12:53:36', '#FFFFFF', '#FFFFFF', 'aSa', NULL, NULL),
+(46, 2, 3323425, 'simpson homero', '', '2022-11-10 10:00:00', '2022-11-10 11:00:00', '#ffffff', '#3788d8', '', NULL, NULL),
+(47, 2, 234234, 'Picapiedras Wilma', '', '2022-11-10 11:00:00', '2022-11-10 12:30:00', '#ffffff', '#d73747', '', NULL, NULL),
+(48, 1, 3323425, 'simpson homero', '', '2022-11-11 18:00:00', '2022-11-11 19:00:00', '#ffffff', '#3788d8', 'aCa', NULL, NULL),
+(49, 3, 3323425, 'simpson homero', '', '2022-11-11 17:00:00', '2022-11-11 17:50:00', '#ffffff', '#3788d8', '', NULL, NULL),
+(50, 3, 3323425, 'simpson homero', '', '2022-11-18 17:00:00', '2022-11-18 17:50:00', '#ffffff', '#3788d8', NULL, NULL, NULL),
+(51, 3, 3323425, 'simpson homero', '', '2022-11-25 17:00:00', '2022-11-25 17:50:00', '#ffffff', '#3788d8', NULL, NULL, NULL),
+(52, 3, 3323425, 'simpson homero', '', '2022-12-02 17:00:00', '2022-12-02 17:50:00', '#ffffff', '#3788d8', NULL, NULL, NULL),
+(53, 3, 3323425, 'simpson homero', '', '2022-12-09 17:00:00', '2022-12-09 17:50:00', '#ffffff', '#3788d8', NULL, NULL, NULL),
+(54, 3, 3323425, 'simpson homero', '', '2022-12-16 17:00:00', '2022-12-16 17:50:00', '#ffffff', '#3788d8', NULL, NULL, NULL),
+(55, 3, 3323425, 'simpson homero', '', '2022-12-23 17:00:00', '2022-12-23 17:50:00', '#ffffff', '#3788d8', NULL, NULL, NULL),
+(56, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2022-11-23 11:00:00', '2022-11-23 12:00:00', '#ffffff', '#d73737', 'aCa', NULL, NULL),
+(57, 1, 22342352, 'Romero Matias', '', '2022-11-23 12:00:00', '2022-11-23 13:00:00', '#ffffff', '#3788d8', 'aCa', NULL, NULL),
+(58, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2022-11-30 11:00:00', '2022-11-30 12:00:00', '#ffffff', '#d73737', 'pre', NULL, NULL),
+(59, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2022-12-07 11:00:00', '2022-12-07 12:00:00', '#ffffff', '#d73737', NULL, NULL, NULL),
+(60, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2022-12-14 11:00:00', '2022-12-14 12:00:00', '#ffffff', '#d73737', NULL, NULL, NULL),
+(61, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2022-12-21 11:00:00', '2022-12-21 12:00:00', '#ffffff', '#d73737', NULL, NULL, NULL),
+(62, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2022-12-28 11:00:00', '2022-12-28 12:00:00', '#ffffff', '#d73737', NULL, NULL, NULL),
+(63, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2023-01-04 11:00:00', '2023-01-04 12:00:00', '#ffffff', '#d73737', NULL, NULL, NULL),
+(64, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2023-01-11 11:00:00', '2023-01-11 12:00:00', '#ffffff', '#d73737', NULL, NULL, NULL),
+(65, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2023-01-18 11:00:00', '2023-01-18 12:00:00', '#ffffff', '#d73737', NULL, NULL, NULL),
+(66, 2, 3323425, 'simpson homero', '', '2022-11-17 10:00:00', '2022-11-17 11:00:00', '#ffffff', '#3788d8', NULL, NULL, NULL),
+(67, 2, 3323425, 'simpson homero', '', '2022-11-24 10:00:00', '2022-11-24 11:00:00', '#ffffff', '#3788d8', NULL, NULL, NULL),
+(68, 2, 3323425, 'simpson homero', '', '2022-12-01 10:00:00', '2022-12-01 11:00:00', '#ffffff', '#3788d8', NULL, NULL, NULL),
+(69, 2, 3323425, 'simpson homero', '', '2022-12-08 10:00:00', '2022-12-08 11:00:00', '#ffffff', '#3788d8', NULL, NULL, NULL),
+(70, 2, 3323425, 'simpson homero', '', '2022-12-15 10:00:00', '2022-12-15 11:00:00', '#ffffff', '#3788d8', NULL, NULL, NULL),
+(71, 2, 3323425, 'simpson homero', '', '2022-12-22 10:00:00', '2022-12-22 11:00:00', '#ffffff', '#3788d8', NULL, NULL, NULL),
+(72, 2, 3323425, 'simpson homero', '', '2022-12-29 10:00:00', '2022-12-29 11:00:00', '#ffffff', '#3788d8', NULL, NULL, NULL),
+(73, 1, 25444333, 'Neymar Jr', '', '2022-11-24 11:00:00', '2022-11-24 12:00:00', '#ffffff', '#3788d8', '', 0, NULL),
+(74, 1, 25444333, 'Neymar Jr', '', '2022-11-25 10:00:00', '2022-11-25 11:00:00', '#ffffff', '#3788d8', '', 0, NULL),
+(75, 1, 25444333, 'Neymar Jr', '', '2022-11-25 11:00:00', '2022-11-25 11:00:00', '#ffffff', '#3788d8', '', 0, NULL),
+(76, 1, 23334443, 'Messi Lionel', '', '2022-11-26 00:00:00', '2022-11-26 00:00:00', '#ffffff', '#3788d8', '', 0, NULL),
+(77, 2, 23334443, 'Messi Lionel', '', '2022-11-24 11:00:00', '2022-11-24 12:00:00', '#ffffff', '#3788d8', '', 0, NULL),
+(78, 2, 23334443, 'Messi Lionel', 'test', '2022-11-26 10:00:00', '2022-11-26 11:00:00', '#ffffff', '#3788d8', '', 0, NULL),
+(79, 2, 22342352, 'Romero Matias', '', '2022-11-25 10:00:00', '2022-11-25 11:00:00', '#ffffff', '#3788d8', '', 0, NULL),
+(80, 2, 25444333, 'Neymar Jr', '', '2022-11-24 07:00:00', '2022-11-24 07:00:00', '#ffffff', '#3788d8', '', 1, NULL),
+(81, 2, 78687687, 'Timoteo Miguel', '', '2022-11-25 12:00:00', '2022-11-25 13:00:00', '#ffffff', '#3788d8', '', 1, NULL),
+(82, 2, 234234, 'Picapiedras Wilma', '', '2022-11-25 08:00:00', '2022-11-25 08:00:00', '#d85555', '#3788d8', '', 0, NULL),
+(83, 2, 25444333, 'Neymar Jr', '', '2022-11-26 13:00:00', '2022-11-26 13:00:00', '#ffffff', '#3788d8', '', 0, NULL),
+(84, 2, 25444333, 'Neymar Jr', '', '2022-11-25 07:00:00', '2022-11-25 07:00:00', '#ffffff', '#3788d8', '', 0, NULL),
+(85, 2, 0, '', '', '2022-11-26 09:00:00', '2022-11-26 10:00:00', '#ffffff', '#3788d8', '', 0, NULL),
+(86, 2, 234234, 'Picapiedras Wilma', '', '2022-11-27 07:30:00', '2022-11-27 07:30:00', '#ffffff', '#3788d8', '', 0, NULL),
+(87, 2, 25444333, 'Neymar Jr', '', '2022-11-27 12:00:00', '2022-11-27 12:00:00', '#ffffff', '#3788d8', '', 0, NULL),
+(88, 2, 25444333, 'Neymar Jr', '', '2022-11-26 07:30:00', '2022-11-26 07:30:00', '#ffffff', '#3788d8', '', 0, NULL),
+(89, 2, 234234, 'Picapiedras Wilma', '', '2022-11-25 14:00:00', '2022-11-25 14:00:00', '#ffffff', '#3788d8', '', 0, NULL),
+(90, 2, 23334443, 'Messi Lionel', '', '2022-11-25 16:00:00', '2022-11-25 17:00:00', '#ffffff', '#3788d8', '', 1, NULL),
+(91, 2, 234234, 'Picapiedras Wilma', '', '2022-11-24 13:00:00', '2022-11-24 13:00:00', '#ffffff', '#3788d8', '', 0, NULL),
+(92, 2, 23334443, 'Messi Lionel', '', '2022-11-28 09:00:00', '2022-11-28 10:00:00', '#ffffff', '#3788d8', '', 0, NULL),
+(93, 2, 25444333, 'Neymar Jr', '', '2022-11-28 10:00:00', '2022-11-28 11:00:00', '#ffffff', '#3788d8', '', 0, NULL),
+(94, 2, 22342352, 'Romero Matias', '', '2022-11-28 11:00:00', '2022-11-28 11:00:00', '#ffffff', '#3788d8', '', 11, NULL),
+(95, 2, 234234, 'Picapiedras Wilma', 'test de alta de turno', '2022-12-08 13:00:00', '2022-12-08 13:00:00', '#ffffff', '#3788d8', '', 0, NULL),
+(96, 2, 23334443, 'Messi Lionel', '', '2022-12-09 11:00:00', '2022-12-09 11:00:00', '#ffffff', '#3788d8', '', 0, NULL),
+(97, 1, 25444333, 'Neymar Jr', '', '2022-12-08 11:00:00', '2022-12-08 11:00:00', '#ffffff', '#3788d8', '', 0, NULL),
+(98, 1, 25444333, 'Neymar Jr', '', '2022-12-09 11:00:00', '2022-12-09 11:00:00', '#ffffff', '#3788d8', '', 0, 'OSPRERA'),
+(99, 2, 22342352, 'Romero Matias', '', '2022-12-09 14:00:00', '2022-12-09 14:00:00', '#ffffff', '#3788d8', '', 0, 'OSADRA'),
+(100, 2, 25444333, 'Neymar Jr', '', '2022-12-09 14:00:00', '2022-12-09 14:00:00', '#ffffff', '#3788d8', '', 0, 'IOSFA'),
+(101, 2, 25444333, 'Neymar Jr', '', '2022-12-09 09:00:00', '2022-12-09 09:00:00', '#ffffff', '#3788d8', '', 14, 'OSDO'),
+(102, 2, 22342352, 'Romero Matias', '', '2022-12-09 15:30:00', '2022-12-09 15:30:00', '#ffffff', '#3788d8', '', 19, 'OSPRERA'),
+(103, 2, 234234, 'Picapiedras Wilma', '', '2022-12-09 13:00:00', '2022-12-09 13:00:00', '#ffffff', '#3788d8', '', 18, 'OSPOCE'),
+(104, 1, 23334443, 'Messi Lionel', '', '2022-12-09 13:00:00', '2022-12-09 13:00:00', '#ffffff', '#d5d737', '', 14, 'OSDO'),
+(105, 2, 234234, 'Picapiedras Wilma', '', '2022-12-09 17:00:00', '2022-12-09 17:00:00', '#ffffff', '#3788d8', '', 3, 'GALENO');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `eventospredefinidos`
+-- Estructura de tabla para la tabla `eventospredefinidos`
 --
 
 DROP TABLE IF EXISTS `eventospredefinidos`;
@@ -186,7 +198,7 @@ CREATE TABLE IF NOT EXISTS `eventospredefinidos` (
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `eventospredefinidos`
+-- Volcado de datos para la tabla `eventospredefinidos`
 --
 
 INSERT INTO `eventospredefinidos` (`id`, `titulo`, `horaInicio`, `horaFin`, `colortexto`, `colorfondo`) VALUES
@@ -196,7 +208,7 @@ INSERT INTO `eventospredefinidos` (`id`, `titulo`, `horaInicio`, `horaFin`, `col
 -- --------------------------------------------------------
 
 --
--- Table structure for table `log`
+-- Estructura de tabla para la tabla `log`
 --
 
 DROP TABLE IF EXISTS `log`;
@@ -205,7 +217,7 @@ CREATE TABLE IF NOT EXISTS `log` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `log`
+-- Volcado de datos para la tabla `log`
 --
 
 INSERT INTO `log` (`msg`) VALUES
@@ -215,7 +227,7 @@ INSERT INTO `log` (`msg`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pacientes`
+-- Estructura de tabla para la tabla `pacientes`
 --
 
 DROP TABLE IF EXISTS `pacientes`;
@@ -235,7 +247,7 @@ CREATE TABLE IF NOT EXISTS `pacientes` (
 ) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `pacientes`
+-- Volcado de datos para la tabla `pacientes`
 --
 
 INSERT INTO `pacientes` (`id`, `apellido`, `nombre`, `dni`, `fechaNacimiento`, `contacto`, `contactoColegio`, `estado`, `reintegro`, `tipoCobertura`) VALUES
@@ -248,7 +260,7 @@ INSERT INTO `pacientes` (`id`, `apellido`, `nombre`, `dni`, `fechaNacimiento`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `profesionales`
+-- Estructura de tabla para la tabla `profesionales`
 --
 
 DROP TABLE IF EXISTS `profesionales`;
@@ -259,7 +271,7 @@ CREATE TABLE IF NOT EXISTS `profesionales` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `profesionales`
+-- Volcado de datos para la tabla `profesionales`
 --
 
 INSERT INTO `profesionales` (`id`, `nombre`) VALUES
@@ -280,7 +292,7 @@ INSERT INTO `profesionales` (`id`, `nombre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tipocobertura`
+-- Estructura de tabla para la tabla `tipocobertura`
 --
 
 DROP TABLE IF EXISTS `tipocobertura`;
@@ -291,7 +303,7 @@ CREATE TABLE IF NOT EXISTS `tipocobertura` (
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `tipocobertura`
+-- Volcado de datos para la tabla `tipocobertura`
 --
 
 INSERT INTO `tipocobertura` (`idTipoCobertura`, `descTipoCobertura`) VALUES
@@ -301,7 +313,7 @@ INSERT INTO `tipocobertura` (`idTipoCobertura`, `descTipoCobertura`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tratamientos`
+-- Estructura de tabla para la tabla `tratamientos`
 --
 
 DROP TABLE IF EXISTS `tratamientos`;
@@ -312,7 +324,7 @@ CREATE TABLE IF NOT EXISTS `tratamientos` (
 ) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `tratamientos`
+-- Volcado de datos para la tabla `tratamientos`
 --
 
 INSERT INTO `tratamientos` (`idTratamiento`, `descTratamiento`) VALUES
@@ -325,7 +337,7 @@ INSERT INTO `tratamientos` (`idTratamiento`, `descTratamiento`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuarios`
+-- Estructura de tabla para la tabla `usuarios`
 --
 
 DROP TABLE IF EXISTS `usuarios`;
@@ -339,7 +351,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `usuarios`
+-- Volcado de datos para la tabla `usuarios`
 --
 
 INSERT INTO `usuarios` (`usr_dni`, `usr_nombre`, `usr_password`, `usr_tipo`) VALUES
@@ -348,7 +360,7 @@ INSERT INTO `usuarios` (`usr_dni`, `usr_nombre`, `usr_password`, `usr_tipo`) VAL
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuarios_tipo`
+-- Estructura de tabla para la tabla `usuarios_tipo`
 --
 
 DROP TABLE IF EXISTS `usuarios_tipo`;
@@ -359,7 +371,7 @@ CREATE TABLE IF NOT EXISTS `usuarios_tipo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `usuarios_tipo`
+-- Volcado de datos para la tabla `usuarios_tipo`
 --
 
 INSERT INTO `usuarios_tipo` (`tipo_id`, `tipo_descripcion`) VALUES
