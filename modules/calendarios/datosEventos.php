@@ -31,7 +31,8 @@ switch ($_GET['accion']) {
                             end,
                             textColor,
                             backgroundColor,
-                            cobertura
+                            cobertura,
+                            coberturaNombre
                             )
                         values (
                             '$_POST[profesional]',
@@ -42,7 +43,8 @@ switch ($_GET['accion']) {
                             '$_POST[fin]',
                             '$_POST[colorTexto]',
                             '$_POST[colorFondo]',
-                            '$_POST[cobertura]'
+                            '$_POST[cobertura]',
+                            '$_POST[coberturaNombre]'
                             )";
         $p = db::conectar()->prepare($sql);
         $p->execute();

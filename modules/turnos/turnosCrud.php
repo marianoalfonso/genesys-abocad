@@ -2,6 +2,7 @@
     session_start();
     $accion = $_SESSION["accion"];
     $idProfesional = $_SESSION['idProfesional'];
+    $origenCierreTurno = $_SESSION['origenCierreTurno'];
 
     require_once("../db/dbConnection.php");
 
@@ -14,7 +15,12 @@
                 $p = db::conectar()->prepare($sql);
                 $p->execute();
                 if($p){
-                    header("Location: turnosProfesional.php?id=$idProfesional");
+                    if($origenCierreTurno == "general"){
+                        header("Location: turnosGeneral.php");
+                    } else {
+                        header("Location: turnosProfesional.php?id=$idProfesional");
+                    }
+                    
                 } else {
                     echo '<script language="javascript">alert("error cerrando el turno");</script>';
                 }

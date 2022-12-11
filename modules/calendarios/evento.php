@@ -41,39 +41,49 @@
                     </select>
                   </div>
                 </div>
-                <div class="form-row">
+
+                <div class="row">
                   <!-- fecha inicio -->
-                  <div class="form-group col-md-6">
-                    <label for="">fecha de inicio:</label>
-                    <div class="input-group" data-autoclose="true">
-                      <input type="date" id="fechaInicio" class="form-control" value="">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="">fecha de inicio:</label>
+                      <div class="input-group" data-autoclose="true">
+                        <input type="date" id="fechaInicio" class="form-control" value="">
+                      </div>
                     </div>
                   </div>
                   <!-- hora inicio -->
-                  <div class="form-group col-md-6" id="tituloHoraInicio">
-                    <label for="">hora de inicio</label>
-                    <div class="input-group clockpicker" data-autoclose="true">
-                      <input type="text" id="horaInicio" class="form-control" autocomplete="off">
+                  <div class="col-md-6" id="tituloHoraInicio">
+                    <div class="form-group">
+                      <label for="">hora de inicio</label>
+                      <div class="input-group clockpicker" data-autoclose="true">
+                        <input type="text" id="horaInicio" class="form-control" autocomplete="off">
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                <div class="form-row">
+                <div class="row">
                   <!-- fecha fin -->
-                  <div class="form-group col-md-6">
-                    <label for="">fecha de fin:</label>
-                    <div class="input-group" data-autoclose="true">
-                      <input type="date" id="fechaFin" class="form-control" value="">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="">fecha de fin:</label>
+                      <div class="input-group" data-autoclose="true">
+                        <input type="date" id="fechaFin" class="form-control" value="">
+                      </div>
                     </div>
                   </div>
                   <!-- hora fin -->
-                  <div class="form-group col-md-6" id="tituloHoraFin">
-                    <label for="">hora de fin</label>
-                    <div class="input-group clockpicker" data-autoclose="true">
-                      <input type="text" id="horaFin" class="form-control" autocomplete="off">
+                  <div class="col-md-6" id="tituloHoraFin">
+                    <div class="form-group">
+                      <label for="">hora de fin</label>
+                      <div class="input-group clockpicker" data-autoclose="true">
+                        <input type="text" id="horaFin" class="form-control" autocomplete="off">
+                      </div>
                     </div>
                   </div>
                 </div>
+
                 <!-- descripcion -->
                 <div class="form-row">
                   <label for="">descripcion</label>
@@ -96,7 +106,7 @@
                     <label for="">seleccione cobertura</label>
                     <!-- cargamos el combo con las coberturas -->
                     <select id="cobertura" class="form-control">
-                        <option value="0">seleccione una cobertura</option>
+                        <option value="0"></option>
                         <?php
                             require_once('../db/dbConnection.php');
                             $sql = "select id,nombre from coberturas order by nombre";

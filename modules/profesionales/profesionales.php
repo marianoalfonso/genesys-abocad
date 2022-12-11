@@ -28,12 +28,11 @@
 
     <?php require_once('../navBar.php'); ?>
 
-    <div class="form-group">
+    <!-- <div class="form-group">
         <br/>
             <a href="./profesionalesAdd.php" class="btn btn-warning" disabled>agregar profesional</a>
-            <input type="checkbox" name="verActivos" value="si">
         <br/><br/>
-    </div>
+    </div> -->
 
     <div class="container caja">
         <div class="row">
@@ -64,8 +63,8 @@
                             <td><?php echo $row['id']; ?></td>
                             <td><?php echo $row['nombre']; ?></td>
                             <!-- botones -->
-                            <td><a href="#"><img src="../../assets/icons/editar.png" alt="modificar"></a> editar</td>
-                            <td><a href="#"><img src="../../assets/icons/borrar.png" alt="borrar"></a> borrar</td>
+                            <!-- <td><a href="#"><img src="../../assets/icons/editar.png" alt="modificar"></a> editar</td>
+                            <td><a href="#"><img src="../../assets/icons/borrar.png" alt="borrar"></a> borrar</td> -->
                             <td><a href="../turnos/turnosProfesional.php?id=<?php echo $row['id'] ?>&nombre=<?php echo $row['nombre'] ?>"><img src="../../assets/icons/lista.png" alt="turnos"></a> turnos</td>
                             <td><a href="../calendarios/calendario.php?p=<?php echo $row['id'] ?>&nombre=<?php echo $row['nombre'] ?>"><img src="../../assets/icons/calendario.png" alt="calendario"></a> calendario</td>
                         </tr>

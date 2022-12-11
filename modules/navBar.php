@@ -17,6 +17,7 @@
         session_start();
         $pacientesDesarrollo = "//localhost/genesys-abocad/modules/pacientes/pacientes.php";
         $profesionalesDesarrollo = "//localhost/genesys-abocad/modules/profesionales/profesionales.php";
+        $turnosDesarrollo = "//localhost/genesys-abocad/modules/turnos/turnosGeneral.php";
         $salirDesarrollo = "//localhost/genesys-abocad/default.php";
         $pacientesProduccion = "https://abocad.geatec.com.ar/modules/pacientes/pacientes.php";
         $profesionalesProduccion = "https://abocad.geatec.com.ar/modules/profesionales/profesionales.php";
@@ -43,8 +44,10 @@
                         <!-- menu pacientes -->
                         <li class="nav-item"><a class="nav-link" href="<?php echo $pacientesDesarrollo ?>">pacientes</a></li>
                         <!-- menu profesionales -->
-                        <!-- <li class="nav-item"><a class="nav-link" href="#">profesionales</a></li> -->
                         <li class="nav-item"><a class="nav-link" href="<?php echo $profesionalesDesarrollo ?>">profesionales</a></li>
+                        <!-- menu turnos -->
+                        <li class="nav-item"><a class="nav-link" href="<?php echo $turnosDesarrollo ?>">turnos</a></li>
+                        <!-- menu salir -->
                         <li class="nav-item"><a class="nav-link" href=<?php echo $salirDesarrollo ?>>salir</a></li>
                     </ul>
                 </div>

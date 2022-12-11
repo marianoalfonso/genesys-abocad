@@ -47,13 +47,13 @@
                             <h3 class="text-center text-info">Login</h3>
                             <div class="form-group">
                                 <label for="dni" class="text-info">dni</label><br>
-                                <!-- <input type="number" name="dni" class="form-control" value="22925061"> -->
-                                <input type="number" name="dni" class="form-control">
+                                <input type="number" name="dni" class="form-control" value="22925061">
+                                <!-- <input type="number" name="dni" class="form-control"> -->
                             </div>
                             <div class="form-group">
                                 <label for="password" class="text-info">password</label><br>
-                                <!-- <input type="text" name="password" class="form-control" value="test1234"> -->
-                                <input type="password" name="password" class="form-control">
+                                <input type="text" name="password" class="form-control" value="test1234">
+                                <!-- <input type="password" name="password" class="form-control"> -->
                             </div>
                             <p>
                                 <!-- <div class="form-group"> -->

@@ -64,12 +64,19 @@
 
         var calendarEl = document.getElementById('calendar');
             var calendar = new FullCalendar.Calendar(calendarEl, {
+
                 events: consultaListado,
-                initialView: 'dayGridMonth',
+                initialView: 'timeGridWeek',
 
-                // plugins: [ timeGridPlugin ],
-                // initialView: 'timeGridWeek',
+                // No muestro los fines de semana
+                weekends: false,
+                hiddenDays: [0, 6],
 
+                // Hora minima y maxima en la que se van a mostrar los eventos, con 30 minutos de separacion
+                timeFormat: 'H:mm',
+                axisFormat: 'HH:mm',
+                slotMinTime: '08:00',
+                slotMaxTime: '21:00',
 
                 locale:"es",
                 headerToolbar:{
@@ -101,22 +108,22 @@
                     
                     //recuperamos informacion
                     $("#id").val(info.event.id);
-                    $("#infoTitulo").val(info.event.titulo);
+                    //recupero nombre del paciente
+                    $("#infoTitulo").val(info.event.title);
                     //las fechas/horas las recuperamos directamente desde el calendario, no de la DB
                     $("#infoFechaInicio").val(moment(info.event.start).format("YYYY-MM-DD"));
                     //el formato para los minutos debe ser minuscula (mm)
                     $("#infoHoraInicio").val(moment(info.event.start).format("HH:mm"));
+
                     //las fechas las recuperamos directamente desde el calendario, no de la DB
                     $("#infoFechaFin").val(moment(info.event.end).format("YYYY-MM-DD"));
                     //el formato para los minutos debe ser minuscula (mm)
                     $("#infoHoraFin").val(moment(info.event.end).format("HH:mm"));
+                    
                     //extendedProps (porque tiene mas de 1 linea)
                     $("#infoDescripcion").val(info.event.extendedProps.description);  
-                    $("#infoColorFondo").val(info.event.backgroundColor);
-                    $("#infoColorTexto").val(info.event.textColor);
-
-                    // cobertura
-                    $("#infoCobertura").val(info.event.cobertura);
+                    // $("#infoColorFondo").val(info.event.backgroundColor);
+                    // $("#infoColorTexto").val(info.event.textColor);
 
                     //mostramos el formulario
                     // $('#formularioEventos').modal('show');
@@ -130,8 +137,11 @@
             // control del evento click sobre el boton AGREGAR
             $('#botonAgregar').click(function(){
                 let registro = recuperarDatosFormulario();
-                agregarRegistro(registro);
-                $('#formularioEventos').modal('hide');
+                let validado = validarEvento(registro);
+                if(validado){ //si las validaciones estan correctas, se agrega el turno
+                    agregarRegistro(registro);
+                    $('#formularioEventos').modal('hide');
+                }
             });
 
             // control del evento click sobre el boton BORRAR
@@ -156,6 +166,60 @@
                     alert('se produjo un error al agregar el evento :' + error);
                 }
                 })
+            }
+
+            // valido el registro del turno para ver si puede grabarse
+            function validarEvento(registro) {
+                var estado = true;
+                var paciente = registro.titulo;
+                var fechaDesde = registro.inicio;
+                var fechaHasta = registro.fin;
+                var cobertura = registro.cobertura;
+                // var horaDesde = fechaDesde.substring(11,16);
+                // var horaHasta = fechaHasta.substring(11,16);
+                
+                // obtengo fecha actual
+                let date = new Date();
+                let day = `${(date.getDate())}`.padStart(2,'0');
+                let month = `${(date.getMonth()+1)}`.padStart(2,'0');
+                let year = date.getFullYear();
+                let hora = `${(date.getHours())}`;
+                let minuto = `${(date.getMinutes())}`;
+                let fechaHoraActual = `${year}-${month}-${day} ${hora}:${minuto}`; //convierto fecha javascript a YYYY-mm-dd
+                // console.log(`${year}-${month}-${day} ${hora}:${minuto}`);
+                
+                // valido que no se asigne un turno anterior a ahora
+                if(fechaDesde < fechaHoraActual) {
+                    alert('no puede asignarse un turno anterior');
+                    estado = false;
+                }
+
+                // valido que no este vacia la seleccion de paciente
+                if(paciente == '') {
+                    alert('el campo PACIENTE no puede estar vacio');
+                    estado = false;
+                }
+                
+                // valido que la fecha desde y fecha hasta sean iguales (mismo dia)
+                var fechaTurnoDesde = fechaDesde.substring(0,10);
+                var fechaTurnoHasta = fechaHasta.substring(0,10);
+                if(fechaTurnoDesde != fechaTurnoHasta){
+                    alert('la fecha desde y hasta del turno deben ser iguales')
+                    estado = false;
+                }
+
+                // valido que no este vacia la seleccion de cobertura
+                if(cobertura == '') {
+                    alert('el campo COBERTURA no puede estar vacia');
+                    estado = false;
+                }
+                // valido que la hora hasta no sea menor a la hora desde
+                // if(horaHasta < horaDesde){
+                //     alert('la hora de finalizacion del turno no puede ser menor a la de inicio');
+                //     estado = false;                  
+                // }
+
+                return estado;
             }
 
             //funcion ajax para borrar el registro
@@ -184,6 +248,7 @@
             $('#horaFin').val('');
             $('#colorFondo').val('#3788D8'); 
             $('#colorTexto').val('#FFFFFF'); 
+            $('#cobertura').val('');
             $('#botonAgregar').show();
             $('#botonModificar').hide();
             $('#botonBorrar').hide();
@@ -202,9 +267,23 @@
                     fin: $('#fechaFin').val() + ' ' + $('#horaFin').val(),
                     colorFondo: $('#colorFondo').val(),
                     colorTexto: $('#colorTexto').val(),
-                    // cobertura: $('#cobertura option:selected').text()        //devuelve el texto del objeto select
-                    cobertura: $('#cobertura option:selected').val()            //devuelve el valor del objeto select
+                    cobertura: $('#cobertura').val(),
+                    coberturaNombre: $('#cobertura option:selected').text()            //devuelve el valor del objeto select
                 }
+
+
+                // alert('id: ' + registro.id);
+                // alert('id profesional: ' + registro.profesional);
+                // alert('dni: ' + registro.dni);
+                // alert('titulo ' + registro.titulo);
+                // alert('descripcion ' + registro.descripcion);
+                // alert('inicio ' + registro.inicio);
+                // alert('fin ' + registro.fin);
+                // alert('color fondo ' + registro.colorFondo);
+                // alert('color texto ' + registro.colorTexto);
+                // alert('cobertura: ' + registro.coberturaNombre);
+
+
                 return registro;
                 }
 
