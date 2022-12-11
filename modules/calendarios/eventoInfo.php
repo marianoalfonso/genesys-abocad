@@ -22,7 +22,7 @@
                 <div class="form-row">
                   <div class="form-group col-md-12">
                     <label for="">seleccione paciente</label>
-                    <input type="text" id="infoTitulo" class="form-control" value="">
+                    <input type="text" id="infoTitulo" class="form-control" value="" readonly>
                   </div>
                 </div>
                 <div class="row">
@@ -31,7 +31,7 @@
                     <div class="form-group">
                       <label for="">fecha de inicio:</label>
                       <div class="input-group" data-autoclose="true">
-                        <input type="date" id="infoFechaInicio" class="form-control" >
+                        <input type="date" id="infoFechaInicio" class="form-control" readonly>
                       </div>
                     </div>
                   </div>
@@ -40,7 +40,7 @@
                     <div class="form-group">
                       <label for="">hora de inicio</label>
                       <div class="input-group clockpicker" data-autoclose="true">
-                        <input type="text" id="infoHoraInicio" class="form-control" autocomplete="off">
+                        <input type="text" id="infoHoraInicio" class="form-control" autocomplete="off" readonly>
                       </div>
                     </div>
                   </div>
@@ -52,7 +52,7 @@
                     <div class="form-group">
                       <label for="">fecha de fin:</label>
                       <div class="input-group" data-autoclose="true">
-                        <input type="date" id="infoFechaFin" class="form-control" value="">
+                        <input type="date" id="infoFechaFin" class="form-control" value="" readonly>
                       </div>
                     </div>
                   </div>
@@ -61,7 +61,7 @@
                     <div class="form-group">
                       <label for="">hora de fin</label>
                       <div class="input-group clockpicker" data-autoclose="true">
-                        <input type="text" id="infoHoraFin" class="form-control" autocomplete="off">
+                        <input type="text" id="infoHoraFin" class="form-control" autocomplete="off" readonly>
                       </div>
                     </div>
                   </div>
@@ -69,31 +69,31 @@
                 <!-- descripcion -->
                 <div class="form-row">
                   <label for="">descripcion</label>
-                  <textarea id="infoDescripcion" class="form-control" rows="3"></textarea>
+                  <textarea id="infoDescripcion" class="form-control" rows="3" readonly></textarea>
                 </div>
                 <!-- color de fondo -->
-                <div class="form-row">
+                <!-- <div class="form-row">
                   <label for="">color fondo</label>
                   <input type="color" value="#3788D8" id="infoColorFondo" class="form-control" style="height:36px;">
-                </div>
+                </div> -->
                 <!-- color de texto -->
-                <div class="form-row">
+                <!-- <div class="form-row">
                   <label for="">color texto</label>
                   <input type="color" value="#FFFFFF" id="infoColorTexto" class="form-control" style="height:36px;">
-                </div>
+                </div> -->
 
-                <div class="form-row">
+                <!-- <div class="form-row">
                   <div class="form-group col-md-12">
                     <label for="">seleccione cobertura</label>
                     <input type="text" id="infoCobertura" class="form-control" value="">
                   </div>
-                </div>
+                </div> -->
 
 
               </div>
 
               <div class="modal-footer">
-                <button type="button" id="infoBotonBorrar" class="btn btn-success">borrar</button>
+                <button type="button" id="infoBotonBorrar" class="btn btn-danger">borrar</button>
                 <button type="button" class="btn btn-success" data-bs-dismiss="modal">cancelar</button>
               </div>
 

@@ -122,12 +122,8 @@
                     
                     //extendedProps (porque tiene mas de 1 linea)
                     $("#infoDescripcion").val(info.event.extendedProps.description);  
-                    $("#infoColorFondo").val(info.event.backgroundColor);
-                    $("#infoColorTexto").val(info.event.textColor);
-
-                    // nombre de la cobertura
-                    alert('cobertura: ' + info.event.cobertura);
-                    $("#infoCobertura").val(info.event.coberturaNombre);
+                    // $("#infoColorFondo").val(info.event.backgroundColor);
+                    // $("#infoColorTexto").val(info.event.textColor);
 
                     //mostramos el formulario
                     // $('#formularioEventos').modal('show');
@@ -205,8 +201,10 @@
                 }
                 
                 // valido que la fecha desde y fecha hasta sean iguales (mismo dia)
-                if(fechaDesde != fechaHasta){
-                    alert('la fecha/hora desde y hasta del turno deben ser iguales')
+                var fechaTurnoDesde = fechaDesde.substring(0,10);
+                var fechaTurnoHasta = fechaHasta.substring(0,10);
+                if(fechaTurnoDesde != fechaTurnoHasta){
+                    alert('la fecha desde y hasta del turno deben ser iguales')
                     estado = false;
                 }
 
@@ -283,7 +281,7 @@
                 // alert('fin ' + registro.fin);
                 // alert('color fondo ' + registro.colorFondo);
                 // alert('color texto ' + registro.colorTexto);
-                alert('cobertura: ' + registro.coberturaNombre);
+                // alert('cobertura: ' + registro.coberturaNombre);
 
 
                 return registro;

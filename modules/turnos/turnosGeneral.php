@@ -13,13 +13,15 @@
     <!-- css personalizado -->
     <link rel="stylesheet" href="./turnosProfesional.css">
 
+    <link rel="stylesheet" href="turnosGeneral.css">
+
     <!-- datatables css basico -->
     <link rel="stylesheet" type="text/css" href="../../assets/datatables/datatables.min.css">
-
+    
     <!-- datatables estilo bootstrap -->
     <link rel="stylesheet" type="text/css" href="../../assets/datatables/DataTables-1.12.1/css/dataTables.bootstrap5.min.css">
 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
 
 </head>
 <body>
@@ -28,12 +30,13 @@
     <?php require_once("../db/dbConnection.php"); ?>
 
     <?php
-        $_SESSION['origenCierreTurno'] = "profesional";
-        $id_profesional = $_GET['id'];
-        $nombre_profesional = $_GET['nombre'];
+        $_SESSION['origenCierreTurno'] = "general";
+        // $id_profesional = $_GET['id'];
+        // $nombre_profesional = $_GET['nombre'];
     ?>
-
-    <h3>profesional: <?php echo $nombre_profesional ?></h3>
+    <div class="container">
+        <h3>gestión general de turnos agrupados de todos los profesionales</h3>
+    </div>
     <!-- <div class="form-group">
         <br/>
             <a href="#modalEstadoTurnos" class="btn btn-warning" data-toggle="modal">cerrar</a>
@@ -41,9 +44,10 @@
     </div> -->
 
     <table id="example" class="table table-striped" style="width:100%">
-    <thead>
+        <thead>
             <tr>
                 <td>id</td>
+                <td>profesional</td>
                 <td>paciente</td>
                 <!-- <td>fecha/hora inicio</td>
                 <td>fecha/hora fin</td> -->
@@ -53,7 +57,7 @@
                 <td>estado</td>
                 <td>.</td>
                 <td>.</td>
-                <td>.</td>
+                <!-- <td>.</td> -->
                 <td>.</td>
             </tr>
         </thead>
@@ -61,29 +65,33 @@
 
         <?php
             // $id_profesional = $_GET['id'];
-            $_SESSION['idProfesional'] = $id_profesional;
+            // $_SESSION['idProfesional'] = $id_profesional;
             $sql = "SELECT
-                    eventos.id,
-                    concat(pacientes.apellido,', ',pacientes.nombre) as paciente,
-                    concat(date_format(eventos.start, '%d/%m/%Y (%H:%i'),' - ', date_format(eventos.end, '%H:%i)')) as horario,
-                    -- eventos.start as inicio,
-                    -- eventos.end as fin,
-                    coberturas.nombre as cobertura,eventos.estado
-                FROM eventos
-                inner join pacientes ON
-                    eventos.dni = pacientes.dni
-                left join coberturas ON
-                    eventos.cobertura = coberturas.id
-                order by start";
+                        eventos.id,
+                        profesionales.nombre as profesional,
+                        concat(pacientes.apellido,', ',pacientes.nombre) as paciente,
+                        concat(date_format(eventos.start, '%d/%m/%Y (%H:%i'),' - ', date_format(eventos.end, '%H:%i)')) as horario,
+                        -- eventos.start as inicio,
+                        -- eventos.end as fin,
+                        coberturas.nombre as cobertura,eventos.estado
+                    FROM eventos
+                    inner join pacientes ON
+                        eventos.dni = pacientes.dni
+                    inner join profesionales on
+                        eventos.profesional = profesionales.id
+                    left join coberturas ON
+                        eventos.cobertura = coberturas.id
+                    order by start";
             $p = db::conectar()->prepare($sql);
             $p->execute();
             $datos = $p->fetchAll(PDO::FETCH_ASSOC);
             foreach($datos as $row){
                 $id = $row['id'];
+                $profesional = $row['profesional'];
                 $paciente = $row['paciente'];
+                $horario = $row['horario'];
                 // $start = $row['inicio'];
                 // $end = $row['fin'];
-                $horario = $row['horario'];
                 $cobertura = $row['cobertura'];
                 // $n_socio = $row['n_socio'];
                 $estado = $row['estado'];
@@ -91,43 +99,48 @@
                 <tr>
                 <?php if($estado == 'pre'){ ?>
                     <td><font color="green"><?php echo $id ?></td>
+                    <td><font color="green"><?php echo $profesional ?></td>
                     <td><font color="green"><?php echo $paciente ?></td>
+                    <td><font color="green"><?php echo $horario ?></td>
                     <!-- <td><font color="green"><?//php echo $start ?></td>
                     <td><font color="green"><?//php echo $end ?></td> -->
-                    <td><font color="green"><?php echo $horario ?></td>
                     <td><font color="green"><?php echo $cobertura ?></td>
                     <!-- <td><font color="green"><?//php echo $n_socio ?></td> -->
                     <td><font color="green"><?php echo $estado ?></td>
                 <?php } elseif($estado == 'aCa'){ ?>
                     <td><font color="orange"><?php echo $id ?></td>
+                    <td><font color="orange"><?php echo $profesional ?></td>
                     <td><font color="orange"><?php echo $paciente ?></td>
+                    <td><font color="orange"><?php echo $horario ?></td>
                     <!-- <td><font color="orange"><?//php echo $start ?></td>
                     <td><font color="orange"><?//php echo $end ?></td> -->
                     <td><font color="orange"><?php echo $cobertura ?></td>
                     <!-- <td><font color="orange"><?//php echo $n_socio ?></td> -->
-                    <td><font color="orange"><?php echo $estado ?></td>
+                    <td><font color="orange"><?php echo $estado ?></td>                
                 <?php } elseif($estado == 'aSa'){ ?>
                     <td><font color="red"><?php echo $id ?></td>
+                    <td><font color="red"><?php echo $profesional ?></td>
                     <td><font color="red"><?php echo $paciente ?></td>
+                    <td><font color="red"><?php echo $horario ?></td>
                     <!-- <td><font color="red"><?//php echo $start ?></td>
                     <td><font color="red"><?//php echo $end ?></td> -->
-                    <td><font color="red"><?php echo $horario ?></td>
                     <td><font color="red"><?php echo $cobertura ?></td>
                     <!-- <td><font color="red"><?//php echo $n_socio ?></td> -->
-                    <td><font color="red"><?php echo $estado ?></td>
+                    <td><font color="red"><?php echo $estado ?></td>                     
                 <?php } else { ?>
                     <td><?php echo $id ?></td>
+                    <td><?php echo $profesional ?></td>
                     <td><?php echo $paciente ?></td>
+                    <td><?php echo $horario ?></td>
                     <!-- <td><?//php echo $start ?></td>
                     <td><?//php echo $end ?></td> -->
-                    <td><?php echo $horario ?></td>
                     <td><?php echo $cobertura ?></td>
                     <!-- <td><?//php echo $n_socio ?></td> -->
-                    <td><?php echo $estado ?></td>
-                    <?php }?>
+                    <td><?php echo $estado ?></td>                      
+                    <?php }?>    
                     <td><a href="./turnosClose.php?id=<?php echo $id ?>"><img src="../../assets/icons/cerrar.png" alt="cerrar"></a></td>
                     <td><a href="./turnosEdit.php?id=<?php echo $id ?>"><img src="../../assets/icons/editar.png" alt="modificar"></a></td>
-                    <td><a href="./turnosMultiply.php?id=<?php echo $id ?>"><img src="../../assets/icons/replicar.png" alt="replicar"></a></td>
+                    <!-- <td><a href="./turnosMultiply.php?id=<?//php echo $id ?>"><img src="../../assets/icons/replicar.png" alt="replicar"></a></td> -->
                     <td><a href="./turnosDelete.php?id=<?php echo $id ?>"><img src="../../assets/icons/borrar.png" alt="borrar"></a></td>
                 </tr>
             <?php } ?>
@@ -145,8 +158,8 @@
     <script type="text/javascript" src="../../assets/datatables/datatables.min.css"></script>
     <script type="text/javascript" src="../../assets/datatables/DataTables-1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="../../assets/datatables/DataTables-1.12.1/js/dataTables.bootstrap5.min.js"></script>
-
-
+ 
+    
     <script>
         // $(document).ready(function () {
         //     $('#example').DataTable();
