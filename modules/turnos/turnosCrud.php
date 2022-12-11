@@ -17,8 +17,10 @@
                 if($p){
                     if($origenCierreTurno == "general"){
                         header("Location: turnosGeneral.php");
-                    } else {
+                    } elseif($origenCierreTurno == "profesional") {
                         header("Location: turnosProfesional.php?id=$idProfesional");
+                    } else {
+                        echo "<script>alert('error cerrando el turno');</script>";
                     }
                     
                 } else {
@@ -49,7 +51,8 @@
                 $description = $_POST['description'];
                 $start = $_POST['turnoDesde'];
                 $end = $_POST['turnoHasta'];
-                $cobertura = $_POST['cobertura'];
+                $cobertura =
+                 $_POST['cobertura'];
 
                 $sql = "UPDATE eventos SET
                     description = '$description', 
