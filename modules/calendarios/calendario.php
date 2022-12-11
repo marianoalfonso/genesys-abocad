@@ -66,6 +66,7 @@
             var calendar = new FullCalendar.Calendar(calendarEl, {
 
                 events: consultaListado,
+<<<<<<< HEAD
                 initialView: 'timeGridWeek',
 
                 // No muestro los fines de semana
@@ -77,6 +78,17 @@
                 axisFormat: 'HH:mm',
                 slotMinTime: '08:00',
                 slotMaxTime: '21:00',
+=======
+
+                initialView: 'timeGridWeek',
+
+                businessHours :{start: '08:00', end: '20:00', limitDisplay: true, dow: [0, 1, 2, 3, 4, 5, 6, 7, 8] },
+                // businessHours: [{
+                //     dow: [0, 1, 2, 3, 4, 5, 6, 7, 8], // Maybe not 0,6? Sunday,Saturday
+                //     start: '08:00',
+                //     end: '12:00'
+                // }],
+>>>>>>> turnosEdit
 
                 locale:"es",
                 headerToolbar:{
@@ -102,14 +114,23 @@
                 },
                 // se ejecuta cuando hacemos click en un evento existente
                 eventClick: function(info){
+                    //aca se asignan los valores a mostrar en el formulario de edicion
                     //seteamos botones a mostrar
                     $('#botonAgregar').hide();
                     $('#botonBorrar').show();
                     
                     //recuperamos informacion
                     $("#id").val(info.event.id);
+<<<<<<< HEAD
                     //recupero nombre del paciente
                     $("#infoTitulo").val(info.event.title);
+=======
+
+                    //nombre paciente
+                    // $("#infoTitulo").val(info.event.titulo);
+                    $("#infoTitulo").val(info.event.extendedProps.titulo);
+
+>>>>>>> turnosEdit
                     //las fechas/horas las recuperamos directamente desde el calendario, no de la DB
                     $("#infoFechaInicio").val(moment(info.event.start).format("YYYY-MM-DD"));
                     //el formato para los minutos debe ser minuscula (mm)
@@ -122,8 +143,16 @@
                     
                     //extendedProps (porque tiene mas de 1 linea)
                     $("#infoDescripcion").val(info.event.extendedProps.description);  
+<<<<<<< HEAD
                     // $("#infoColorFondo").val(info.event.backgroundColor);
                     // $("#infoColorTexto").val(info.event.textColor);
+=======
+                    $("#infoColorFondo").val(info.event.backgroundColor);
+                    $("#infoColorTexto").val(info.event.textColor);
+
+                    // cobertura (no lo muestro al final)
+                    // $("#infoCobertura").val(info.event.cobertura);
+>>>>>>> turnosEdit
 
                     //mostramos el formulario
                     // $('#formularioEventos').modal('show');
@@ -246,6 +275,10 @@
             $('#fechaFin').val('');
             $('#horaInicio').val('');
             $('#horaFin').val('');
+            
+            $('#cobertura').val('');
+            $('#tratamiento').val('');
+
             $('#colorFondo').val('#3788D8'); 
             $('#colorTexto').val('#FFFFFF'); 
             $('#cobertura').val('');
@@ -267,8 +300,14 @@
                     fin: $('#fechaFin').val() + ' ' + $('#horaFin').val(),
                     colorFondo: $('#colorFondo').val(),
                     colorTexto: $('#colorTexto').val(),
+<<<<<<< HEAD
                     cobertura: $('#cobertura').val(),
                     coberturaNombre: $('#cobertura option:selected').text()            //devuelve el valor del objeto select
+=======
+                    // cobertura: $('#cobertura option:selected').text()        //devuelve el texto del objeto select
+                    cobertura: $('#cobertura option:selected').val(),           //devuelve el valor del objeto select
+                    tratamiento: $('#tratamiento option:selected').val()        //devuelve el valor del objeto select
+>>>>>>> turnosEdit
                 }
 
 

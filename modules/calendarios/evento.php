@@ -42,7 +42,54 @@
                   </div>
                 </div>
 
+<<<<<<< HEAD
                 <div class="row">
+=======
+                <!-- agrego cobertura -->
+                <div class="form-row">
+                  <div class="form-group col-md-12">
+                    <label for="">seleccione cobertura</label>
+                    <!-- cargamos el combo con las coberturas -->
+                    <select id="cobertura" class="form-control">
+                        <option value="0">seleccione una cobertura</option>
+                        <?php
+                            require_once('../db/dbConnection.php');
+                            $sql = "select id,nombre from coberturas order by nombre";
+                            $p = db::conectar()->prepare($sql);
+                            $p->execute();
+                            $datos = $p->fetchAll(PDO::FETCH_ASSOC);
+                            foreach($datos as $row){
+                                echo '<option value="'.$row["id"].'">'.$row["nombre"].'</option>';
+                            }
+                        ?>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- tratamiento -->
+                <div class="form-row">
+                  <div class="form-group col-md-12">
+                    <label for="">seleccione tratamiento</label>
+                    <!-- cargamos el combo con las personas -->
+                    <select id="tratamiento" class="form-control">
+                        <?php
+                          require_once("../db/dbConnection.php");
+                          $sql = "select idTratamiento,descTratamiento from TRATAMIENTOS order by 1";
+                          $p = db::conectar()->prepare($sql);
+                          $p->execute();
+                          $datos = $p->fetchAll(PDO::FETCH_ASSOC);
+                          foreach($datos as $row){
+                            echo '<option value="'.$row["idTratamiento"].'">'.$row["descTratamiento"].'</option>';
+                          }
+                        ?>
+                    </select>
+                  </div>
+                </div>
+
+
+
+                <div class="form-row">
+>>>>>>> turnosEdit
                   <!-- fecha inicio -->
                   <div class="col-md-6">
                     <div class="form-group">
@@ -100,6 +147,7 @@
                   <input type="color" value="#FFFFFF" id="colorTexto" class="form-control" style="height:36px;">
                 </div>
 
+<<<<<<< HEAD
                 <!-- agrego cobertura -->
                 <div class="form-row">
                   <div class="form-group col-md-12">
@@ -124,6 +172,8 @@
 
 
 
+=======
+>>>>>>> turnosEdit
               </div>
 
               <div class="modal-footer">

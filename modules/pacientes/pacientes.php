@@ -6,52 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-
-    <!-- bootstrap css -->
-    <!-- <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css"> -->
-
-    <!-- css personalizado -->
-    <!-- <link rel="stylesheet" href="./pacientes.css"> -->
-
-    <!-- datatables css basico -->
-    <!-- <link rel="stylesheet" type="text/css" href="../../assets/datatables/datatables.min.css"> -->
-    
-    <!-- datatables estilo bootstrap -->
-    <!-- <link rel="stylesheet" type="text/css" href="../../assets/datatables/DataTables-1.12.1/css/dataTables.bootstrap5.min.css"> -->
-
-
-
-
-
-
-    <!-- version original -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css"> -->
-    <!-- version directa -->
-    <!-- <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css"> -->
-
-    <!-- version original -->
-    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css"> -->
-    <!-- version directa -->
-    <!-- <link rel="stylesheet" href="../../assets/datatables/DataTables-1.12.1/css/dataTables.bootstrap5.min.css"> -->
-
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"> -->
-
-    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">   -->
-
     <!-- CSS personalizado --> 
     <link rel="stylesheet" href="./pacientes.css">  
-
-
-
     <!-- bootstrap css -->
     <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
-
     <!-- css personalizado -->
     <link rel="stylesheet" href="pacientes.css">
-
     <!-- datatables css basico -->
-    <link rel="stylesheet" type="text/css" href="../../assets/datatables/datatables.min.css">
-    
+    <link rel="stylesheet" type="text/css" href="../../assets/datatables/datatables.min.css">  
     <!-- datatables estilo bootstrap -->
     <link rel="stylesheet" type="text/css" href="../../assets/datatables/DataTables-1.12.1/css/dataTables.bootstrap5.min.css">
 

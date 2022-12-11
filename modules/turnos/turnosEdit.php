@@ -31,17 +31,20 @@
         $_SESSION['accion'] = "edit";
         $id = $_GET['id'];
         require_once("../db/dbConnection.php");
-        $sql = "select profesional,dni,title,description,start,end,textColor,backgroundColor
+        $sql = "select profesional,dni,title,description,start,end,textColor,backgroundColor,cobertura
         from eventos where id = $id limit 1";
         $p = db::conectar()->prepare($sql);
         $p->execute();
         $result = $p->fetchAll(PDO::FETCH_ASSOC);
         foreach($result as $row){
             $profesional = $row['profesional'];
+            $dni = $row['dni'];
             $title = $row['title'];
             $description = $row['description'];
             $start = $row['start'];
             $end = $row['end'];
+            $cobertura = $row['cobertura'];
+
         }
     ?>
 
@@ -50,19 +53,29 @@
             <div class="row">
                 <div class="form-group mb-3">
 
-                    <!-- id -->
+                    <!-- id OCULTO -->
                     <div class="col">
-                        <label class="form-label">id</label>
-                        <input type="number" class="form-control" name="id" value="<?php echo $id; ?>" readonly>
+                        <input type="number" class="form-control" name="id" value="<?php echo $id; ?>" hidden>
+                    </div>
+
+                    <!-- profesional OCULTO -->
+                    <div class="col">
+                        <input type="number" class="form-control" name="profesional" value="<?php echo $profesional; ?>" hidden>
                     </div>
 
                     <!-- apellido y nombre -->
                     <div class="col">
-                        <label class="form-label">apellido</label>
+                        <label class="form-label">nombre</label>
                         <input type="text" class="form-control" name="title" value="<?php echo $title?>" readonly>
                     </div>
 
-                    <!-- apellido y nombre -->
+                    <!-- dni -->
+                    <div class="col">
+                        <label class="form-label">dni</label>
+                        <input type="number" class="form-control" name="dni" value="<?php echo $dni?>" readonly>
+                    </div>
+
+                    <!-- descripcion turno -->
                     <div class="col">
                         <label class="form-label">descripcion</label>
                         <input type="text" class="form-control" name="description" value="<?php echo $description ?>">
@@ -74,11 +87,39 @@
                         <input type="text" class="form-control" name="turnoDesde" value="<?php echo $start ?>" >
                     </div>
 
-                    <!-- turno desde-->
+                    <!-- turno hasta-->
                     <div class="col">
                         <label class="form-label">fecha/hora hasta</label>
                         <input type="text" class="form-control" name="turnoHasta" value="<?php echo $end?>" >
                     </div>
+
+                    <!-- en una edicion, muestra el valor correspondiente en el campo select -->
+                    <div class="form-row">
+                        <!-- cobertura -->
+                        <div class="form-group col-md-12">
+                            <!-- cargamos el combo con las coberturas -->
+                            <label class="form label">cobertura</label>
+                            <select name = "cobertura" id="cobertura" class="form-control">
+                                <?php
+                                    $sql = "select id,nombre from coberturas order by nombre";
+                                    $p = db::conectar()->prepare($sql);
+                                    $p->execute();
+                                    $result = $p->fetchAll(PDO::FETCH_ASSOC);
+                                    foreach($result as $row){
+                                        // verificamos cual es la opcion que traemos desde la base de datos
+                                        // para setearla como SELECTED
+                                        if($row['id'] == $cobertura){
+                                            $selected = 'selected';
+                                        } else {
+                                            $selected = '';
+                                        }
+                                        echo '<option value="'.$row["id"].'" '.$selected.'>'.$row["nombre"].'</option>';
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+
 
                 </div>
 

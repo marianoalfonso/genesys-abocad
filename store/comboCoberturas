@@ -17,3 +17,30 @@
     </select>
 </div>
 
+<!-- en una edicion, muestra el valor correspondiente en el campo select -->
+<div class="form-row">
+    <!-- cobertura -->
+    <div class="form-group col-md-12">
+        <!-- cargamos el combo con las coberturas -->
+        <label class="form label">cobertura</label>
+        <select name = "cobertura" id="cobertura" class="form-control">
+            <?php
+                $sql = "select id,nombre from coberturas order by nombre";
+                $p = db::conectar()->prepare($sql);
+                $p->execute();
+                $result = $p->fetchAll(PDO::FETCH_ASSOC);
+                foreach($result as $row){
+                    // verificamos cual es la opcion que traemos desde la base de datos
+                    // para setearla como SELECTED
+                    if($row['id'] == $cobertura){
+                        $selected = 'selected';
+                    } else {
+                        $selected = '';
+                    }
+                    echo '<option value="'.$row["id"].'" '.$selected.'>'.$row["nombre"].'</option>';
+                }
+            ?>
+        </select>
+    </div>
+</div>
+
