@@ -28,12 +28,14 @@
     <?php require_once("../db/dbConnection.php"); ?>
 
     <?php
-        $_SESSION['origenCierreTurno'] = "profesional";
         $id_profesional = $_GET['id'];
         $nombre_profesional = $_GET['nombre'];      //ver para obtener la segunda vez que se entra
+        $_SESSION['origenCierreTurno'] = "profesional";
+        $_SESSION['profesionalNombre'] = $nombre_profesional;
     ?>
-
-    <h3>profesional: <?php echo $nombre_profesional ?></h3>
+    <div class="container">
+        <h3>profesional: <?php echo $nombre_profesional; ?></h3>
+    </div>
     <!-- <div class="form-group">
         <br/>
             <a href="#modalEstadoTurnos" class="btn btn-warning" data-toggle="modal">cerrar</a>
@@ -49,7 +51,7 @@
                 <td>fecha/hora fin</td> -->
                 <td>turno</td>
                 <td>cobertura</td>
-                <!-- <td>n_socio</td> -->
+                <td>tratamiento</td>
                 <td>estado</td>
                 <td>.</td>
                 <td>.</td>
@@ -62,19 +64,12 @@
         <?php
             // $id_profesional = $_GET['id'];
             $_SESSION['idProfesional'] = $id_profesional;
-            $sql = "SELECT
-                    eventos.id,
-                    concat(pacientes.apellido,', ',pacientes.nombre) as paciente,
+            $sql = "SELECT eventos.id,concat(pacientes.apellido,', ',pacientes.nombre) as paciente,
                     concat(date_format(eventos.start, '%d/%m/%Y (%H:%i'),' - ', date_format(eventos.end, '%H:%i)')) as horario,
-                    -- eventos.start as inicio,
-                    -- eventos.end as fin,
-                    coberturas.nombre as cobertura,eventos.estado
-                FROM eventos
-                inner join pacientes ON
-                    eventos.dni = pacientes.dni
-                left join coberturas ON
-                    eventos.cobertura = coberturas.id
-                order by start";
+                    coberturas.nombre as cobertura,tratamientos.descTratamiento as tratamiento,eventos.estado
+                FROM eventos inner join pacientes ON eventos.dni = pacientes.dni left join coberturas ON eventos.cobertura = coberturas.id
+                inner join tratamientos on eventos.tratamiento = tratamientos.idTratamiento
+                    where profesional = $id_profesional order by start";
             $p = db::conectar()->prepare($sql);
             $p->execute();
             $datos = $p->fetchAll(PDO::FETCH_ASSOC);
@@ -85,7 +80,7 @@
                 // $end = $row['fin'];
                 $horario = $row['horario'];
                 $cobertura = $row['cobertura'];
-                // $n_socio = $row['n_socio'];
+                $tratamiento = $row['tratamiento'];
                 $estado = $row['estado'];
             ?>
                 <tr>
@@ -96,7 +91,7 @@
                     <td><font color="green"><?//php echo $end ?></td> -->
                     <td><font color="green"><?php echo $horario ?></td>
                     <td><font color="green"><?php echo $cobertura ?></td>
-                    <!-- <td><font color="green"><?//php echo $n_socio ?></td> -->
+                    <td><font color="green"><?php echo $tratamiento ?></td>
                     <td><font color="green"><?php echo $estado ?></td>
                 <?php } elseif($estado == 'aCa'){ ?>
                     <td><font color="orange"><?php echo $id ?></td>
@@ -104,7 +99,7 @@
                     <!-- <td><font color="orange"><?//php echo $start ?></td>
                     <td><font color="orange"><?//php echo $end ?></td> -->
                     <td><font color="orange"><?php echo $cobertura ?></td>
-                    <!-- <td><font color="orange"><?//php echo $n_socio ?></td> -->
+                    <td><font color="orange"><?php echo $tratamiento ?></td>
                     <td><font color="orange"><?php echo $estado ?></td>
                 <?php } elseif($estado == 'aSa'){ ?>
                     <td><font color="red"><?php echo $id ?></td>
@@ -113,7 +108,7 @@
                     <td><font color="red"><?//php echo $end ?></td> -->
                     <td><font color="red"><?php echo $horario ?></td>
                     <td><font color="red"><?php echo $cobertura ?></td>
-                    <!-- <td><font color="red"><?//php echo $n_socio ?></td> -->
+                    <td><font color="red"><?php echo $tratamiento ?></td>
                     <td><font color="red"><?php echo $estado ?></td>
                 <?php } else { ?>
                     <td><?php echo $id ?></td>
@@ -122,7 +117,7 @@
                     <td><?//php echo $end ?></td> -->
                     <td><?php echo $horario ?></td>
                     <td><?php echo $cobertura ?></td>
-                    <!-- <td><?//php echo $n_socio ?></td> -->
+                    <td><?php echo $tratamiento ?></td>
                     <td><?php echo $estado ?></td>
                     <?php }?>
                     <td><a href="./turnosClose.php?id=<?php echo $id ?>"><img src="../../assets/icons/cerrar.png" alt="cerrar"></a></td>

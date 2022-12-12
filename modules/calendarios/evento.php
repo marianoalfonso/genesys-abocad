@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+
+    <link rel="stylesheet" href="evento.css">
+
 </head>
 <body>
     
@@ -15,81 +19,81 @@
               <!-- cabecera -->
               <div class="modal-header">
 
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="close">
+                <!-- <button type="button" class="close" data-bs-dismiss="modal" aria-label="close">
                   <span aria-hidden="true">x</span>
-                </button>
+                </button> -->
 
               </div>
               <!-- cuerpo -->
               <div class="modal-body">
                 <input type="hidden" id="id">
-                <div class="form-row">
-                  <div class="form-group col-md-12">
-                    <label for="">seleccione paciente</label>
-                    <!-- cargamos el combo con las personas -->
-                    <select id="titulo" class="form-control">
-                        <?php
-                          require_once("../db/dbConnection.php");
-                          $sql = "select dni,apellido,nombre from pacientes where estado = 1 order by apellido,nombre";
-                          $p = db::conectar()->prepare($sql);
-                          $p->execute();
-                          $datos = $p->fetchAll(PDO::FETCH_ASSOC);
-                          foreach($datos as $row){
-                            echo '<option value="'.$row["dni"].'">'.$row["apellido"]." ".$row["nombre"].'</option>';
-                          }
-                        ?>
-                    </select>
-                  </div>
+
+                <div class="container">
+                  <div class="datos">
+                  <div class="form-row">
+                      <div class="form-group col-md-12">
+                        <label for="">seleccione paciente</label>
+                        <!-- cargamos el combo con las personas -->
+                        <select id="titulo" class="form-control">
+                            <?php
+                              require_once("../db/dbConnection.php");
+                              $sql = "select dni,apellido,nombre from pacientes where estado = 1 order by apellido,nombre";
+                              $p = db::conectar()->prepare($sql);
+                              $p->execute();
+                              $datos = $p->fetchAll(PDO::FETCH_ASSOC);
+                              foreach($datos as $row){
+                                echo '<option value="'.$row["dni"].'">'.$row["apellido"]." ".$row["nombre"].'</option>';
+                              }
+                            ?>
+                        </select>
+                      </div>
+                    </div>
+
+                    <!-- agrego cobertura -->
+                    <div class="form-row">
+                      <div class="form-group col-md-12">
+                        <label for="">seleccione cobertura</label>
+                        <!-- cargamos el combo con las coberturas -->
+                        <select id="cobertura" class="form-control">
+                            <option value="0">seleccione una cobertura</option>
+                            <?php
+                                require_once('../db/dbConnection.php');
+                                $sql = "select id,nombre from coberturas order by nombre";
+                                $p = db::conectar()->prepare($sql);
+                                $p->execute();
+                                $datos = $p->fetchAll(PDO::FETCH_ASSOC);
+                                foreach($datos as $row){
+                                    echo '<option value="'.$row["id"].'">'.$row["nombre"].'</option>';
+                                }
+                            ?>
+                        </select>
+                      </div>
+                    </div>
+
+                    <!-- tratamiento -->
+                    <div class="form-row">
+                      <div class="form-group col-md-12">
+                        <label for="">seleccione tratamiento</label>
+                        <!-- cargamos el combo con las personas -->
+                        <select id="tratamiento" class="form-control">
+                            <?php
+                              require_once("../db/dbConnection.php");
+                              $sql = "select idTratamiento,descTratamiento from TRATAMIENTOS order by 1";
+                              $p = db::conectar()->prepare($sql);
+                              $p->execute();
+                              $datos = $p->fetchAll(PDO::FETCH_ASSOC);
+                              foreach($datos as $row){
+                                echo '<option value="'.$row["idTratamiento"].'">'.$row["descTratamiento"].'</option>';
+                              }
+                            ?>
+                        </select>
+                      </div>
+                    </div>
+
+                </div>
                 </div>
 
-<<<<<<< HEAD
                 <div class="row">
-=======
-                <!-- agrego cobertura -->
-                <div class="form-row">
-                  <div class="form-group col-md-12">
-                    <label for="">seleccione cobertura</label>
-                    <!-- cargamos el combo con las coberturas -->
-                    <select id="cobertura" class="form-control">
-                        <option value="0">seleccione una cobertura</option>
-                        <?php
-                            require_once('../db/dbConnection.php');
-                            $sql = "select id,nombre from coberturas order by nombre";
-                            $p = db::conectar()->prepare($sql);
-                            $p->execute();
-                            $datos = $p->fetchAll(PDO::FETCH_ASSOC);
-                            foreach($datos as $row){
-                                echo '<option value="'.$row["id"].'">'.$row["nombre"].'</option>';
-                            }
-                        ?>
-                    </select>
-                  </div>
-                </div>
-
-                <!-- tratamiento -->
-                <div class="form-row">
-                  <div class="form-group col-md-12">
-                    <label for="">seleccione tratamiento</label>
-                    <!-- cargamos el combo con las personas -->
-                    <select id="tratamiento" class="form-control">
-                        <?php
-                          require_once("../db/dbConnection.php");
-                          $sql = "select idTratamiento,descTratamiento from TRATAMIENTOS order by 1";
-                          $p = db::conectar()->prepare($sql);
-                          $p->execute();
-                          $datos = $p->fetchAll(PDO::FETCH_ASSOC);
-                          foreach($datos as $row){
-                            echo '<option value="'.$row["idTratamiento"].'">'.$row["descTratamiento"].'</option>';
-                          }
-                        ?>
-                    </select>
-                  </div>
-                </div>
-
-
-
-                <div class="form-row">
->>>>>>> turnosEdit
                   <!-- fecha inicio -->
                   <div class="col-md-6">
                     <div class="form-group">
@@ -147,33 +151,6 @@
                   <input type="color" value="#FFFFFF" id="colorTexto" class="form-control" style="height:36px;">
                 </div>
 
-<<<<<<< HEAD
-                <!-- agrego cobertura -->
-                <div class="form-row">
-                  <div class="form-group col-md-12">
-                    <label for="">seleccione cobertura</label>
-                    <!-- cargamos el combo con las coberturas -->
-                    <select id="cobertura" class="form-control">
-                        <option value="0"></option>
-                        <?php
-                            require_once('../db/dbConnection.php');
-                            $sql = "select id,nombre from coberturas order by nombre";
-                            $p = db::conectar()->prepare($sql);
-                            $p->execute();
-                            $datos = $p->fetchAll(PDO::FETCH_ASSOC);
-                            foreach($datos as $row){
-                                echo '<option value="'.$row["id"].'">'.$row["nombre"].'</option>';
-                            }
-                        ?>
-                    </select>
-                  </div>
-                </div>
-
-
-
-
-=======
->>>>>>> turnosEdit
               </div>
 
               <div class="modal-footer">

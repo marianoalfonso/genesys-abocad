@@ -1,0 +1,26 @@
+PACIENTES
+1) se separan los campos de contacto en dos
+    a) contacto familia
+    b) contacto colegio
+
+2) se agrega la opcion para tipo de cobertura
+    a) discapacidad
+	b) NO discapacidad
+
+TURNOS
+1) en el calendario, se agrega la seleccion de la cobertura del paciente al momento de registrar el turnos
+2) en el calendario, se agrega la seleccion del tratamiento al momento de registrar el turnos
+3) en el listado nominal de turnos, cualquier modificacion que se realice se hará efectiva para todos los turnos del mismo paciente posteriores al turno editado
+
+PROFESIONALES
+
+MENU
+1) se agrega la opcion de gestion general de turnos, donde se ven todos los turnos de todos los profesionales. Desde este modulo, los turnos pueden cerrarse, editarse o eliminarse.
+
+
+pendientes:
+no dejar cargar fecha nacimiento superior a hoy
+desarrollar turnos historicos por paciente
+no dejar cerrar turnos futuros
+no dejar borrar turnos pasados	
+revisar fechas de perpetuidad de turnos

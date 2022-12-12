@@ -2,6 +2,7 @@
     session_start();
     $accion = $_SESSION["accion"];
     $idProfesional = $_SESSION['idProfesional'];
+    $nombreProfesional = $_SESSION['profesionalNombre'];
     $origenCierreTurno = $_SESSION['origenCierreTurno'];
 
     require_once("../db/dbConnection.php");
@@ -18,7 +19,7 @@
                     if($origenCierreTurno == "general"){
                         header("Location: turnosGeneral.php");
                     } elseif($origenCierreTurno == "profesional") {
-                        header("Location: turnosProfesional.php?id=$idProfesional");
+                        header("Location: turnosProfesional.php?id=$idProfesional&nombre=$nombreProfesional");
                     } else {
                         echo "<script>alert('error cerrando el turno');</script>";
                     }
@@ -36,9 +37,16 @@
                 $p = db::conectar()->prepare($sql);
                 $p->execute();
                 if($p){
-                    header("Location: turnosProfesional.php?id=$idProfesional");
+                    if($origenCierreTurno == "general"){
+                        header("Location: turnosGeneral.php");
+                    } elseif($origenCierreTurno == "profesional") {
+                        header("Location: turnosProfesional.php?id=$idProfesional&nombre=$nombreProfesional");
+                    } else {
+                        echo "<script>alert('error cerrando el turno');</script>";
+                    }
+
                 } else {
-                    echo "<script>alert('error replicando los turnos);</script>";
+                    echo "<script>alert('error replicando los turnos');</script>";
                 }
             }
             break;
@@ -66,7 +74,13 @@
                 $p = db::conectar()->prepare($sql);
                 $p->execute();
                 if($p){
-                    header("Location: turnosProfesional.php?id=$idProfesional");
+                    if($origenCierreTurno == "general"){
+                        header("Location: turnosGeneral.php");
+                    } elseif($origenCierreTurno == "profesional") {
+                        header("Location: turnosProfesional.php?id=$idProfesional&nombre=$nombreProfesional");
+                    } else {
+                        echo "<script>alert('error cerrando el turno');</script>";
+                    }
                 } else {
                     echo "<script>alert('error replicando los turnos);</script>";
                 }
@@ -79,7 +93,13 @@
                 $p = db::conectar()->prepare($sql);
                 $p->execute();
                 if($p){
-                    header("Location: turnosProfesional.php?id=$idProfesional");
+                    if($origenCierreTurno == "general"){
+                        header("Location: turnosGeneral.php");
+                    } elseif($origenCierreTurno == "profesional") {
+                        header("Location: turnosProfesional.php?id=$idProfesional&nombre=$nombreProfesional");
+                    } else {
+                        echo "<script>alert('error cerrando el turno');</script>";
+                    }
                 } else {
                     echo "<script>alert('error borrando el turno);</script>";
                 }

@@ -21,13 +21,8 @@
                 <input type="hidden" id="id">
                 <div class="form-row">
                   <div class="form-group col-md-12">
-<<<<<<< HEAD
-                    <label for="">seleccione paciente</label>
-                    <input type="text" id="infoTitulo" class="form-control" value="" readonly>
-=======
                     <label for="">paciente</label>
                     <input type="text" id="infoTitulo" class="form-control" value="">
->>>>>>> turnosEdit
                   </div>
                 </div>
                 <div class="row">
@@ -87,7 +82,6 @@
                   <input type="color" value="#FFFFFF" id="infoColorTexto" class="form-control" style="height:36px;">
                 </div> -->
 
-<<<<<<< HEAD
                 <!-- <div class="form-row">
                   <div class="form-group col-md-12">
                     <label for="">seleccione cobertura</label>
@@ -96,8 +90,6 @@
                 </div> -->
 
 
-=======
->>>>>>> turnosEdit
               </div>
 
               <div class="modal-footer">

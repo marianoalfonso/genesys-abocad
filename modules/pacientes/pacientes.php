@@ -91,7 +91,7 @@
                                 <td><font color="red"><?php echo $row['cobertura']; ?></td>
                             <?php }?>
                             <!-- botones -->
-                            <td><a href="./pacientesHistory.php?id=<?php echo $row['id'] ?>"><img src="../../assets/icons/history.png" alt="historial"></a></td>
+                            <td><a href="./pacientesHistory.php?dni=<?php echo $row['dni'] ?>&nombre=<?php echo $row['nombre']; ?>"><img src="../../assets/icons/history.png" alt="historial"></a></td>
                             <td><a href="./pacientesEdit.php?id=<?php echo $row['id'] ?>"><img src="../../assets/icons/editar.png" alt="editar"></a></td>
                             <td><a href="./pacientesDelete.php?id=<?php echo $row['id'] ?>"><img src="../../assets/icons/borrar.png" alt="borrar"></a></td>
                         </tr>
