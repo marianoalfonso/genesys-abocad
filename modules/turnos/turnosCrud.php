@@ -59,8 +59,11 @@
                 $description = $_POST['description'];
                 $start = $_POST['turnoDesde'];
                 $end = $_POST['turnoHasta'];
-                $cobertura =
-                 $_POST['cobertura'];
+                $cobertura = $_POST['cobertura'];
+                // borro los turnos superiores a la fecha de modificacion
+                $sql = "delete from eventos where id > $id and dni = $dni and profesional = $profesional";
+                $d = db::conectar()->prepare($sql);
+                $d->execute();            
 
                 $sql = "UPDATE eventos SET
                     description = '$description', 
@@ -68,7 +71,7 @@
                     end = '$end',
                     cobertura = $cobertura
                 WHERE dni = $dni
-                    and id >= $id
+                    and id = $id
                     and profesional = $profesional";
 
                 $p = db::conectar()->prepare($sql);

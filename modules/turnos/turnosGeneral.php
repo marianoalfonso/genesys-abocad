@@ -38,11 +38,17 @@
         <h3>gestión general de turnos</h3>
         <h6>se muestran turnos sin cerrar y con fecha igual o mayor a hoy</h6>
     </div>
-    <!-- <div class="form-group">
-        <br/>
-            <a href="#modalEstadoTurnos" class="btn btn-warning" data-toggle="modal">cerrar</a>
-        <br/><br/>
-    </div> -->
+    <div class="container-error">
+        <?php
+            if(isset($_SESSION['error'])) { ?>
+                <h5><?php echo $_SESSION['error']; ?></h5>
+                <?php unset($_SESSION['error']);
+            }
+        ?>
+    </div>
+
+
+    
 
     <table id="example" class="table table-striped" style="width:100%">
         <thead>
@@ -140,10 +146,18 @@
                     <td><?php echo $tratamiento ?></td>
                     <td><?php echo $estado ?></td>                      
                     <?php }?>    
-                    <td><a href="./turnosClose.php?id=<?php echo $id ?>"><img src="../../assets/icons/cerrar.png" alt="cerrar"></a></td>
-                    <td><a href="./turnosEdit.php?id=<?php echo $id ?>"><img src="../../assets/icons/editar.png" alt="modificar"></a></td>
-                    <!-- <td><a href="./turnosMultiply.php?id=<?//php echo $id ?>"><img src="../../assets/icons/replicar.png" alt="replicar"></a></td> -->
-                    <td><a href="./turnosDelete.php?id=<?php echo $id ?>"><img src="../../assets/icons/borrar.png" alt="borrar"></a></td>
+                    <?php
+                    if($estado == '') { ?>
+                        <td><a href="./turnosClose.php?id=<?php echo $id ?>"><img src="../../assets/icons/cerrar.png" alt="cerrar"></a></td>
+                        <td><a href="./turnosEdit.php?id=<?php echo $id ?>"><img src="../../assets/icons/editar.png" alt="modificar"></a></td>
+                        <!-- <td><a href="./turnosMultiply.php?id=<?//php echo $id ?>"><img src="../../assets/icons/replicar.png" alt="replicar"></a></td> -->
+                        <td><a href="./turnosDelete.php?id=<?php echo $id ?>"><img src="../../assets/icons/borrar.png" alt="borrar"></a></td>
+                    <?php } else { ?>
+                        <!-- si el turno esta cerrado, no permite hacer nada con el -->
+                        <td><a href="#"><img src="../../assets/icons/forbidden.png" alt="cerrar"></a></td>
+                        <td><a href="#"><img src="../../assets/icons/forbidden.png" alt="modificar" aria-readonly=""></a></td>
+                        <td><a href="#"><img src="../../assets/icons/forbidden.png" alt="borrar"></a></td>
+                    <?php } ?>
                 </tr>
             <?php } ?>
 

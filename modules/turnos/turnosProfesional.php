@@ -25,22 +25,31 @@
 <body>
 
     <?php require_once('../navBar.php'); ?>
-    <?php require_once("../db/dbConnection.php"); ?>
+    <?//php require_once("../db/dbConnection.php"); ?>
+    <?php require_once("../../assets/clases/profesional.php"); ?>
+
 
     <?php
         $id_profesional = $_GET['id'];
-        $nombre_profesional = $_GET['nombre'];      //ver para obtener la segunda vez que se entra
+        // $nombre_profesional = $_GET['nombre'];      //ver para obtener la segunda vez que se entra
+        $nombre_profesional = profesional::obtenerNombreProfesional($id_profesional);
         $_SESSION['origenCierreTurno'] = "profesional";
         $_SESSION['profesionalNombre'] = $nombre_profesional;
     ?>
+
+
     <div class="container">
         <h3>profesional: <?php echo $nombre_profesional; ?></h3>
     </div>
-    <!-- <div class="form-group">
-        <br/>
-            <a href="#modalEstadoTurnos" class="btn btn-warning" data-toggle="modal">cerrar</a>
-        <br/><br/>
-    </div> -->
+    <div class="container-error">
+        <?php
+            if(isset($_SESSION['error'])) { ?>
+                <h5><?php echo $_SESSION['error']; ?></h5>
+                <?php unset($_SESSION['error']);
+            }
+        ?>
+    </div>
+
 
     <table id="example" class="table table-striped" style="width:100%">
     <thead>
@@ -98,6 +107,7 @@
                     <td><font color="orange"><?php echo $paciente ?></td>
                     <!-- <td><font color="orange"><?//php echo $start ?></td>
                     <td><font color="orange"><?//php echo $end ?></td> -->
+                    <td><font color="orange"><?php echo $horario ?></td>
                     <td><font color="orange"><?php echo $cobertura ?></td>
                     <td><font color="orange"><?php echo $tratamiento ?></td>
                     <td><font color="orange"><?php echo $estado ?></td>
@@ -120,10 +130,20 @@
                     <td><?php echo $tratamiento ?></td>
                     <td><?php echo $estado ?></td>
                     <?php }?>
-                    <td><a href="./turnosClose.php?id=<?php echo $id ?>"><img src="../../assets/icons/cerrar.png" alt="cerrar"></a></td>
-                    <td><a href="./turnosEdit.php?id=<?php echo $id ?>"><img src="../../assets/icons/editar.png" alt="modificar"></a></td>
-                    <td><a href="./turnosMultiply.php?id=<?php echo $id ?>"><img src="../../assets/icons/replicar.png" alt="replicar"></a></td>
-                    <td><a href="./turnosDelete.php?id=<?php echo $id ?>"><img src="../../assets/icons/borrar.png" alt="borrar"></a></td>
+                    <?php
+                    if($estado == '') { ?>
+                        <td><a href="./turnosClose.php?id=<?php echo $id ?>"><img src="../../assets/icons/cerrar.png" alt="cerrar"></a></td>
+                        <td><a href="./turnosEdit.php?id=<?php echo $id ?>"><img src="../../assets/icons/editar.png" alt="editar" aria-readonly=""></a></td>
+                        <td><a href="./turnosMultiply.php?id=<?php echo $id ?>"><img src="../../assets/icons/replicar.png" alt="replicar"></a></td>
+                        <td><a href="./turnosDelete.php?id=<?php echo $id ?>"><img src="../../assets/icons/borrar.png" alt="borrar"></a></td>
+                    <?php } else { ?>
+                    <!-- si el turno esta cerrado, no permite hacer nada con el -->
+                    <td><a href="#"><img src="../../assets/icons/forbidden.png" alt="cerrar"></a></td>
+                    <td><a href="#"><img src="../../assets/icons/forbidden.png" alt="editar" aria-readonly=""></a></td>
+                    <td><a href="#"><img src="../../assets/icons/forbidden.png" alt="replicar"></a></td>
+                    <td><a href="#"><img src="../../assets/icons/forbidden.png" alt="borrar"></a></td>
+                    <?php } ?>
+
                 </tr>
             <?php } ?>
 

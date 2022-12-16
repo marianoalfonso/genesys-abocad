@@ -2,17 +2,10 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
-<<<<<<< HEAD
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 09-12-2022 a las 23:24:09
+-- Tiempo de generación: 16-12-2022 a las 12:24:21
 -- Versión del servidor: 8.0.21
 -- Versión de PHP: 7.4.9
-=======
--- Host: 127.0.0.1:3306
--- Generation Time: Dec 07, 2022 at 08:41 PM
--- Server version: 8.0.21
--- PHP Version: 7.3.21
->>>>>>> turnosEdit
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -45,7 +38,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `mpa_ReplicarFecha` (IN `idEvento` I
     set newFechaHasta = (select date_add(fechaHasta,interval 7 day));
     
 	block:while (fechaReplicacion >= newFechaDesde) do
-		insert into eventos (profesional,dni,title,description,start,end,textColor,backgroundColor,estado) select profesional,dni,title,description,newFechaDesde,newFechaHasta,textColor,backgroundColor,null from eventos where id = idEvento;
+		insert into eventos (profesional,dni,title,description,start,end,textColor,backgroundColor,estado,cobertura,tratamiento) select profesional,dni,title,description,newFechaDesde,newFechaHasta,textColor,backgroundColor,null,cobertura,tratamiento from eventos where id = idEvento;
 		set newFechaDesde = (select date_add(newFechaDesde,interval 7 day));
 		set newFechaHasta = (select date_add(newFechaHasta,interval 7 day));
 	end
@@ -114,144 +107,25 @@ CREATE TABLE IF NOT EXISTS `eventos` (
   `backgroundColor` varchar(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `estado` char(3) DEFAULT '',
   `cobertura` tinyint DEFAULT NULL,
-<<<<<<< HEAD
-  `coberturaNombre` varchar(50) DEFAULT NULL,
+  `tratamiento` tinyint DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `eventos`
 --
 
-INSERT INTO `eventos` (`id`, `profesional`, `dni`, `title`, `description`, `start`, `end`, `textColor`, `backgroundColor`, `estado`, `cobertura`, `coberturaNombre`) VALUES
-(1, 1, 234234, 'Picapiedras Wilma', 'test', '2022-11-13 10:00:00', '2022-11-13 11:00:00', '#FFFFFF', '#FFFFFF', 'pre', NULL, NULL),
-(43, 1, 234234, 'Picapiedras Wilma', 'test modificacion', '2022-11-13 14:00:00', '2022-11-13 15:00:00', '#FFFFFF', '#FFFFFF', 'aCa', NULL, NULL),
-(44, 1, 234234, 'Picapiedras Wilma', 'test', '2022-11-14 10:00:00', '1900-01-14 12:53:36', '#FFFFFF', '#FFFFFF', 'aSa', NULL, NULL),
-(46, 2, 3323425, 'simpson homero', '', '2022-11-10 10:00:00', '2022-11-10 11:00:00', '#ffffff', '#3788d8', '', NULL, NULL),
-(47, 2, 234234, 'Picapiedras Wilma', '', '2022-11-10 11:00:00', '2022-11-10 12:30:00', '#ffffff', '#d73747', '', NULL, NULL),
-(48, 1, 3323425, 'simpson homero', '', '2022-11-11 18:00:00', '2022-11-11 19:00:00', '#ffffff', '#3788d8', 'aCa', NULL, NULL),
-(49, 3, 3323425, 'simpson homero', '', '2022-11-11 17:00:00', '2022-11-11 17:50:00', '#ffffff', '#3788d8', '', NULL, NULL),
-(50, 3, 3323425, 'simpson homero', '', '2022-11-18 17:00:00', '2022-11-18 17:50:00', '#ffffff', '#3788d8', NULL, NULL, NULL),
-(51, 3, 3323425, 'simpson homero', '', '2022-11-25 17:00:00', '2022-11-25 17:50:00', '#ffffff', '#3788d8', NULL, NULL, NULL),
-(52, 3, 3323425, 'simpson homero', '', '2022-12-02 17:00:00', '2022-12-02 17:50:00', '#ffffff', '#3788d8', NULL, NULL, NULL),
-(53, 3, 3323425, 'simpson homero', '', '2022-12-09 17:00:00', '2022-12-09 17:50:00', '#ffffff', '#3788d8', NULL, NULL, NULL),
-(54, 3, 3323425, 'simpson homero', '', '2022-12-16 17:00:00', '2022-12-16 17:50:00', '#ffffff', '#3788d8', NULL, NULL, NULL),
-(55, 3, 3323425, 'simpson homero', '', '2022-12-23 17:00:00', '2022-12-23 17:50:00', '#ffffff', '#3788d8', NULL, NULL, NULL),
-(56, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2022-11-23 11:00:00', '2022-11-23 12:00:00', '#ffffff', '#d73737', 'aCa', NULL, NULL),
-(57, 1, 22342352, 'Romero Matias', '', '2022-11-23 12:00:00', '2022-11-23 13:00:00', '#ffffff', '#3788d8', 'aCa', NULL, NULL),
-(58, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2022-11-30 11:00:00', '2022-11-30 12:00:00', '#ffffff', '#d73737', 'pre', NULL, NULL),
-(59, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2022-12-07 11:00:00', '2022-12-07 12:00:00', '#ffffff', '#d73737', NULL, NULL, NULL),
-(60, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2022-12-14 11:00:00', '2022-12-14 12:00:00', '#ffffff', '#d73737', NULL, NULL, NULL),
-(61, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2022-12-21 11:00:00', '2022-12-21 12:00:00', '#ffffff', '#d73737', NULL, NULL, NULL),
-(62, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2022-12-28 11:00:00', '2022-12-28 12:00:00', '#ffffff', '#d73737', NULL, NULL, NULL),
-(63, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2023-01-04 11:00:00', '2023-01-04 12:00:00', '#ffffff', '#d73737', NULL, NULL, NULL),
-(64, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2023-01-11 11:00:00', '2023-01-11 12:00:00', '#ffffff', '#d73737', NULL, NULL, NULL),
-(65, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2023-01-18 11:00:00', '2023-01-18 12:00:00', '#ffffff', '#d73737', NULL, NULL, NULL),
-(66, 2, 3323425, 'simpson homero', '', '2022-11-17 10:00:00', '2022-11-17 11:00:00', '#ffffff', '#3788d8', NULL, NULL, NULL),
-(67, 2, 3323425, 'simpson homero', '', '2022-11-24 10:00:00', '2022-11-24 11:00:00', '#ffffff', '#3788d8', NULL, NULL, NULL),
-(68, 2, 3323425, 'simpson homero', '', '2022-12-01 10:00:00', '2022-12-01 11:00:00', '#ffffff', '#3788d8', NULL, NULL, NULL),
-(69, 2, 3323425, 'simpson homero', '', '2022-12-08 10:00:00', '2022-12-08 11:00:00', '#ffffff', '#3788d8', NULL, NULL, NULL),
-(70, 2, 3323425, 'simpson homero', '', '2022-12-15 10:00:00', '2022-12-15 11:00:00', '#ffffff', '#3788d8', NULL, NULL, NULL),
-(71, 2, 3323425, 'simpson homero', '', '2022-12-22 10:00:00', '2022-12-22 11:00:00', '#ffffff', '#3788d8', NULL, NULL, NULL),
-(72, 2, 3323425, 'simpson homero', '', '2022-12-29 10:00:00', '2022-12-29 11:00:00', '#ffffff', '#3788d8', NULL, NULL, NULL),
-(73, 1, 25444333, 'Neymar Jr', '', '2022-11-24 11:00:00', '2022-11-24 12:00:00', '#ffffff', '#3788d8', '', 0, NULL),
-(74, 1, 25444333, 'Neymar Jr', '', '2022-11-25 10:00:00', '2022-11-25 11:00:00', '#ffffff', '#3788d8', '', 0, NULL),
-(75, 1, 25444333, 'Neymar Jr', '', '2022-11-25 11:00:00', '2022-11-25 11:00:00', '#ffffff', '#3788d8', '', 0, NULL),
-(76, 1, 23334443, 'Messi Lionel', '', '2022-11-26 00:00:00', '2022-11-26 00:00:00', '#ffffff', '#3788d8', '', 0, NULL),
-(77, 2, 23334443, 'Messi Lionel', '', '2022-11-24 11:00:00', '2022-11-24 12:00:00', '#ffffff', '#3788d8', '', 0, NULL),
-(78, 2, 23334443, 'Messi Lionel', 'test', '2022-11-26 10:00:00', '2022-11-26 11:00:00', '#ffffff', '#3788d8', '', 0, NULL),
-(79, 2, 22342352, 'Romero Matias', '', '2022-11-25 10:00:00', '2022-11-25 11:00:00', '#ffffff', '#3788d8', '', 0, NULL),
-(80, 2, 25444333, 'Neymar Jr', '', '2022-11-24 07:00:00', '2022-11-24 07:00:00', '#ffffff', '#3788d8', '', 1, NULL),
-(81, 2, 78687687, 'Timoteo Miguel', '', '2022-11-25 12:00:00', '2022-11-25 13:00:00', '#ffffff', '#3788d8', '', 1, NULL),
-(82, 2, 234234, 'Picapiedras Wilma', '', '2022-11-25 08:00:00', '2022-11-25 08:00:00', '#d85555', '#3788d8', '', 0, NULL),
-(83, 2, 25444333, 'Neymar Jr', '', '2022-11-26 13:00:00', '2022-11-26 13:00:00', '#ffffff', '#3788d8', '', 0, NULL),
-(84, 2, 25444333, 'Neymar Jr', '', '2022-11-25 07:00:00', '2022-11-25 07:00:00', '#ffffff', '#3788d8', '', 0, NULL),
-(85, 2, 0, '', '', '2022-11-26 09:00:00', '2022-11-26 10:00:00', '#ffffff', '#3788d8', '', 0, NULL),
-(86, 2, 234234, 'Picapiedras Wilma', '', '2022-11-27 07:30:00', '2022-11-27 07:30:00', '#ffffff', '#3788d8', '', 0, NULL),
-(87, 2, 25444333, 'Neymar Jr', '', '2022-11-27 12:00:00', '2022-11-27 12:00:00', '#ffffff', '#3788d8', '', 0, NULL),
-(88, 2, 25444333, 'Neymar Jr', '', '2022-11-26 07:30:00', '2022-11-26 07:30:00', '#ffffff', '#3788d8', '', 0, NULL),
-(89, 2, 234234, 'Picapiedras Wilma', '', '2022-11-25 14:00:00', '2022-11-25 14:00:00', '#ffffff', '#3788d8', '', 0, NULL),
-(90, 2, 23334443, 'Messi Lionel', '', '2022-11-25 16:00:00', '2022-11-25 17:00:00', '#ffffff', '#3788d8', '', 1, NULL),
-(91, 2, 234234, 'Picapiedras Wilma', '', '2022-11-24 13:00:00', '2022-11-24 13:00:00', '#ffffff', '#3788d8', '', 0, NULL),
-(92, 2, 23334443, 'Messi Lionel', '', '2022-11-28 09:00:00', '2022-11-28 10:00:00', '#ffffff', '#3788d8', '', 0, NULL),
-(93, 2, 25444333, 'Neymar Jr', '', '2022-11-28 10:00:00', '2022-11-28 11:00:00', '#ffffff', '#3788d8', '', 0, NULL),
-(94, 2, 22342352, 'Romero Matias', '', '2022-11-28 11:00:00', '2022-11-28 11:00:00', '#ffffff', '#3788d8', '', 11, NULL),
-(95, 2, 234234, 'Picapiedras Wilma', 'test de alta de turno', '2022-12-08 13:00:00', '2022-12-08 13:00:00', '#ffffff', '#3788d8', '', 0, NULL),
-(96, 2, 23334443, 'Messi Lionel', '', '2022-12-09 11:00:00', '2022-12-09 11:00:00', '#ffffff', '#3788d8', '', 0, NULL),
-(97, 1, 25444333, 'Neymar Jr', '', '2022-12-08 11:00:00', '2022-12-08 11:00:00', '#ffffff', '#3788d8', '', 0, NULL),
-(98, 1, 25444333, 'Neymar Jr', '', '2022-12-09 11:00:00', '2022-12-09 11:00:00', '#ffffff', '#3788d8', '', 0, 'OSPRERA'),
-(99, 2, 22342352, 'Romero Matias', '', '2022-12-09 14:00:00', '2022-12-09 14:00:00', '#ffffff', '#3788d8', '', 0, 'OSADRA'),
-(100, 2, 25444333, 'Neymar Jr', '', '2022-12-09 14:00:00', '2022-12-09 14:00:00', '#ffffff', '#3788d8', '', 0, 'IOSFA'),
-(101, 2, 25444333, 'Neymar Jr', '', '2022-12-09 09:00:00', '2022-12-09 09:00:00', '#ffffff', '#3788d8', '', 14, 'OSDO'),
-(102, 2, 22342352, 'Romero Matias', '', '2022-12-09 15:30:00', '2022-12-09 15:30:00', '#ffffff', '#3788d8', '', 19, 'OSPRERA'),
-(103, 2, 234234, 'Picapiedras Wilma', '', '2022-12-09 13:00:00', '2022-12-09 13:00:00', '#ffffff', '#3788d8', '', 18, 'OSPOCE'),
-(104, 1, 23334443, 'Messi Lionel', '', '2022-12-09 13:00:00', '2022-12-09 13:00:00', '#ffffff', '#d5d737', '', 14, 'OSDO'),
-(105, 2, 234234, 'Picapiedras Wilma', '', '2022-12-09 17:00:00', '2022-12-09 17:00:00', '#ffffff', '#3788d8', '', 3, 'GALENO');
-=======
-  `tratamiento` tinyint DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `eventos`
---
-
 INSERT INTO `eventos` (`id`, `profesional`, `dni`, `title`, `description`, `start`, `end`, `textColor`, `backgroundColor`, `estado`, `cobertura`, `tratamiento`) VALUES
-(1, 1, 234234, 'Picapiedras Wilma', 'test', '2022-11-13 10:00:00', '2022-11-13 11:00:00', '#FFFFFF', '#FFFFFF', 'pre', 11, 1),
-(43, 1, 234234, 'Picapiedras Wilma', 'test modificacion', '2022-11-13 14:00:00', '2022-11-13 15:00:00', '#FFFFFF', '#FFFFFF', 'aCa', 11, 1),
-(44, 1, 234234, 'Picapiedras Wilma', 'test', '2022-11-14 10:00:00', '1900-01-14 12:53:36', '#FFFFFF', '#FFFFFF', 'aSa', 11, 1),
-(46, 2, 3323425, 'simpson homero', '', '2022-11-10 10:00:00', '2022-11-10 11:00:00', '#ffffff', '#3788d8', '', 11, 1),
-(47, 2, 234234, 'Picapiedras Wilma', '', '2022-11-10 11:00:00', '2022-11-10 12:30:00', '#ffffff', '#d73747', '', 11, 1),
-(48, 1, 3323425, 'simpson homero', '', '2022-11-11 18:00:00', '2022-11-11 19:00:00', '#ffffff', '#3788d8', 'aCa', 11, 1),
-(49, 3, 3323425, 'simpson homero', '', '2022-11-11 17:00:00', '2022-11-11 17:50:00', '#ffffff', '#3788d8', '', 11, 1),
-(50, 3, 3323425, 'simpson homero', '', '2022-11-18 17:00:00', '2022-11-18 17:50:00', '#ffffff', '#3788d8', NULL, 11, 1),
-(51, 3, 3323425, 'simpson homero', '', '2022-11-25 17:00:00', '2022-11-25 17:50:00', '#ffffff', '#3788d8', NULL, 11, 1),
-(52, 3, 3323425, 'simpson homero', '', '2022-12-02 17:00:00', '2022-12-02 17:50:00', '#ffffff', '#3788d8', NULL, 11, 1),
-(53, 3, 3323425, 'simpson homero', '', '2022-12-09 17:00:00', '2022-12-09 17:50:00', '#ffffff', '#3788d8', NULL, 11, 1),
-(54, 3, 3323425, 'simpson homero', '', '2022-12-16 17:00:00', '2022-12-16 17:50:00', '#ffffff', '#3788d8', NULL, 11, 1),
-(55, 3, 3323425, 'simpson homero', '', '2022-12-23 17:00:00', '2022-12-23 17:50:00', '#ffffff', '#3788d8', NULL, 11, 1),
-(56, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2022-11-23 11:00:00', '2022-11-23 12:00:00', '#ffffff', '#d73737', 'aCa', 11, 1),
-(57, 1, 22342352, 'Romero Matias', '', '2022-11-23 12:00:00', '2022-11-23 13:00:00', '#ffffff', '#3788d8', 'aCa', 11, 1),
-(58, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2022-11-30 11:00:00', '2022-11-30 12:00:00', '#ffffff', '#d73737', 'pre', 11, 1),
-(60, 1, 78687687, 'Timoteo Miguel', 'test de plantar', '2022-12-14 11:00:00', '2022-12-14 12:00:00', '#ffffff', '#d73737', NULL, 11, 1),
-(61, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2022-12-21 11:00:00', '2022-12-21 12:00:00', '#ffffff', '#d73737', NULL, 11, 1),
-(63, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2022-12-28 14:00:00', '2022-12-28 15:00:00', '#ffffff', '#d73737', 'pre', 17, 1),
-(64, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2022-12-28 14:00:00', '2022-12-28 15:00:00', '#ffffff', '#d73737', NULL, 17, 1),
-(65, 1, 78687687, 'Timoteo Miguel', 'me va a tgirart', '2022-12-28 14:00:00', '2022-12-28 15:00:00', '#ffffff', '#d73737', NULL, 17, 1),
-(66, 2, 3323425, 'simpson homero', '', '2022-11-17 10:00:00', '2022-11-17 11:00:00', '#ffffff', '#3788d8', NULL, 11, 1),
-(67, 2, 3323425, 'simpson homero', '', '2022-11-24 10:00:00', '2022-11-24 11:00:00', '#ffffff', '#3788d8', NULL, 11, 1),
-(68, 2, 3323425, 'simpson homero', '', '2022-12-01 10:00:00', '2022-12-01 11:00:00', '#ffffff', '#3788d8', NULL, 11, 1),
-(69, 2, 3323425, 'simpson homero', '', '2022-12-08 10:00:00', '2022-12-08 11:00:00', '#ffffff', '#3788d8', NULL, 11, 1),
-(70, 2, 3323425, 'simpson homero', '', '2022-12-15 10:00:00', '2022-12-15 11:00:00', '#ffffff', '#3788d8', NULL, 11, 1),
-(71, 2, 3323425, 'simpson homero', '', '2022-12-22 10:00:00', '2022-12-22 11:00:00', '#ffffff', '#3788d8', NULL, 11, 1),
-(72, 2, 3323425, 'simpson homero', '', '2022-12-29 10:00:00', '2022-12-29 11:00:00', '#ffffff', '#3788d8', NULL, 11, 1),
-(73, 1, 25444333, 'Neymar Jr', '', '2022-11-24 11:00:00', '2022-11-24 12:00:00', '#ffffff', '#3788d8', '', 0, 1),
-(74, 1, 25444333, 'Neymar Jr', '', '2022-11-25 10:00:00', '2022-11-25 11:00:00', '#ffffff', '#3788d8', '', 0, 1),
-(75, 1, 25444333, 'Neymar Jr', '', '2022-11-25 11:00:00', '2022-11-25 11:00:00', '#ffffff', '#3788d8', '', 0, 1),
-(76, 1, 23334443, 'Messi Lionel', '', '2022-11-26 00:00:00', '2022-11-26 00:00:00', '#ffffff', '#3788d8', '', 0, 1),
-(77, 2, 23334443, 'Messi Lionel', '', '2022-11-24 11:00:00', '2022-11-24 12:00:00', '#ffffff', '#3788d8', '', 0, 1),
-(78, 2, 23334443, 'Messi Lionel', 'test', '2022-11-26 10:00:00', '2022-11-26 11:00:00', '#ffffff', '#3788d8', '', 0, 1),
-(79, 2, 22342352, 'Romero Matias', '', '2022-11-25 10:00:00', '2022-11-25 11:00:00', '#ffffff', '#3788d8', '', 0, 1),
-(80, 2, 25444333, 'Neymar Jr', '', '2022-11-24 07:00:00', '2022-11-24 07:00:00', '#ffffff', '#3788d8', '', 1, 1),
-(81, 2, 78687687, 'Timoteo Miguel', '', '2022-11-25 12:00:00', '2022-11-25 13:00:00', '#ffffff', '#3788d8', '', 1, 1),
-(82, 2, 234234, 'Picapiedras Wilma', '', '2022-11-25 08:00:00', '2022-11-25 08:00:00', '#d85555', '#3788d8', '', 0, 1),
-(83, 2, 25444333, 'Neymar Jr', '', '2022-11-26 13:00:00', '2022-11-26 13:00:00', '#ffffff', '#3788d8', '', 0, 1),
-(84, 2, 25444333, 'Neymar Jr', '', '2022-11-25 07:00:00', '2022-11-25 07:00:00', '#ffffff', '#3788d8', '', 0, 1),
-(85, 2, 0, '', '', '2022-11-26 09:00:00', '2022-11-26 10:00:00', '#ffffff', '#3788d8', '', 0, 1),
-(86, 2, 234234, 'Picapiedras Wilma', '', '2022-11-27 07:30:00', '2022-11-27 07:30:00', '#ffffff', '#3788d8', '', 0, 1),
-(87, 2, 25444333, 'Neymar Jr', '', '2022-11-27 12:00:00', '2022-11-27 12:00:00', '#ffffff', '#3788d8', '', 0, 1),
-(88, 2, 25444333, 'Neymar Jr', '', '2022-11-26 07:30:00', '2022-11-26 07:30:00', '#ffffff', '#3788d8', '', 0, 1),
-(89, 2, 234234, 'Picapiedras Wilma', '', '2022-11-25 14:00:00', '2022-11-25 14:00:00', '#ffffff', '#3788d8', '', 0, 1),
-(91, 2, 234234, 'Picapiedras Wilma', '', '2022-11-24 13:00:00', '2022-11-24 13:00:00', '#ffffff', '#3788d8', '', 0, 1),
-(92, 2, 23334443, 'Messi Lionel', '', '2022-11-28 09:00:00', '2022-11-28 10:00:00', '#ffffff', '#3788d8', '', 0, 1),
-(93, 2, 25444333, 'Neymar Jr', '', '2022-11-28 10:00:00', '2022-11-28 11:00:00', '#ffffff', '#3788d8', '', 0, 1),
-(94, 2, 22342352, 'Romero Matias', '', '2022-11-28 11:00:00', '2022-11-28 11:00:00', '#ffffff', '#3788d8', '', 11, 1),
-(95, 1, 23334443, 'Messi Lionel', '', '2022-11-25 12:30:00', '2022-11-25 13:30:00', '#ffffff', '#3788d8', '', 15, 0),
-(96, 1, 25444333, 'Neymar Jr', '', '2022-11-26 10:30:00', '2022-11-26 10:30:00', '#ffffff', '#3788d8', '', 14, 1),
-(97, 1, 234234, 'Picapiedras Wilma', '', '2022-11-24 13:00:00', '2022-11-24 13:00:00', '#ffffff', '#3788d8', '', 13, 1),
-(98, 1, 23334443, 'Messi Lionel', '', '2022-12-01 11:00:00', '2022-12-01 12:00:00', '#ffffff', '#d7374f', '', 7, 1),
-(100, 1, 22342352, 'Romero Matias', 'test de elvacion de cadera', '2022-11-24 14:30:00', '2022-11-24 16:00:00', '#ffffff', '#d7d237', '', 2, 5);
->>>>>>> turnosEdit
+(34, 2, 22342352, 'Romero Matias', '', '2022-12-12 20:00:00', '2022-12-12 21:00:00', '#ffffff', '#3788d8', 'pre', 2, 3),
+(35, 2, 22342352, 'Romero Matias', '', '2022-12-19 20:00:00', '2022-12-19 21:00:00', '#ffffff', '#3788d8', 'aCa', 2, 3),
+(36, 2, 22342352, 'Romero Matias', '', '2022-12-26 21:00:00', '2022-12-26 22:00:00', '#ffffff', '#3788d8', 'aSa', 19, 3),
+(41, 2, 22342352, 'Romero Matias', '', '2023-01-02 21:00:00', '2023-01-02 22:00:00', '#ffffff', '#3788d8', 'pre', 19, 3),
+(42, 2, 22342352, 'Romero Matias', '', '2023-01-09 21:00:00', '2023-01-09 22:00:00', '#ffffff', '#3788d8', 'pre', 19, 3),
+(43, 2, 22342352, 'Romero Matias', '', '2023-01-16 21:00:00', '2023-01-16 22:00:00', '#ffffff', '#3788d8', 'pre', 11, 3),
+(63, 2, 22342352, 'Romero Matias', '', '2023-01-23 21:00:00', '2023-01-23 22:00:00', '#ffffff', '#3788d8', 'pre', 11, 3),
+(64, 2, 22342352, 'Romero Matias', '', '2023-01-30 21:00:00', '2023-01-30 22:00:00', '#ffffff', '#3788d8', 'aCa', 11, 3),
+(65, 2, 22342352, 'Romero Matias', '', '2023-02-06 21:00:00', '2023-02-06 22:00:00', '#ffffff', '#3788d8', NULL, 11, 3),
+(66, 2, 22342352, 'Romero Matias', '', '2023-02-13 21:00:00', '2023-02-13 22:00:00', '#ffffff', '#3788d8', NULL, 11, 3);
 
 -- --------------------------------------------------------
 
@@ -324,10 +198,8 @@ CREATE TABLE IF NOT EXISTS `pacientes` (
 --
 
 INSERT INTO `pacientes` (`id`, `apellido`, `nombre`, `dni`, `fechaNacimiento`, `contacto`, `contactoColegio`, `estado`, `reintegro`, `tipoCobertura`) VALUES
-(20, 'Romero', 'Matias', '22342352', '2010-06-10', 'madre: 011-33345433\r\npadre: 011: 77643999', 'director: 786976', 1, 0, 1),
 (13, 'Picapiedras', 'Wilma', '234234', '1997-02-12', 'edad de piedra', '', 1, 0, 2),
 (21, 'Timoteo', 'Miguel', '78687687', '2021-12-21', 'perrro\r\ngato', '', 1, 0, 1),
-(22, 'Neymar', 'Jr', '25444333', '2030-07-19', 'padre: 23423423\r\nmadre: 111111', 'direccion: 88777676', 1, 0, 2),
 (23, 'Messi', 'Lionel', '23334443', '1975-10-09', 'familia', 'colegio', 1, 0, 2);
 
 -- --------------------------------------------------------

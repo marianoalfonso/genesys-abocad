@@ -28,6 +28,8 @@
 
     <?php
         session_start();
+        $origenCierreTurno = $_SESSION['origenCierreTurno'];
+    
         $_SESSION['accion'] = "close";
         $id = $_GET['id'];
         require_once("../db/dbConnection.php");
@@ -40,8 +42,25 @@
             $title = $row['title'];
             $profesional = $row['profesional'];
             $turnoDesde =substr($row['start'],0,10)." ( ".substr($row['start'],11,8)." - ".substr($row['end'],11,8);
+            $controlFechaTurno = $row['start'];
+            $fechaActual = date('Y-m-d h:m');
         }
     ?>
+
+    <?php
+
+        if($controlFechaTurno > $fechaActual) {
+            $_SESSION['error'] = "no puede cerarse un turno posterior a la hora/fecha actual";
+            if($origenCierreTurno == "general"){
+                header("Location: turnosGeneral.php");
+            } elseif($origenCierreTurno == "profesional") {
+                header("Location: turnosProfesional.php?id=$profesional");
+            } else {
+                echo "<script>alert('error cerrando el turno');</script>";
+            }
+        }
+    ?>      
+
 
     <div class="container d-flex justify-content-center">
         <form action="./turnosCrud.php" method="post" style="width: 50vw; min-width: 300px;">
