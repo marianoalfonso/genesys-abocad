@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <!-- CSS personalizado --> 
-    <link rel="stylesheet" href="./pacientes.css">  
     <!-- bootstrap css -->
     <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
     <!-- css personalizado -->
@@ -19,15 +17,32 @@
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
 
+    <!-- CSS personalizado --> 
+    <link rel="stylesheet" href="pacientes.css">  
+
 </head>
 <body>
 
     <?php require_once('../navBar.php'); ?>
 
-    <div class="form-group">
-        <br/>
-            <a href="./pacientesAdd.php" class="btn btn-warning" disabled>agregar paciente</a>
-        <br/><br/>
+
+    <div class="container">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="./pacientesAdd.php" class="btn btn-warning" disabled>agregar paciente</a>
+                </div>
+            </div>
+
+            <div class="error">
+                <?php
+                    if(isset($_SESSION['error'])) { ?>
+                        <h3><?php echo $_SESSION['error']; ?></h3>
+                        <?php unset($_SESSION['error']);
+                    }
+                ?>
+            </div>
+        </div>
     </div>
 
     <div class="container caja">

@@ -1,8 +1,12 @@
-<?php
-// require_once("db/dbConnection.php");
-require_once("../assets/clases/profesional.php");
 
-echo 'testeando la clase profesional';
-echo '<br>nombre del profesional: ';
-echo profesional::obtenerNombreProfesional(2);
+<form action="">
+    <input type="text" name="hora" />
+</form>
+
+
+<?php
+echo strtotime('2022-10-03 11:00');
+echo '<br>'.strtotime('2022-10-03 12:00');
+
+
 ?>

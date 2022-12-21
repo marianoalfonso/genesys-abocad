@@ -70,7 +70,8 @@
                         <div class="col">
                             <label class="form-label">replicar turno hasta</label>
                             <!-- asignar parametro min a la fecha del turno seleccionado -->
-                            <input type="date" name="endDate" min="">
+                            <?php $dt = new DateTime(); ?>
+                            <input type="date" name="endDate" value="<?php echo $dt->format('Y-m-d') ?>">
                         </div>
                     </p>
                 </div>

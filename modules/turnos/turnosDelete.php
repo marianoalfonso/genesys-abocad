@@ -14,7 +14,7 @@
     integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" 
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <link rel="stylesheet" href="./turnos.css">
+    <link rel="stylesheet" href="turnos.css">
 
 </head>
 <body>
@@ -39,7 +39,7 @@
             $description = $row['description'];
             $cobertura = $row['cobertura'];
             $estado = $row['estado'];
-            $turnoDesde =substr($row['start'],0,10)." ( ".substr($row['start'],11,8)." - ".substr($row['end'],11,8);
+            $turnoDesde =substr($row['start'],0,10)." ( ".substr($row['start'],11,5)." - ".substr($row['end'],11,5);
             $turno = $row['start'];
         }
 
@@ -50,8 +50,6 @@
                 window.location.href='./turnosProfesional.php?id=$profesional';
                 </script>";
         }
-
-
     ?>
 
 

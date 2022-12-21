@@ -41,8 +41,10 @@
             $dni = $row['dni'];
             $title = $row['title'];
             $description = $row['description'];
-            $start = $row['start'];
-            $end = $row['end'];
+            // $start = $row['start'];
+            $start = substr($row['start'], 0, 10) . " " . substr($row['start'], 11, 5);
+            // $end = $row['end'];
+            $end = substr($row['end'], 0, 10) . " " . substr($row['end'], 11, 5);
             $cobertura = $row['cobertura'];
 
         }

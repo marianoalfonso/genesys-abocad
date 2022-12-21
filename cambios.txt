@@ -1,13 +1,12 @@
 PACIENTES
 1) se separan los campos de contacto en dos
     a) contacto familia
-    b) contacto colegio
-
+    b) contacto colegi
 2) se agrega la opcion para tipo de cobertura
     a) discapacidad
 	b) NO discapacidad
-	
 3) se agrega la posiblidad de ver todos los turnos historicos por paciente ordenados de mas nuevos a mas antiguos
+4) no se permite el borrado de un paciente con turnos ya cerrados
 
 TURNOS
 1) en el calendario, se agrega la seleccion de la cobertura del paciente al momento de registrar el turnos.
@@ -15,7 +14,7 @@ TURNOS
 3) en el listado nominal de turnos, cualquier MODIFICACION que se realice se hará efectiva solo para el turno seleccionado, los turnos
    siguientes para el mismo paciente y profesional seran eliminados y deberan volver a perpetuarse.
 4) un turno con estado asignado no puede editarse, perpetuarse o eliminarse.
-5) un turno no puede cerrarse hasta pasar la fecha/hora del mismo
+5) un turno no puede cerrarse hasta que haya pasado la fecha/hora del mismo.
 
 PROFESIONALES
 
@@ -26,7 +25,6 @@ MENU
 
 pendientes:
 no dejar cargar fecha nacimiento superior a hoy
-desarrollar turnos historicos por paciente
 no dejar borrar turnos pasados	
-
+descarga a txt turnos desde/hasta
 

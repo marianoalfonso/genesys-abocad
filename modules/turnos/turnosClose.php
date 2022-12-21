@@ -42,13 +42,15 @@
             $title = $row['title'];
             $profesional = $row['profesional'];
             $turnoDesde =substr($row['start'],0,10)." ( ".substr($row['start'],11,8)." - ".substr($row['end'],11,8);
-            $controlFechaTurno = $row['start'];
-            $fechaActual = date('Y-m-d h:m');
+            // con date_create transformo el string en objeto fecha para
+            // poder pasarselo como parametro a la funcion date_format
+            $controlFechaTurno = date_create($row['start']);
+            date_default_timezone_set('America/Argentina/Cordoba');
+            $fechaActual = date_create(date('Y-m-d H:i'));
         }
     ?>
 
     <?php
-
         if($controlFechaTurno > $fechaActual) {
             $_SESSION['error'] = "no puede cerarse un turno posterior a la hora/fecha actual";
             if($origenCierreTurno == "general"){
