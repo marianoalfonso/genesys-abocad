@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 19-12-2022 a las 12:22:33
+-- Tiempo de generación: 21-12-2022 a las 12:01:43
 -- Versión del servidor: 8.0.21
 -- Versión de PHP: 7.4.9
 
@@ -109,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `eventos` (
   `cobertura` tinyint DEFAULT NULL,
   `tratamiento` tinyint DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `eventos`
@@ -125,7 +125,21 @@ INSERT INTO `eventos` (`id`, `profesional`, `dni`, `title`, `description`, `star
 (63, 2, 22342352, 'Romero Matias', '', '2023-01-23 21:00:00', '2023-01-23 22:00:00', '#ffffff', '#3788d8', 'pre', 11, 3),
 (64, 2, 22342352, 'Romero Matias', '', '2023-01-30 21:00:00', '2023-01-30 22:00:00', '#ffffff', '#3788d8', 'aCa', 11, 3),
 (65, 2, 22342352, 'Romero Matias', '', '2023-02-06 21:00:00', '2023-02-06 22:00:00', '#ffffff', '#3788d8', NULL, 11, 3),
-(66, 2, 22342352, 'Romero Matias', '', '2023-02-13 21:00:00', '2023-02-13 22:00:00', '#ffffff', '#3788d8', NULL, 11, 3);
+(66, 2, 22342352, 'Romero Matias', '', '2023-02-13 21:00:00', '2023-02-13 22:00:00', '#ffffff', '#3788d8', NULL, 11, 3),
+(67, 2, 23334443, 'Messi Lionel', 'test123', '2022-12-20 19:00:00', '2022-12-20 20:00:00', '#ffffff', '#3788d8', 'pre', 5, 4),
+(81, 2, 23334443, 'Messi Lionel', 'test123', '2023-01-10 19:00:00', '2023-01-10 20:00:00', '#ffffff', '#3788d8', NULL, 5, 4),
+(82, 2, 23334443, 'Messi Lionel', 'test123', '2023-01-17 19:00:00', '2023-01-17 20:00:00', '#ffffff', '#3788d8', NULL, 5, 4),
+(83, 2, 23334443, 'Messi Lionel', 'test123', '2023-01-24 19:00:00', '2023-01-24 20:00:00', '#ffffff', '#3788d8', NULL, 5, 4),
+(84, 2, 23334443, 'Messi Lionel', 'test123', '2023-01-31 19:00:00', '2023-01-31 20:00:00', '#ffffff', '#3788d8', NULL, 5, 4),
+(85, 2, 23334443, 'Messi Lionel', 'test123', '2023-02-07 19:00:00', '2023-02-07 20:00:00', '#ffffff', '#3788d8', NULL, 5, 4),
+(86, 2, 23334443, 'Messi Lionel', 'test123', '2023-02-14 19:00:00', '2023-02-14 20:00:00', '#ffffff', '#3788d8', NULL, 5, 4),
+(87, 2, 23334443, 'Messi Lionel', 'test123', '2023-02-21 19:00:00', '2023-02-21 20:00:00', '#ffffff', '#3788d8', NULL, 5, 4),
+(88, 2, 23334443, 'Messi Lionel', 'test123', '2023-02-28 19:00:00', '2023-02-28 20:00:00', '#ffffff', '#3788d8', NULL, 5, 4),
+(89, 2, 23334443, 'Messi Lionel', 'test123', '2023-03-07 19:00:00', '2023-03-07 20:00:00', '#ffffff', '#3788d8', NULL, 5, 4),
+(90, 2, 23334443, 'Messi Lionel', 'test123', '2023-03-14 19:00:00', '2023-03-14 20:00:00', '#ffffff', '#3788d8', NULL, 5, 4),
+(91, 2, 23334443, 'Messi Lionel', 'test123', '2023-03-21 19:00:00', '2023-03-21 20:00:00', '#ffffff', '#3788d8', NULL, 5, 4),
+(92, 2, 23334443, 'Messi Lionel', 'test123', '2023-03-28 19:00:00', '2023-03-28 20:00:00', '#ffffff', '#3788d8', NULL, 5, 4),
+(93, 2, 23334443, 'Messi Lionel', 'test123', '2023-04-04 19:00:00', '2023-04-04 20:00:00', '#ffffff', '#3788d8', NULL, 5, 4);
 
 -- --------------------------------------------------------
 
@@ -191,15 +205,14 @@ CREATE TABLE IF NOT EXISTS `pacientes` (
   `tipoCobertura` tinyint NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `dni` (`dni`)
-) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `pacientes`
 --
 
 INSERT INTO `pacientes` (`id`, `apellido`, `nombre`, `dni`, `fechaNacimiento`, `contacto`, `contactoColegio`, `estado`, `reintegro`, `tipoCobertura`) VALUES
-(13, 'Picapiedras', 'Wilma', '234234', '1997-02-12', 'edad de piedra', '', 1, 0, 2),
-(21, 'Timoteo', 'Miguel', '78687687', '2021-12-21', 'perrro\r\ngato', '', 1, 0, 1),
+(13, 'Picapiedras', 'Wilma', '234234', '1997-02-12', 'edad de piedra', 'test', 1, 0, 2),
 (23, 'Messi', 'Lionel', '23334443', '1975-10-09', 'familia', 'colegio', 1, 0, 2);
 
 -- --------------------------------------------------------
