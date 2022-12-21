@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 21-12-2022 a las 12:01:43
--- Versión del servidor: 8.0.21
--- Versión de PHP: 7.4.9
+-- Tiempo de generación: 21-12-2022 a las 15:46:34
+-- Versión del servidor: 5.7.36
+-- Versión de PHP: 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -55,10 +55,10 @@ DELIMITER ;
 
 DROP TABLE IF EXISTS `coberturas`;
 CREATE TABLE IF NOT EXISTS `coberturas` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(150) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `coberturas`
@@ -96,50 +96,20 @@ INSERT INTO `coberturas` (`id`, `nombre`) VALUES
 
 DROP TABLE IF EXISTS `eventos`;
 CREATE TABLE IF NOT EXISTS `eventos` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `profesional` int NOT NULL,
-  `dni` int NOT NULL,
-  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `profesional` int(11) NOT NULL,
+  `dni` int(11) NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `description` text CHARACTER SET utf8mb4,
   `start` datetime DEFAULT NULL,
   `end` datetime DEFAULT NULL,
-  `textColor` varchar(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `backgroundColor` varchar(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `textColor` varchar(7) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `backgroundColor` varchar(7) CHARACTER SET utf8mb4 DEFAULT NULL,
   `estado` char(3) DEFAULT '',
-  `cobertura` tinyint DEFAULT NULL,
-  `tratamiento` tinyint DEFAULT NULL,
+  `cobertura` tinyint(4) DEFAULT NULL,
+  `tratamiento` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `eventos`
---
-
-INSERT INTO `eventos` (`id`, `profesional`, `dni`, `title`, `description`, `start`, `end`, `textColor`, `backgroundColor`, `estado`, `cobertura`, `tratamiento`) VALUES
-(34, 2, 22342352, 'Romero Matias', '', '2022-12-12 20:00:00', '2022-12-12 21:00:00', '#ffffff', '#3788d8', 'pre', 2, 3),
-(35, 2, 22342352, 'Romero Matias', '', '2022-12-19 20:00:00', '2022-12-19 21:00:00', '#ffffff', '#3788d8', 'aCa', 2, 3),
-(36, 2, 22342352, 'Romero Matias', '', '2022-12-26 21:00:00', '2022-12-26 22:00:00', '#ffffff', '#3788d8', 'aSa', 19, 3),
-(41, 2, 22342352, 'Romero Matias', '', '2023-01-02 21:00:00', '2023-01-02 22:00:00', '#ffffff', '#3788d8', 'pre', 19, 3),
-(42, 2, 22342352, 'Romero Matias', '', '2023-01-09 21:00:00', '2023-01-09 22:00:00', '#ffffff', '#3788d8', 'pre', 19, 3),
-(43, 2, 22342352, 'Romero Matias', '', '2023-01-16 21:00:00', '2023-01-16 22:00:00', '#ffffff', '#3788d8', 'pre', 11, 3),
-(63, 2, 22342352, 'Romero Matias', '', '2023-01-23 21:00:00', '2023-01-23 22:00:00', '#ffffff', '#3788d8', 'pre', 11, 3),
-(64, 2, 22342352, 'Romero Matias', '', '2023-01-30 21:00:00', '2023-01-30 22:00:00', '#ffffff', '#3788d8', 'aCa', 11, 3),
-(65, 2, 22342352, 'Romero Matias', '', '2023-02-06 21:00:00', '2023-02-06 22:00:00', '#ffffff', '#3788d8', NULL, 11, 3),
-(66, 2, 22342352, 'Romero Matias', '', '2023-02-13 21:00:00', '2023-02-13 22:00:00', '#ffffff', '#3788d8', NULL, 11, 3),
-(67, 2, 23334443, 'Messi Lionel', 'test123', '2022-12-20 19:00:00', '2022-12-20 20:00:00', '#ffffff', '#3788d8', 'pre', 5, 4),
-(81, 2, 23334443, 'Messi Lionel', 'test123', '2023-01-10 19:00:00', '2023-01-10 20:00:00', '#ffffff', '#3788d8', NULL, 5, 4),
-(82, 2, 23334443, 'Messi Lionel', 'test123', '2023-01-17 19:00:00', '2023-01-17 20:00:00', '#ffffff', '#3788d8', NULL, 5, 4),
-(83, 2, 23334443, 'Messi Lionel', 'test123', '2023-01-24 19:00:00', '2023-01-24 20:00:00', '#ffffff', '#3788d8', NULL, 5, 4),
-(84, 2, 23334443, 'Messi Lionel', 'test123', '2023-01-31 19:00:00', '2023-01-31 20:00:00', '#ffffff', '#3788d8', NULL, 5, 4),
-(85, 2, 23334443, 'Messi Lionel', 'test123', '2023-02-07 19:00:00', '2023-02-07 20:00:00', '#ffffff', '#3788d8', NULL, 5, 4),
-(86, 2, 23334443, 'Messi Lionel', 'test123', '2023-02-14 19:00:00', '2023-02-14 20:00:00', '#ffffff', '#3788d8', NULL, 5, 4),
-(87, 2, 23334443, 'Messi Lionel', 'test123', '2023-02-21 19:00:00', '2023-02-21 20:00:00', '#ffffff', '#3788d8', NULL, 5, 4),
-(88, 2, 23334443, 'Messi Lionel', 'test123', '2023-02-28 19:00:00', '2023-02-28 20:00:00', '#ffffff', '#3788d8', NULL, 5, 4),
-(89, 2, 23334443, 'Messi Lionel', 'test123', '2023-03-07 19:00:00', '2023-03-07 20:00:00', '#ffffff', '#3788d8', NULL, 5, 4),
-(90, 2, 23334443, 'Messi Lionel', 'test123', '2023-03-14 19:00:00', '2023-03-14 20:00:00', '#ffffff', '#3788d8', NULL, 5, 4),
-(91, 2, 23334443, 'Messi Lionel', 'test123', '2023-03-21 19:00:00', '2023-03-21 20:00:00', '#ffffff', '#3788d8', NULL, 5, 4),
-(92, 2, 23334443, 'Messi Lionel', 'test123', '2023-03-28 19:00:00', '2023-03-28 20:00:00', '#ffffff', '#3788d8', NULL, 5, 4),
-(93, 2, 23334443, 'Messi Lionel', 'test123', '2023-04-04 19:00:00', '2023-04-04 20:00:00', '#ffffff', '#3788d8', NULL, 5, 4);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -149,7 +119,7 @@ INSERT INTO `eventos` (`id`, `profesional`, `dni`, `title`, `description`, `star
 
 DROP TABLE IF EXISTS `eventospredefinidos`;
 CREATE TABLE IF NOT EXISTS `eventospredefinidos` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(255) DEFAULT NULL,
   `horaInicio` time DEFAULT NULL,
   `horaFin` time DEFAULT NULL,
@@ -175,7 +145,7 @@ INSERT INTO `eventospredefinidos` (`id`, `titulo`, `horaInicio`, `horaFin`, `col
 DROP TABLE IF EXISTS `log`;
 CREATE TABLE IF NOT EXISTS `log` (
   `msg` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `log`
@@ -193,27 +163,19 @@ INSERT INTO `log` (`msg`) VALUES
 
 DROP TABLE IF EXISTS `pacientes`;
 CREATE TABLE IF NOT EXISTS `pacientes` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `apellido` varchar(100) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `dni` varchar(8) NOT NULL,
   `fechaNacimiento` date NOT NULL,
-  `contacto` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
-  `contactoColegio` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `contacto` text,
+  `contactoColegio` text,
   `estado` tinyint(1) NOT NULL DEFAULT '1',
-  `reintegro` tinyint DEFAULT '0',
-  `tipoCobertura` tinyint NOT NULL,
+  `reintegro` tinyint(4) DEFAULT '0',
+  `tipoCobertura` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `dni` (`dni`)
-) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Volcado de datos para la tabla `pacientes`
---
-
-INSERT INTO `pacientes` (`id`, `apellido`, `nombre`, `dni`, `fechaNacimiento`, `contacto`, `contactoColegio`, `estado`, `reintegro`, `tipoCobertura`) VALUES
-(13, 'Picapiedras', 'Wilma', '234234', '1997-02-12', 'edad de piedra', 'test', 1, 0, 2),
-(23, 'Messi', 'Lionel', '23334443', '1975-10-09', 'familia', 'colegio', 1, 0, 2);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -223,10 +185,10 @@ INSERT INTO `pacientes` (`id`, `apellido`, `nombre`, `dni`, `fechaNacimiento`, `
 
 DROP TABLE IF EXISTS `profesionales`;
 CREATE TABLE IF NOT EXISTS `profesionales` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `nombre` varchar(150) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `profesionales`
@@ -255,10 +217,10 @@ INSERT INTO `profesionales` (`id`, `nombre`) VALUES
 
 DROP TABLE IF EXISTS `tipocobertura`;
 CREATE TABLE IF NOT EXISTS `tipocobertura` (
-  `idTipoCobertura` tinyint NOT NULL AUTO_INCREMENT,
+  `idTipoCobertura` tinyint(4) NOT NULL AUTO_INCREMENT,
   `descTipoCobertura` varchar(15) NOT NULL,
   PRIMARY KEY (`idTipoCobertura`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `tipocobertura`
@@ -276,20 +238,20 @@ INSERT INTO `tipocobertura` (`idTipoCobertura`, `descTipoCobertura`) VALUES
 
 DROP TABLE IF EXISTS `tratamientos`;
 CREATE TABLE IF NOT EXISTS `tratamientos` (
-  `idTratamiento` tinyint NOT NULL AUTO_INCREMENT,
+  `idTratamiento` tinyint(4) NOT NULL AUTO_INCREMENT,
   `descTratamiento` varchar(25) NOT NULL,
   PRIMARY KEY (`idTratamiento`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `tratamientos`
 --
 
 INSERT INTO `tratamientos` (`idTratamiento`, `descTratamiento`) VALUES
-(1, 'fonoaudiología'),
-(2, 'psicología'),
-(3, 'psicopedagogía'),
-(4, 'orientación padres'),
+(1, 'fonoaudiologia'),
+(2, 'psicologia'),
+(3, 'psicopedagogia'),
+(4, 'orientacion padres'),
 (5, 'talleres');
 
 -- --------------------------------------------------------
@@ -300,13 +262,13 @@ INSERT INTO `tratamientos` (`idTratamiento`, `descTratamiento`) VALUES
 
 DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE IF NOT EXISTS `usuarios` (
-  `usr_dni` int NOT NULL,
+  `usr_dni` int(11) NOT NULL,
   `usr_nombre` varchar(60) NOT NULL,
   `usr_password` varchar(45) NOT NULL,
-  `usr_tipo` tinyint NOT NULL,
+  `usr_tipo` tinyint(4) NOT NULL,
   PRIMARY KEY (`usr_dni`),
   KEY `fk_usuario_tipo_idx` (`usr_tipo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -323,10 +285,10 @@ INSERT INTO `usuarios` (`usr_dni`, `usr_nombre`, `usr_password`, `usr_tipo`) VAL
 
 DROP TABLE IF EXISTS `usuarios_tipo`;
 CREATE TABLE IF NOT EXISTS `usuarios_tipo` (
-  `tipo_id` tinyint NOT NULL,
+  `tipo_id` tinyint(4) NOT NULL,
   `tipo_descripcion` varchar(45) NOT NULL,
   PRIMARY KEY (`tipo_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuarios_tipo`

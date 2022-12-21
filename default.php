@@ -11,7 +11,7 @@
 
     <!-- <style>
     .container {
-        /* background-color: yellow; */
+        background-color: yellow;
         margin-top: 20px;
         display: block;
         margin-left: auto;
@@ -31,9 +31,6 @@
 
     <div class="container">
         <div class="row justify-content-center align-items-center g-1">
-            <!-- <div class="col">
-                <img class="img-fluid img-thumbnail" src="./assets/images/abocad-logo.png" alt="abocad" id="logo">
-            </div> -->
             <div>
                 <a href="./modules/login/login.php" class="btn btn-warning">ingresar</a>
                 

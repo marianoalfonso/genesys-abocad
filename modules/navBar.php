@@ -18,9 +18,13 @@
         $pacientesDesarrollo = "//localhost/genesys-abocad/modules/pacientes/pacientes.php";
         $profesionalesDesarrollo = "//localhost/genesys-abocad/modules/profesionales/profesionales.php";
         $turnosDesarrollo = "//localhost/genesys-abocad/modules/turnos/turnosGeneral.php";
+        $descargasDesarrollo = "//localhost/genesys-abocad/modules/descargas/seleccionDescarga.php";
         $salirDesarrollo = "//localhost/genesys-abocad/default.php";
+
         $pacientesProduccion = "https://abocad.geatec.com.ar/modules/pacientes/pacientes.php";
         $profesionalesProduccion = "https://abocad.geatec.com.ar/modules/profesionales/profesionales.php";
+        $turnosProduccion = "https://genesys-abocad/modules/turnos/turnosGeneral.php";
+        $descargasProduccion = "https://genesys-abocad/modules/descargas/seleccionDescarga.php";
         $salirProduccion = "https://abocad.geatec.com.ar/default.php";
     ?>
 
@@ -47,6 +51,8 @@
                         <li class="nav-item"><a class="nav-link" href="<?php echo $profesionalesDesarrollo ?>">profesionales</a></li>
                         <!-- menu turnos -->
                         <li class="nav-item"><a class="nav-link" href="<?php echo $turnosDesarrollo ?>">turnos</a></li>
+                        <!-- menu descargas -->
+                        <li class="nav-item"><a class="nav-link" href="<?php echo $descargasDesarrollo ?>">descargas</a></li>
                         <!-- menu salir -->
                         <li class="nav-item"><a class="nav-link" href=<?php echo $salirDesarrollo ?>>salir</a></li>
                     </ul>
