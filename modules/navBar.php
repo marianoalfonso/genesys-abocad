@@ -18,6 +18,7 @@
         $pacientesDesarrollo = "//localhost/genesys-abocad/modules/pacientes/pacientes.php";
         $profesionalesDesarrollo = "//localhost/genesys-abocad/modules/profesionales/profesionales.php";
         $turnosDesarrollo = "//localhost/genesys-abocad/modules/turnos/turnosGeneral.php";
+        $calendarioDesarrollo = "//localhost/genesys-abocad/modules/calendarios/calendarioFull.php";
         $descargasDesarrollo = "//localhost/genesys-abocad/modules/descargas/seleccionDescarga.php";
         $salirDesarrollo = "//localhost/genesys-abocad/default.php";
 
@@ -51,6 +52,8 @@
                         <li class="nav-item"><a class="nav-link" href="<?php echo $profesionalesDesarrollo ?>">profesionales</a></li>
                         <!-- menu turnos -->
                         <li class="nav-item"><a class="nav-link" href="<?php echo $turnosDesarrollo ?>">turnos</a></li>
+                                <!-- menu calendario Full -->
+                                <li class="nav-item"><a class="nav-link" href="<?php echo $calendarioDesarrollo ?>">calendario</a></li>
                         <!-- menu descargas -->
                         <li class="nav-item"><a class="nav-link" href="<?php echo $descargasDesarrollo ?>">descargas</a></li>
                         <!-- menu salir -->

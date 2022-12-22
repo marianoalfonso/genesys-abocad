@@ -1,7 +1,7 @@
 PACIENTES
 1) se separan los campos de contacto en dos
     a) contacto familia
-    b) contacto colegi
+    b) contacto colegio
 2) se agrega la opcion para tipo de cobertura
     a) discapacidad
 	b) NO discapacidad

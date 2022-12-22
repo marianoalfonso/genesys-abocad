@@ -77,6 +77,16 @@
                             <input type="text" class="form-control" name="turnoDesde" value="<?php echo $turnoDesde ?> )" readonly>
                         </div>
 
+                        <!-- profesional OCULTO -->
+                        <div class="col">
+                            <input type="number" class="form-control" name="profesional" value="<?php echo $profesional; ?>" hidden>
+                        </div>
+
+
+                        <!-- dni OCULTO -->
+                        <div class="col">
+                            <input type="number" class="form-control" name="dni" value="<?php echo $dni?>" hidden>
+                        </div>
                     </div>
 
                     <div>

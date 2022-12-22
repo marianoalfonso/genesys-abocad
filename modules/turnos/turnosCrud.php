@@ -92,7 +92,9 @@
         case "delete":
             if(isset($_POST['submit'])){
                 $id = $_POST['id'];
-                $sql = "delete from eventos where id = $id";
+                $profesional = $_POST['profesional'];
+                $dni = $_POST['dni'];
+                $sql = "delete from eventos where id >= $id and dni = $dni and profesional = $profesional";
                 $p = db::conectar()->prepare($sql);
                 $p->execute();
                 if($p){

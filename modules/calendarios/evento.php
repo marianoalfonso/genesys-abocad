@@ -78,7 +78,7 @@
                         <select id="tratamiento" class="form-control">
                             <?php
                               require_once("../db/dbConnection.php");
-                              $sql = "select idTratamiento,descTratamiento from TRATAMIENTOS order by 1";
+                              $sql = "select idTratamiento,descTratamiento from tratamientos order by 1";
                               $p = db::conectar()->prepare($sql);
                               $p->execute();
                               $datos = $p->fetchAll(PDO::FETCH_ASSOC);

@@ -76,11 +76,11 @@
                                         when 0 then 'no'
                                         when 1 then 'si'
                                     end as reint,
-                                    tipoCobertura.descTipoCobertura as cobertura,
+                                    tipocobertura.descTipoCobertura as cobertura,
                                     estado
                                     from pacientes
-                                        inner join tipoCobertura ON
-                                        pacientes.tipoCobertura = tipoCobertura.idTipoCobertura
+                                        inner join tipocobertura ON
+                                        pacientes.tipoCobertura = tipocobertura.idTipoCobertura
                                     order by apellido,nombre";
                         $resultado = db::conectar()->prepare($sql);
                         $resultado->execute();        
