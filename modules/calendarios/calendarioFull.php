@@ -44,10 +44,10 @@
     <?php include "evento.php"; ?>
     <?php include "eventoInfo.php"; ?>
 
-    <?php
-        $nombre_profesional = $_GET['nombre'];
-    ?>
-    <h3>profesional: <?php echo $nombre_profesional ?></h3>
+    <!-- <?php
+        //$nombre_profesional = $_GET['nombre'];
+    ?> -->
+    <h3>todos los profesionales</h3>
     
     <!-- definicion del calendario -->
     <div class="container">

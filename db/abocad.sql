@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 21-12-2022 a las 15:46:34
--- Versión del servidor: 5.7.36
--- Versión de PHP: 7.4.26
+-- Tiempo de generación: 27-12-2022 a las 17:34:34
+-- Versión del servidor: 8.0.21
+-- Versión de PHP: 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -55,7 +55,7 @@ DELIMITER ;
 
 DROP TABLE IF EXISTS `coberturas`;
 CREATE TABLE IF NOT EXISTS `coberturas` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(150) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4;
@@ -96,9 +96,9 @@ INSERT INTO `coberturas` (`id`, `nombre`) VALUES
 
 DROP TABLE IF EXISTS `eventos`;
 CREATE TABLE IF NOT EXISTS `eventos` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `profesional` int(11) NOT NULL,
-  `dni` int(11) NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `profesional` int NOT NULL,
+  `dni` int NOT NULL,
   `title` varchar(255) CHARACTER SET utf8mb4 DEFAULT NULL,
   `description` text CHARACTER SET utf8mb4,
   `start` datetime DEFAULT NULL,
@@ -106,8 +106,8 @@ CREATE TABLE IF NOT EXISTS `eventos` (
   `textColor` varchar(7) CHARACTER SET utf8mb4 DEFAULT NULL,
   `backgroundColor` varchar(7) CHARACTER SET utf8mb4 DEFAULT NULL,
   `estado` char(3) DEFAULT '',
-  `cobertura` tinyint(4) DEFAULT NULL,
-  `tratamiento` tinyint(4) DEFAULT NULL,
+  `cobertura` tinyint DEFAULT NULL,
+  `tratamiento` tinyint DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `eventos` (
 
 DROP TABLE IF EXISTS `eventospredefinidos`;
 CREATE TABLE IF NOT EXISTS `eventospredefinidos` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `titulo` varchar(255) DEFAULT NULL,
   `horaInicio` time DEFAULT NULL,
   `horaFin` time DEFAULT NULL,
@@ -163,7 +163,7 @@ INSERT INTO `log` (`msg`) VALUES
 
 DROP TABLE IF EXISTS `pacientes`;
 CREATE TABLE IF NOT EXISTS `pacientes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `apellido` varchar(100) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `dni` varchar(8) NOT NULL,
@@ -171,8 +171,8 @@ CREATE TABLE IF NOT EXISTS `pacientes` (
   `contacto` text,
   `contactoColegio` text,
   `estado` tinyint(1) NOT NULL DEFAULT '1',
-  `reintegro` tinyint(4) DEFAULT '0',
-  `tipoCobertura` tinyint(4) NOT NULL,
+  `reintegro` tinyint DEFAULT '0',
+  `tipoCobertura` tinyint NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `dni` (`dni`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
@@ -185,7 +185,7 @@ CREATE TABLE IF NOT EXISTS `pacientes` (
 
 DROP TABLE IF EXISTS `profesionales`;
 CREATE TABLE IF NOT EXISTS `profesionales` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `nombre` varchar(150) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
@@ -207,7 +207,9 @@ INSERT INTO `profesionales` (`id`, `nombre`) VALUES
 (10, 'Ventura Monique'),
 (11, 'Waimberg Sol'),
 (12, 'Waisman Laura'),
-(13, 'Zanino Adela');
+(13, 'Zanino Adela'),
+(14, 'Ongay Teresa'),
+(15, 'Lombardi Ana');
 
 -- --------------------------------------------------------
 
@@ -217,7 +219,7 @@ INSERT INTO `profesionales` (`id`, `nombre`) VALUES
 
 DROP TABLE IF EXISTS `tipocobertura`;
 CREATE TABLE IF NOT EXISTS `tipocobertura` (
-  `idTipoCobertura` tinyint(4) NOT NULL AUTO_INCREMENT,
+  `idTipoCobertura` tinyint NOT NULL AUTO_INCREMENT,
   `descTipoCobertura` varchar(15) NOT NULL,
   PRIMARY KEY (`idTipoCobertura`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
@@ -238,7 +240,7 @@ INSERT INTO `tipocobertura` (`idTipoCobertura`, `descTipoCobertura`) VALUES
 
 DROP TABLE IF EXISTS `tratamientos`;
 CREATE TABLE IF NOT EXISTS `tratamientos` (
-  `idTratamiento` tinyint(4) NOT NULL AUTO_INCREMENT,
+  `idTratamiento` tinyint NOT NULL AUTO_INCREMENT,
   `descTratamiento` varchar(25) NOT NULL,
   PRIMARY KEY (`idTratamiento`)
 ) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
@@ -262,10 +264,10 @@ INSERT INTO `tratamientos` (`idTratamiento`, `descTratamiento`) VALUES
 
 DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE IF NOT EXISTS `usuarios` (
-  `usr_dni` int(11) NOT NULL,
+  `usr_dni` int NOT NULL,
   `usr_nombre` varchar(60) NOT NULL,
   `usr_password` varchar(45) NOT NULL,
-  `usr_tipo` tinyint(4) NOT NULL,
+  `usr_tipo` tinyint NOT NULL,
   PRIMARY KEY (`usr_dni`),
   KEY `fk_usuario_tipo_idx` (`usr_tipo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -275,7 +277,11 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 --
 
 INSERT INTO `usuarios` (`usr_dni`, `usr_nombre`, `usr_password`, `usr_tipo`) VALUES
-(22925061, 'Mariano Alfonso', 'test1234', 1);
+(11111111, 'test', '11111111', 1),
+(12087498, 'Fernandez Mirta', '12087498', 1),
+(14741128, 'Bersano Adriana', '14741128', 1),
+(20248630, 'Durand Mariana', '20248630', 1),
+(33417662, 'Maside Victoria', '33417662', 1);
 
 -- --------------------------------------------------------
 
@@ -285,7 +291,7 @@ INSERT INTO `usuarios` (`usr_dni`, `usr_nombre`, `usr_password`, `usr_tipo`) VAL
 
 DROP TABLE IF EXISTS `usuarios_tipo`;
 CREATE TABLE IF NOT EXISTS `usuarios_tipo` (
-  `tipo_id` tinyint(4) NOT NULL,
+  `tipo_id` tinyint NOT NULL,
   `tipo_descripcion` varchar(45) NOT NULL,
   PRIMARY KEY (`tipo_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

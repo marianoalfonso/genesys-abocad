@@ -42,7 +42,8 @@
         
         <div class="col-md-12">
             <div class="boton">
-                <input type="submit" class="btn btn-warning" value="descargar">
+                <!-- <input type="submit" class="btn btn-warning" value="descargar"> -->
+                <a href="export2.php" class="btn btn-warning">descargar</a>
             </div>
         </div>
     </form>

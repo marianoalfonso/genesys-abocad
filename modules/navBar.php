@@ -25,6 +25,7 @@
         $pacientesProduccion = "https://abocad.geatec.com.ar/modules/pacientes/pacientes.php";
         $profesionalesProduccion = "https://abocad.geatec.com.ar/modules/profesionales/profesionales.php";
         $turnosProduccion = "https://genesys-abocad/modules/turnos/turnosGeneral.php";
+        $calendarioDesarrollo = "https://genesys-abocad/modules/calendarios/calendarioFull.php";
         $descargasProduccion = "https://genesys-abocad/modules/descargas/seleccionDescarga.php";
         $salirProduccion = "https://abocad.geatec.com.ar/default.php";
     ?>
